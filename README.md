@@ -1,30 +1,79 @@
-# Foxmen Studio landing page
+# Foxmen Studio HQ
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A high-performance portfolio and agency website with a custom Admin Dashboard, built for **Foxmen Studio**.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/helpinggeeks/v0-paperfolio-landing-page-w6)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/IKJ21kToIah)
+![Project Status](https://img.shields.io/badge/Status-In%20Development-yellow?style=for-the-badge)
+![Tech Stack](https://img.shields.io/badge/Stack-Next.js%20%7C%20Tailwind%20%7C%20Node%20%7C%20Prisma-blue?style=for-the-badge)
 
-## Overview
+## 🚀 Usage Guide
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+### Prerequisites
+- Node.js (v18+)
+- PostgreSQL Database (Neon DB recommended)
 
-## Deployment
+### 1. Start the Backend
+The backend handles authentication, database connections, and file uploads.
+```bash
+cd backend
+npm install
+npm run dev
+```
+*Runs on: `http://localhost:5001`*
 
-Your project is live at:
+### 2. Start the Frontend
+The Next.js application for the portfolio and admin panel.
+```bash
+npm install
+npm run dev
+```
+*Runs on: `http://localhost:3000`*
 
-**[https://vercel.com/helpinggeeks/v0-paperfolio-landing-page-w6](https://vercel.com/helpinggeeks/v0-paperfolio-landing-page-w6)**
+---
 
-## Build your app
+## 📅 dev Log: Latest Updates (Dec 12, 2025)
 
-Continue building your app on:
+We have successfully overhauled the **Admin Control Panel** to match the premium "Neo-Brutalist" aesthetic of the main brand.
 
-**[https://v0.app/chat/IKJ21kToIah](https://v0.app/chat/IKJ21kToIah)**
+### ✅ Completed Features
+1.  **Admin Panel Redesign**
+    *   Applied the **Foxmen Studio** branding (Yellow/Black/Bold) to the entire Admin functionality.
+    *   Redesigned Sidebar with dynamic user welcome message.
+    *   Redesigned **Messages** page with split-view layout and visual parsers.
+    *   Redesigned **Projects** page with heavy border cards and hover effects.
 
-## How It Works
+2.  **Image Upload System**
+    *   Built a custom file upload pipeline.
+    *   **Backend**: `multer` integration to save images to `backend/uploads`.
+    *   **Frontend**: Drag-and-drop style input with instant preview.
+    *   **Database**: Stores valid image paths in Neon PostgreSQL.
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+3.  **Authentication & Stability**
+    *   **Smart Session Handling**: Auto-redirects to Login if session expires (401).
+    *   **Crash Protection**: Distinguishes between "Wrong Password" and "Database Offline".
+    *   **UI Feedback**: Friendly error messages when the database connection is paused.
+    *   **SSL Fix**: Resolved local connectivity issues with Neon DB using custom SSL config.
+
+4.  **Infrastructure**
+    *   Fixed Git repository issues (removed large `node_modules` from history).
+    *   Validated full CRUD operations for Projects.
+
+---
+
+## 🗺️ Roadmap: What's Next?
+
+### Phase 1: Frontend Integration (Immediate Focus)
+- [ ] **Dynamic Home Page**: Connect the public homepage (`app/page.tsx`) to the live Database.
+    - [ ] Fetch and display real Projects.
+    - [ ] Fetch and display real Testimonials/Clients.
+- [ ] **Dynamic Blog**: Build the public Blog Listing and Post Details pages using real data.
+
+### Phase 2: Admin Expansion
+- [ ] **Blog Management**: Create the Admin Blog View (Write/Edit/Delete articles).
+- [ ] **Rich Text Editor**: Integrate a Markdown or Rich Text editor for writing blog posts.
+
+### Phase 3: Deployment
+- [ ] **Production Build**: Configure build scripts for Vercel (Frontend) and Render/Railway (Backend).
+- [ ] **Storage Strategy**: Move from local `uploads/` folder to Cloud Storage (AWS S3 or Cloudinary) for production persistence.
+
+---
+**Developed by Foxmen Studio Team**
