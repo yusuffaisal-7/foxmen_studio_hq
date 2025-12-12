@@ -76,4 +76,30 @@ We have successfully overhauled the **Admin Control Panel** to match the premium
 - [ ] **Storage Strategy**: Move from local `uploads/` folder to Cloud Storage (AWS S3 or Cloudinary) for production persistence.
 
 ---
-**Developed by Foxmen Studio Team**
+
+## 📅 dev Log: Latest Updates (Dec 13, 2025)
+
+Today we focused on making the **Project Details** completely dynamic and unlocking the full potential of the Portfolio content management system.
+
+### ✅ Completed Features
+1.  **Dynamic Project Data**
+    *   **Advanced Database Schema**: Expanded `Project` model to support extensive case study details (Challenge, Solution, Outcome).
+    *   **Live Connectivity**: Added fields for `Live Site URL`, `GitHub URL`, and structured `Client Testimonials`.
+
+2.  **Admin Panel Upgrades**
+    *   **Tabbed Interface**: Organized the "Add Project" form into `Overview`, `Story`, `Media`, and `Details` tabs for a cleaner UX.
+    *   **Bento Grid Support**: Added dedicated upload slots for the Gallery layout (Main, Mobile View, System View).
+    *   **Dynamic Inputs**: Added dedicated inputs for testimonials and external links.
+
+3.  **Frontend Polish**
+    *   **Project Details Page**: Now fetches and displays the actual Testimonial, Gallery images, and Video from the database.
+    *   **Fallback Handling**: Implemented graceful fallbacks for optional fields like roles, duration, and gallery images.
+
+4.  **Security & Stability**
+    *   **Robust Delete**: Improved error handling for project deletion, giving clear feedback on session expiry or server errors.
+    *   **Syntax Fixes**: Resolved build errors in the Admin dashboard.
+
+---
+
+**Yousuf H. Faysal**
+**CEO and Founder of Foxmen Studio**
