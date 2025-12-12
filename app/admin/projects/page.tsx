@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Plus, Trash2, Edit, Upload, X, Link as LinkIcon, Github, Image as ImageIcon, Check } from "lucide-react";
+import { Plus, Trash2, Edit, Upload, X, Link as LinkIcon, Github, Image as ImageIcon, Video, Layers, List, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useRouter } from "next/navigation";
 import {
     Dialog,
@@ -21,9 +22,21 @@ type Project = {
     slug: string;
     description: string;
     image: string;
+    video?: string;
+    gallery?: string[];
     tags: string[];
+    features?: string[];
     link: string;
     github: string;
+    client?: string;
+    role?: string;
+    duration?: string;
+    challenge?: string;
+    solution?: string;
+    outcome?: string;
+    process?: any; // JSON
+    results?: any; // JSON
+    testimonial?: any; // JSON
 };
 
 export default function ProjectsAdmin() {
@@ -34,6 +47,9 @@ export default function ProjectsAdmin() {
     const [isEditing, setIsEditing] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [tagInput, setTagInput] = useState("");
+
+    // Admin helper state (text areas for lists)
+    const [featuresText, setFeaturesText] = useState("");
 
     const router = useRouter();
 
@@ -58,6 +74,42 @@ export default function ProjectsAdmin() {
         fetchProjects();
     }, []);
 
+    // Sync complex fields to local state when editing
+    useEffect(() => {
+        if (currentProject.features && Array.isArray(currentProject.features)) {
+            setFeaturesText(currentProject.features.join("\n"));
+        } else {
+            setFeaturesText("");
+        }
+    }, [currentProject]);
+
+    const handleGalleryUpload = async (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setUploading(true);
+        const formData = new FormData();
+        formData.append("image", file);
+
+        try {
+            const res = await fetch("http://localhost:5001/api/upload", {
+                method: "POST",
+                body: formData
+            });
+            const data = await res.json();
+            if (res.ok) {
+                const imageUrl = `http://localhost:5001${data.filePath}`;
+                const newGallery = currentProject.gallery ? [...currentProject.gallery] : [];
+                newGallery[index] = imageUrl;
+                setCurrentProject(prev => ({ ...prev, gallery: newGallery }));
+            }
+        } catch (error) {
+            console.error("Upload failed", error);
+        } finally {
+            setUploading(false);
+        }
+    };
+
     const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
@@ -73,9 +125,6 @@ export default function ProjectsAdmin() {
             });
             const data = await res.json();
             if (res.ok) {
-                // Ensure we use the full URL if needed, but relative path works if proxy/static setup correctly
-                // Typically we want the backend to return full URL or we prepend it.
-                // For now, let's prepend localhost if it starts with /uploads
                 const imageUrl = `http://localhost:5001${data.filePath}`;
                 setCurrentProject(prev => ({ ...prev, image: imageUrl }));
             }
@@ -85,6 +134,53 @@ export default function ProjectsAdmin() {
             setUploading(false);
         }
     };
+
+    // ... (helper functions)
+
+    // In Render, Media Tab:
+    /*
+                            <TabsContent value="media" className="p-8 space-y-6 pt-4">
+                                <div className="space-y-4">
+                                    <Label className="font-bold uppercase text-xs text-gray-500">Project Cover Image (Main)</Label>
+                                    <div className="border-4 border-dashed border-gray-200 rounded-2xl p-6 text-center hover:bg-gray-50 hover:border-black transition-all group relative cursor-pointer">
+                                        <input type="file" accept="image/*" onChange={handleFileUpload} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+                                        {currentProject.image ? (
+                                            <div className="relative h-48 rounded-lg overflow-hidden border-2 border-black">
+                                                <img src={currentProject.image} alt="Preview" className="w-full h-full object-cover" />
+                                            </div>
+                                        ) : (
+                                            <div className="py-8"><Upload className="w-12 h-12 mx-auto text-gray-300 mb-2"/><p className="font-bold text-gray-400">Upload Cover</p></div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4 pt-4 border-t-2 border-dashed border-gray-200">
+                                    <Label className="font-bold uppercase text-xs text-gray-500">Bento Grid Images</Label>
+                                    <div className="grid grid-cols-3 gap-4">
+                                        {[0, 1, 2].map((idx) => (
+                                            <div key={idx} className="space-y-2">
+                                                <div className="text-[10px] font-bold uppercase text-gray-400">
+                                                    {idx === 0 ? "Main (Large)" : idx === 1 ? "Top (Mobile)" : "Bottom (System)"}
+                                                </div>
+                                                <div className="aspect-square border-4 border-dashed border-gray-200 rounded-xl flex items-center justify-center relative hover:border-black transition-all group overflow-hidden bg-gray-50">
+                                                    <input type="file" accept="image/*" onChange={(e) => handleGalleryUpload(idx, e)} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+                                                    {currentProject.gallery && currentProject.gallery[idx] ? (
+                                                        <img src={currentProject.gallery[idx]} className="w-full h-full object-cover" />
+                                                    ) : (
+                                                        <Plus className="text-gray-300 group-hover:text-black" />
+                                                    )}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="space-y-2 pt-4">
+                                    <Label className="font-bold uppercase text-xs text-gray-500">Video URL</Label>
+                                    <Input value={currentProject.video || ""} onChange={(e) => setCurrentProject({ ...currentProject, video: e.target.value })} className="border-2" placeholder="e.g. YouTube or mp4 link" />
+                                </div>
+                            </TabsContent>
+    */
 
     const handleAddTag = () => {
         if (!tagInput.trim()) return;
@@ -104,10 +200,14 @@ export default function ProjectsAdmin() {
         e.preventDefault();
         const token = localStorage.getItem("adminToken");
 
-        // Ensure tags is array
-        const tags = Array.isArray(currentProject.tags) ? currentProject.tags : [];
+        // Process Features (split by line)
+        const featuresArray = featuresText.split("\n").map(f => f.trim()).filter(f => f !== "");
 
-        const payload = { ...currentProject, tags };
+        const payload = {
+            ...currentProject,
+            tags: Array.isArray(currentProject.tags) ? currentProject.tags : [],
+            features: featuresArray
+        };
 
         try {
             const url = isEditing
@@ -150,14 +250,36 @@ export default function ProjectsAdmin() {
     const handleDelete = async (id: string) => {
         if (!confirm("Are you sure?")) return;
         const token = localStorage.getItem("adminToken");
+
         try {
-            await fetch(`http://localhost:5001/api/projects/${id}`, {
+            const res = await fetch(`http://localhost:5001/api/projects/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             });
+
+            if (res.status === 401) {
+                alert("Session expired. Please login again.");
+                localStorage.removeItem("adminToken");
+                router.push("/admin/login");
+                return;
+            }
+
+            if (!res.ok) {
+                const data = await res.text(); // Parse text in case JSON fails or is empty
+                try {
+                    const json = JSON.parse(data);
+                    alert(`Failed to delete: ${json.message}`);
+                } catch {
+                    alert(`Failed to delete: ${res.statusText}`);
+                }
+                return;
+            }
+
+            // Success
             fetchProjects();
         } catch (error) {
             console.error("Failed to delete project", error);
+            alert("An error occurred while deleting the project");
         }
     };
 
@@ -218,19 +340,6 @@ export default function ProjectsAdmin() {
                                     ))}
                                 </div>
                                 <p className="text-gray-600 font-medium line-clamp-2 mb-6 flex-1 text-sm">{project.description}</p>
-
-                                <div className="flex items-center gap-4 mt-auto pt-4 border-t-2 border-dashed border-gray-100">
-                                    {project.link && (
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider hover:text-[#FF4A60]">
-                                            <LinkIcon className="w-4 h-4" /> Live Site
-                                        </a>
-                                    )}
-                                    {project.github && (
-                                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider hover:text-[#FF4A60]">
-                                            <Github className="w-4 h-4" /> Code
-                                        </a>
-                                    )}
-                                </div>
                             </div>
                         </div>
                     ))}
@@ -238,152 +347,230 @@ export default function ProjectsAdmin() {
             )}
 
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                <DialogContent className="sm:max-w-[700px] bg-white border-4 border-black rounded-[32px] shadow-[16px_16px_0px_0px_rgba(0,0,0,0.2)] p-0 overflow-hidden">
-                    <DialogHeader className="p-8 pb-0">
+                <DialogContent className="sm:max-w-[800px] bg-white border-4 border-black rounded-[32px] shadow-[16px_16px_0px_0px_rgba(0,0,0,0.2)] p-0 overflow-hidden max-h-[90vh]">
+                    <DialogHeader className="p-8 pb-4 border-b-2 border-gray-100">
                         <DialogTitle className="text-3xl font-black uppercase tracking-tight">
                             {isEditing ? "Edit Project" : "New Project"}
                         </DialogTitle>
                     </DialogHeader>
 
-                    <div className="p-8 max-h-[70vh] overflow-y-auto space-y-6">
-                        {/* Image Uploader */}
-                        <div className="space-y-4">
-                            <Label className="text-xs font-bold uppercase tracking-widest text-gray-500">Project Cover</Label>
-                            <div className="border-4 border-dashed border-gray-200 rounded-2xl p-6 text-center hover:bg-gray-50 hover:border-black transition-all group relative cursor-pointer">
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={handleFileUpload}
-                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                                />
-                                {currentProject.image ? (
-                                    <div className="relative h-48 rounded-lg overflow-hidden border-2 border-black">
-                                        <img src={currentProject.image} alt="Preview" className="w-full h-full object-cover" />
-                                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <p className="text-white font-bold">Click to change</p>
+                    <div className="overflow-y-auto max-h-[70vh]">
+                        <Tabs defaultValue="overview" className="w-full">
+                            <div className="px-8 pt-4">
+                                <TabsList className="bg-gray-100 p-1 rounded-xl w-full grid grid-cols-4">
+                                    <TabsTrigger value="overview" className="rounded-lg font-bold data-[state=active]:bg-black data-[state=active]:text-white">Overview</TabsTrigger>
+                                    <TabsTrigger value="story" className="rounded-lg font-bold data-[state=active]:bg-black data-[state=active]:text-white">Story</TabsTrigger>
+                                    <TabsTrigger value="media" className="rounded-lg font-bold data-[state=active]:bg-black data-[state=active]:text-white">Media</TabsTrigger>
+                                    <TabsTrigger value="details" className="rounded-lg font-bold data-[state=active]:bg-black data-[state=active]:text-white">Details</TabsTrigger>
+                                </TabsList>
+                            </div>
+
+                            <TabsContent value="overview" className="p-8 space-y-6 pt-4">
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    <div className="space-y-2">
+                                        <Label className="font-bold uppercase text-xs text-gray-500">Title</Label>
+                                        <Input
+                                            value={currentProject.title || ""}
+                                            onChange={(e) => {
+                                                const title = e.target.value;
+                                                const slug = title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+                                                setCurrentProject({ ...currentProject, title, slug: currentProject.slug ? currentProject.slug : slug });
+                                            }}
+                                            className="font-bold border-2"
+                                            placeholder="Project Title"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label className="font-bold uppercase text-xs text-gray-500">Slug</Label>
+                                        <Input
+                                            value={currentProject.slug || ""}
+                                            onChange={(e) => setCurrentProject({ ...currentProject, slug: e.target.value })}
+                                            className="font-mono text-sm border-2"
+                                            placeholder="project-slug"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label className="font-bold uppercase text-xs text-gray-500">Description</Label>
+                                    <Textarea
+                                        value={currentProject.description || ""}
+                                        onChange={(e) => setCurrentProject({ ...currentProject, description: e.target.value })}
+                                        className="h-24 border-2"
+                                        placeholder="Brief description..."
+                                    />
+                                </div>
+
+                                <div className="grid md:grid-cols-3 gap-4">
+                                    <div className="space-y-2">
+                                        <Label className="font-bold uppercase text-xs text-gray-500">Client</Label>
+                                        <Input value={currentProject.client || ""} onChange={(e) => setCurrentProject({ ...currentProject, client: e.target.value })} className="border-2" placeholder="Client Name" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label className="font-bold uppercase text-xs text-gray-500">Role</Label>
+                                        <Input value={currentProject.role || ""} onChange={(e) => setCurrentProject({ ...currentProject, role: e.target.value })} className="border-2" placeholder="e.g. Lead Dev" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label className="font-bold uppercase text-xs text-gray-500">Duration</Label>
+                                        <Input value={currentProject.duration || ""} onChange={(e) => setCurrentProject({ ...currentProject, duration: e.target.value })} className="border-2" placeholder="e.g. 3 Months" />
+                                    </div>
+                                </div>
+
+
+
+                                <div className="grid md:grid-cols-2 gap-6 pb-2">
+                                    <div className="space-y-2">
+                                        <Label className="font-bold uppercase text-xs text-gray-500">Live Site URL</Label>
+                                        <div className="relative">
+                                            <LinkIcon className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+                                            <Input value={currentProject.link || ""} onChange={(e) => setCurrentProject({ ...currentProject, link: e.target.value })} className="pl-10 border-2" placeholder="https://example.com" />
                                         </div>
                                     </div>
-                                ) : (
-                                    <div className="py-8">
-                                        {uploading ? (
-                                            <div className="animate-pulse font-bold text-gray-400">Uploading...</div>
+                                    <div className="space-y-2">
+                                        <Label className="font-bold uppercase text-xs text-gray-500">GitHub URL</Label>
+                                        <div className="relative">
+                                            <Github className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+                                            <Input value={currentProject.github || ""} onChange={(e) => setCurrentProject({ ...currentProject, github: e.target.value })} className="pl-10 border-2" placeholder="https://github.com/user/repo" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label className="font-bold uppercase text-xs text-gray-500">Tags (Tech Stack)</Label>
+                                    <div className="flex gap-2">
+                                        <Input
+                                            value={tagInput}
+                                            onChange={(e) => setTagInput(e.target.value)}
+                                            onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
+                                            className="border-2"
+                                            placeholder="Type tag & Enter"
+                                        />
+                                        <Button type="button" onClick={handleAddTag} className="bg-[#FFC224] text-black hover:bg-black hover:text-[#FFC224] border-2 border-black"><Plus className="w-5 h-5" /></Button>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2 mt-2">
+                                        {currentProject.tags?.map((tag, i) => (
+                                            <span key={i} className="bg-black text-white text-xs font-bold px-2 py-1 rounded flex items-center gap-1">{tag} <button onClick={() => removeTag(tag)}><X className="w-3 h-3" /></button></span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </TabsContent>
+
+
+
+                            <TabsContent value="story" className="p-8 space-y-6 pt-4">
+                                <div className="space-y-2">
+                                    <Label className="font-bold uppercase text-xs text-gray-500 text-[#FF4A60]">The Challenge</Label>
+                                    <Textarea value={currentProject.challenge || ""} onChange={(e) => setCurrentProject({ ...currentProject, challenge: e.target.value })} className="min-h-[100px] border-2" placeholder="What was the problem?" />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label className="font-bold uppercase text-xs text-gray-500 text-[#FFC224]">The Solution</Label>
+                                    <Textarea value={currentProject.solution || ""} onChange={(e) => setCurrentProject({ ...currentProject, solution: e.target.value })} className="min-h-[100px] border-2" placeholder="How did you solve it?" />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label className="font-bold uppercase text-xs text-gray-500 text-[#4AFF93]">The Outcome</Label>
+                                    <Textarea value={currentProject.outcome || ""} onChange={(e) => setCurrentProject({ ...currentProject, outcome: e.target.value })} className="min-h-[100px] border-2" placeholder="What were the results?" />
+                                </div>
+                                <div className="p-6 bg-gray-50 border-2 border-dashed border-gray-200 rounded-xl space-y-4">
+                                    <Label className="font-bold uppercase text-xs text-gray-500 flex items-center gap-2"><User className="w-4 h-4" /> Client Testimonial</Label>
+                                    <Textarea
+                                        value={currentProject.testimonial?.text || ""}
+                                        onChange={(e) => setCurrentProject({
+                                            ...currentProject,
+                                            testimonial: { ...currentProject.testimonial, text: e.target.value }
+                                        })}
+                                        className="h-24 border-2 bg-white"
+                                        placeholder="Quote..."
+                                    />
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <Input
+                                            value={currentProject.testimonial?.author || ""}
+                                            onChange={(e) => setCurrentProject({
+                                                ...currentProject,
+                                                testimonial: { ...currentProject.testimonial, author: e.target.value }
+                                            })}
+                                            className="border-2 bg-white"
+                                            placeholder="Author Name"
+                                        />
+                                        <Input
+                                            value={currentProject.testimonial?.role || ""}
+                                            onChange={(e) => setCurrentProject({
+                                                ...currentProject,
+                                                testimonial: { ...currentProject.testimonial, role: e.target.value }
+                                            })}
+                                            className="border-2 bg-white"
+                                            placeholder="Author Role"
+                                        />
+                                    </div>
+                                </div>
+                            </TabsContent>
+
+                            <TabsContent value="media" className="p-8 space-y-6 pt-4">
+                                <div className="space-y-4">
+                                    <Label className="font-bold uppercase text-xs text-gray-500">Project Cover Image (Main)</Label>
+                                    <div className="border-4 border-dashed border-gray-200 rounded-2xl p-6 text-center hover:bg-gray-50 hover:border-black transition-all group relative cursor-pointer">
+                                        <input type="file" accept="image/*" onChange={handleFileUpload} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+                                        {currentProject.image ? (
+                                            <div className="relative h-48 rounded-lg overflow-hidden border-2 border-black">
+                                                <img src={currentProject.image} alt="Preview" className="w-full h-full object-cover" />
+                                            </div>
                                         ) : (
-                                            <>
-                                                <Upload className="w-12 h-12 mx-auto text-gray-300 group-hover:text-black mb-4 transition-colors" />
-                                                <p className="font-bold text-gray-500 group-hover:text-black">Drop image here or click to upload</p>
-                                            </>
+                                            <div className="py-8"><Upload className="w-12 h-12 mx-auto text-gray-300 mb-2" /><p className="font-bold text-gray-400">Upload Cover</p></div>
                                         )}
                                     </div>
-                                )}
-                            </div>
-                        </div>
+                                </div>
 
-                        <div className="grid md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <Label className="text-xs font-bold uppercase tracking-widest text-gray-500">Title</Label>
-                                <Input
-                                    value={currentProject.title || ""}
-                                    onChange={(e) => {
-                                        const title = e.target.value;
-                                        const slug = title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-                                        setCurrentProject({ ...currentProject, title, slug: currentProject.slug ? currentProject.slug : slug });
-                                    }}
-                                    className="h-12 border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black rounded-xl font-bold"
-                                    placeholder="e.g. Neo-Brutalism UI Kit"
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <Label className="text-xs font-bold uppercase tracking-widest text-gray-500">Slug</Label>
-                                <Input
-                                    value={currentProject.slug || ""}
-                                    onChange={(e) => setCurrentProject({ ...currentProject, slug: e.target.value })}
-                                    className="h-12 border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black rounded-xl font-mono text-sm"
-                                    placeholder="e.g. neo-brutalism-ui"
-                                />
-                            </div>
-                        </div>
+                                <div className="space-y-4 pt-4 border-t-2 border-dashed border-gray-200">
+                                    <Label className="font-bold uppercase text-xs text-gray-500">Bento Grid Images</Label>
+                                    <div className="grid grid-cols-3 gap-4">
+                                        {[0, 1, 2].map((idx) => (
+                                            <div key={idx} className="space-y-2">
+                                                <div className="text-[10px] font-bold uppercase text-gray-400">
+                                                    {idx === 0 ? "Main (Large)" : idx === 1 ? "Top (Mobile)" : "Bottom (System)"}
+                                                </div>
+                                                <div className="aspect-square border-4 border-dashed border-gray-200 rounded-xl flex items-center justify-center relative hover:border-black transition-all group overflow-hidden bg-gray-50">
+                                                    <input type="file" accept="image/*" onChange={(e) => handleGalleryUpload(idx, e)} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+                                                    {currentProject.gallery && currentProject.gallery[idx] ? (
+                                                        <img src={currentProject.gallery[idx]} className="w-full h-full object-cover" />
+                                                    ) : (
+                                                        <Plus className="text-gray-300 group-hover:text-black" />
+                                                    )}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
 
-                        <div className="space-y-2">
-                            <Label className="text-xs font-bold uppercase tracking-widest text-gray-500">Description</Label>
-                            <Textarea
-                                value={currentProject.description || ""}
-                                onChange={(e) => setCurrentProject({ ...currentProject, description: e.target.value })}
-                                className="min-h-[100px] border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black rounded-xl resize-none font-medium text-gray-600"
-                                placeholder="What's this project about?"
-                            />
-                        </div>
+                                <div className="space-y-2 pt-4">
+                                    <Label className="font-bold uppercase text-xs text-gray-500">Video URL</Label>
+                                    <Input value={currentProject.video || ""} onChange={(e) => setCurrentProject({ ...currentProject, video: e.target.value })} className="border-2" placeholder="e.g. YouTube or mp4 link" />
+                                </div>
+                            </TabsContent>
 
-                        {/* Tags & Suggestions */}
-                        <div className="space-y-3">
-                            <Label className="text-xs font-bold uppercase tracking-widest text-gray-500">Tags</Label>
-                            <div className="flex gap-2">
-                                <Input
-                                    value={tagInput}
-                                    onChange={(e) => setTagInput(e.target.value)}
-                                    onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
-                                    className="h-12 border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black rounded-xl"
-                                    placeholder="Type tag & press Enter"
-                                />
-                                <Button type="button" onClick={handleAddTag} className="h-12 w-12 rounded-xl border-2 border-black bg-[#FFC224] text-black hover:bg-black hover:text-[#FFC224]">
-                                    <Plus className="w-6 h-6" />
-                                </Button>
-                            </div>
-                            <div className="flex flex-wrap gap-2 min-h-[32px]">
-                                {currentProject.tags?.map((tag, i) => (
-                                    <span key={i} className="flex items-center gap-1 pl-3 pr-1 py-1 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-lg">
-                                        {tag}
-                                        <button onClick={() => removeTag(tag)} className="p-1 hover:text-red-400"><X className="w-3 h-3" /></button>
-                                    </span>
-                                ))}
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                                <span className="text-xs font-bold text-gray-400 uppercase">Suggestions:</span>
-                                {["Next.js", "React", "Tailwind", "Node.js", "Design", "Figma", "Full Stack"].map(t => (
-                                    <button
-                                        key={t}
-                                        type="button"
-                                        onClick={() => setCurrentProject({ ...currentProject, tags: [...(currentProject.tags || []), t] })}
-                                        className="text-xs font-bold text-gray-500 hover:text-black underline decoration-dashed"
-                                    >
-                                        {t}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <Label className="text-xs font-bold uppercase tracking-widest text-gray-500">Live Link</Label>
-                                <Input
-                                    value={currentProject.link || ""}
-                                    onChange={(e) => setCurrentProject({ ...currentProject, link: e.target.value })}
-                                    className="h-12 border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black rounded-xl"
-                                    placeholder="https://..."
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <Label className="text-xs font-bold uppercase tracking-widest text-gray-500">GitHub</Label>
-                                <Input
-                                    value={currentProject.github || ""}
-                                    onChange={(e) => setCurrentProject({ ...currentProject, github: e.target.value })}
-                                    className="h-12 border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black rounded-xl"
-                                    placeholder="https://github.com/..."
-                                />
-                            </div>
-                        </div>
-
+                            <TabsContent value="details" className="p-8 space-y-6 pt-4">
+                                <div className="space-y-2">
+                                    <Label className="font-bold uppercase text-xs text-gray-500">Features List (One per line)</Label>
+                                    <Textarea
+                                        value={featuresText}
+                                        onChange={(e) => setFeaturesText(e.target.value)}
+                                        className="min-h-[150px] border-2 font-mono text-sm"
+                                        placeholder="Real-time Analytics&#10;Dark Mode&#10;Mobile Responsive"
+                                    />
+                                </div>
+                                <div className="p-4 bg-yellow-50 border-2 border-yellow-200 rounded-xl text-sm font-medium text-yellow-800">
+                                    <p>Advanced fields like <strong>Process</strong> and <strong>Results</strong> are currently editable via raw JSON inputs in database or future updates.</p>
+                                </div>
+                            </TabsContent>
+                        </Tabs>
                     </div>
 
-                    <div className="p-8 border-t-2 border-gray-100 bg-gray-50 flex justify-end gap-3">
-                        <Button variant="ghost" onClick={() => setIsDialogOpen(false)} className="h-12 px-6 font-bold text-gray-500 hover:text-black hover:bg-transparent">
-                            Cancel
-                        </Button>
-                        <Button onClick={handleSubmit} className="h-12 px-8 bg-black text-white rounded-xl font-bold uppercase tracking-wider hover:bg-[#FF4A60] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
+                    <div className="p-8 border-t-2 border-gray-100 bg-gray-50 flex justify-end gap-3 shrink-0">
+                        <Button variant="ghost" onClick={() => setIsDialogOpen(false)} className="h-12 px-6 font-bold text-gray-500">Cancel</Button>
+                        <Button onClick={handleSubmit} className="h-12 px-8 bg-black text-white rounded-xl font-bold uppercase hover:bg-[#FF4A60] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
                             {isEditing ? "Update Project" : "Create Project"}
                         </Button>
                     </div>
                 </DialogContent>
             </Dialog>
-        </div>
+        </div >
     );
 }

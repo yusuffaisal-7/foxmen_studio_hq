@@ -48,18 +48,17 @@ router.get('/:idOrSlug', async (req, res) => {
 // @desc    Create a project
 // @access  Private
 router.post('/', protect, async (req, res) => {
-    const { title, description, image, tags, link, github, slug } = req.body;
+    const {
+        title, description, image, tags, link, github, slug,
+        client, role, duration, challenge, solution, outcome, video, gallery, process, results, testimonial, features
+    } = req.body;
+
     try {
         const finalSlug = slug || title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
         const newProject = await prisma.project.create({
             data: {
-                title,
-                description,
-                image,
-                tags,
-                link,
-                github,
-                slug: finalSlug
+                title, description, image, tags, link, github, slug: finalSlug,
+                client, role, duration, challenge, solution, outcome, video, gallery, process, results, testimonial, features
             }
         });
         res.status(201).json({ ...newProject, _id: newProject.id });
@@ -72,18 +71,17 @@ router.post('/', protect, async (req, res) => {
 // @desc    Update a project
 // @access  Private
 router.put('/:id', protect, async (req, res) => {
-    const { title, description, image, tags, link, github, slug } = req.body;
+    const {
+        title, description, image, tags, link, github, slug,
+        client, role, duration, challenge, solution, outcome, video, gallery, process, results, testimonial, features
+    } = req.body;
+
     try {
         const updatedProject = await prisma.project.update({
             where: { id: req.params.id },
             data: {
-                title,
-                description,
-                image,
-                tags,
-                link,
-                github,
-                slug
+                title, description, image, tags, link, github, slug,
+                client, role, duration, challenge, solution, outcome, video, gallery, process, results, testimonial, features
             }
         });
         res.json({ ...updatedProject, _id: updatedProject.id });

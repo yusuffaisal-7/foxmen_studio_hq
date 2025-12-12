@@ -19,9 +19,28 @@ model Project {
   slug        String   @unique
   description String
   image       String?
+  video       String?
+  gallery     String[]
   tags        String[]
+  features    String[]
   link        String?
   github      String?
+
+  // Meta
+  client      String?
+  role        String?
+  duration    String?
+
+  // Case Study
+  challenge   String?
+  solution    String?
+  outcome     String?
+
+  // Structured Data
+  process     Json?    // Array of { title, desc, icon }
+  results     Json?    // Array of { label, value }
+  testimonial Json?    // Object { text, author, role }
+
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
