@@ -16,7 +16,7 @@ export default function AdminLogin() {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const res = await fetch("http://localhost:5001/api/auth/login", {
+            const res = await fetch("https://paperfolio-backend.vercel.app/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
@@ -43,39 +43,52 @@ export default function AdminLogin() {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-muted/20">
-            <Card className="w-full max-w-md">
-                <CardHeader>
-                    <CardTitle className="text-2xl text-center">Admin Login</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <form onSubmit={handleLogin} className="space-y-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="username">Username</Label>
-                            <Input
-                                id="username"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                required
-                            />
+        <div className="flex items-center justify-center min-h-screen bg-[#FFC224] font-sans">
+            <div className="w-full max-w-md bg-white p-8 rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <div className="text-center mb-8">
+                    <h1 className="text-3xl font-black uppercase tracking-tight mb-2">Admin Portal</h1>
+                    <p className="text-gray-500 font-bold uppercase text-xs tracking-widest">Foxmen Studio</p>
+                </div>
+
+                <form onSubmit={handleLogin} className="space-y-6">
+                    <div className="space-y-2">
+                        <Label htmlFor="username" className="font-bold uppercase text-xs tracking-wide">Username</Label>
+                        <Input
+                            id="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            className="border-2 border-black rounded-xl h-12 text-lg font-bold focus-visible:ring-0 focus-visible:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
+                            placeholder="Enter username"
+                            required
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="password" className="font-bold uppercase text-xs tracking-wide">Password</Label>
+                        <Input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="border-2 border-black rounded-xl h-12 text-lg font-bold focus-visible:ring-0 focus-visible:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
+                            placeholder="••••••••"
+                            required
+                        />
+                    </div>
+
+                    {error && (
+                        <div className="bg-red-100 border-2 border-red-500 text-red-600 p-3 rounded-xl text-sm font-bold flex items-center justify-center">
+                            {error}
                         </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="password">Password</Label>
-                            <Input
-                                id="password"
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
-                        </div>
-                        {error && <p className="text-sm text-destructive">{error}</p>}
-                        <Button type="submit" className="w-full">
-                            Login
-                        </Button>
-                    </form>
-                </CardContent>
-            </Card>
+                    )}
+
+                    <Button
+                        type="submit"
+                        className="w-full h-14 bg-black text-white text-lg font-black uppercase tracking-wide rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:bg-[#FF4A60] transition-all"
+                    >
+                        Access Dashboard
+                    </Button>
+                </form>
+            </div>
         </div>
     );
 }

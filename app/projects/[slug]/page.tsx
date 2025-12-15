@@ -7,7 +7,7 @@ import { notFound } from "next/navigation"
 
 async function getProject(slug: string) {
     try {
-        const res = await fetch(`http://localhost:5001/api/projects/${slug}`, { cache: 'no-store' });
+        const res = await fetch(`https://paperfolio-backend.vercel.app/api/projects/${slug}`, { cache: 'no-store' });
         if (!res.ok) return null;
         return res.json();
     } catch (e) {
@@ -77,9 +77,9 @@ export default async function ProjectPage(props: { params: Promise<{ slug: strin
                             <h1 className="text-5xl md:text-7xl font-black mb-6 uppercase leading-tight md:leading-none">
                                 {project.title}
                             </h1>
-                            <p className="text-xl md:text-3xl font-medium text-gray-700 leading-relaxed max-w-3xl">
+                            <div className="text-xl md:text-3xl font-medium text-gray-700 leading-relaxed max-w-3xl">
                                 {project.description}
-                            </p>
+                            </div>
                         </div>
 
                         {/* Project Meta Box */}
@@ -125,9 +125,9 @@ export default async function ProjectPage(props: { params: Promise<{ slug: strin
                 {/* 2. Introduction */}
                 <section className="max-w-4xl mx-auto px-6 mb-24 text-center">
                     <h2 className="text-3xl font-black uppercase mb-8 decoration-[#FFC224] decoration-4 underline underline-offset-4">The Goal</h2>
-                    <p className="text-2xl md:text-3xl font-medium leading-relaxed text-gray-800">
+                    <div className="text-2xl md:text-3xl font-medium leading-relaxed text-gray-800">
                         "{project.description}"
-                    </p>
+                    </div>
                 </section>
 
                 {/* 4. Overview Sections (Challenge/Solution/Outcome) */}
@@ -138,21 +138,21 @@ export default async function ProjectPage(props: { params: Promise<{ slug: strin
                                 <span className="font-black text-xl">01</span>
                             </div>
                             <h3 className="text-2xl font-bold mb-4 text-[#FF4A60]">The Challenge</h3>
-                            <p className="text-gray-300 text-lg leading-relaxed">{project.challenge || "Identification of core user problems and system bottlenecks."}</p>
+                            <div className="text-gray-300 text-lg leading-relaxed">{project.challenge || "Identification of core user problems and system bottlenecks."}</div>
                         </div>
                         <div className="bg-[#1A1A1A] p-8 rounded-2xl border border-gray-800">
                             <div className="w-12 h-12 bg-[#FFC224] rounded-full flex items-center justify-center mb-6 border-2 border-white text-black">
                                 <span className="font-black text-xl">02</span>
                             </div>
                             <h3 className="text-2xl font-bold mb-4 text-[#FFC224]">The Solution</h3>
-                            <p className="text-gray-300 text-lg leading-relaxed">{project.solution || "Strategies and technologies implemented to address the issues."}</p>
+                            <div className="text-gray-300 text-lg leading-relaxed">{project.solution || "Strategies and technologies implemented to address the issues."}</div>
                         </div>
                         <div className="bg-[#1A1A1A] p-8 rounded-2xl border border-gray-800">
                             <div className="w-12 h-12 bg-[#4AFF93] rounded-full flex items-center justify-center mb-6 border-2 border-white text-black">
                                 <span className="font-black text-xl">03</span>
                             </div>
                             <h3 className="text-2xl font-bold mb-4 text-[#4AFF93]">The Outcome</h3>
-                            <p className="text-gray-300 text-lg leading-relaxed">{project.outcome || "Measurable results and key achievements delivered."}</p>
+                            <div className="text-gray-300 text-lg leading-relaxed">{project.outcome || "Measurable results and key achievements delivered."}</div>
                         </div>
                     </div>
                 </section>
@@ -311,9 +311,9 @@ export default async function ProjectPage(props: { params: Promise<{ slug: strin
                     <section className="max-w-4xl mx-auto px-6 mb-32 text-center">
                         <div className="bg-[#FFF8E6] p-12 rounded-[40px] border-4 border-black relative">
                             <div className="text-6xl absolute -top-8 left-12 text-[#FFC224]">“</div>
-                            <p className="text-2xl md:text-3xl font-bold leading-relaxed mb-8">
+                            <div className="text-2xl md:text-3xl font-bold leading-relaxed mb-8">
                                 "{project.testimonial.text}"
-                            </p>
+                            </div>
                             <div className="flex items-center justify-center space-x-4">
                                 <div className="w-12 h-12 bg-gray-300 rounded-full border-2 border-black flex items-center justify-center font-bold text-gray-500">
                                     {project.testimonial.author?.charAt(0) || "C"}

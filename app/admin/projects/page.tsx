@@ -55,7 +55,7 @@ export default function ProjectsAdmin() {
 
     const fetchProjects = async () => {
         try {
-            const res = await fetch("http://localhost:5001/api/projects");
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`);
             const data = await res.json();
             if (Array.isArray(data)) {
                 setProjects(data);
@@ -83,26 +83,28 @@ export default function ProjectsAdmin() {
         }
     }, [currentProject]);
 
+    const uploadToImgBB = async (file: File) => {
+        const formData = new FormData();
+        formData.append("image", file);
+        const apiKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY;
+        const res = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+            method: "POST",
+            body: formData,
+        });
+        const data = await res.json();
+        return data.data.url;
+    };
+
     const handleGalleryUpload = async (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
         setUploading(true);
-        const formData = new FormData();
-        formData.append("image", file);
-
         try {
-            const res = await fetch("http://localhost:5001/api/upload", {
-                method: "POST",
-                body: formData
-            });
-            const data = await res.json();
-            if (res.ok) {
-                const imageUrl = `http://localhost:5001${data.filePath}`;
-                const newGallery = currentProject.gallery ? [...currentProject.gallery] : [];
-                newGallery[index] = imageUrl;
-                setCurrentProject(prev => ({ ...prev, gallery: newGallery }));
-            }
+            const imageUrl = await uploadToImgBB(file);
+            const newGallery = currentProject.gallery ? [...currentProject.gallery] : [];
+            newGallery[index] = imageUrl;
+            setCurrentProject(prev => ({ ...prev, gallery: newGallery }));
         } catch (error) {
             console.error("Upload failed", error);
         } finally {
@@ -110,24 +112,14 @@ export default function ProjectsAdmin() {
         }
     };
 
-    const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
         setUploading(true);
-        const formData = new FormData();
-        formData.append("image", file);
-
         try {
-            const res = await fetch("http://localhost:5001/api/upload", {
-                method: "POST",
-                body: formData
-            });
-            const data = await res.json();
-            if (res.ok) {
-                const imageUrl = `http://localhost:5001${data.filePath}`;
-                setCurrentProject(prev => ({ ...prev, image: imageUrl }));
-            }
+            const imageUrl = await uploadToImgBB(file);
+            setCurrentProject(prev => ({ ...prev, image: imageUrl }));
         } catch (error) {
             console.error("Upload failed", error);
         } finally {
@@ -143,7 +135,7 @@ export default function ProjectsAdmin() {
                                 <div className="space-y-4">
                                     <Label className="font-bold uppercase text-xs text-gray-500">Project Cover Image (Main)</Label>
                                     <div className="border-4 border-dashed border-gray-200 rounded-2xl p-6 text-center hover:bg-gray-50 hover:border-black transition-all group relative cursor-pointer">
-                                        <input type="file" accept="image/*" onChange={handleFileUpload} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+                                        <input type="file" accept="image/*" onChange={handleImageUpload} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
                                         {currentProject.image ? (
                                             <div className="relative h-48 rounded-lg overflow-hidden border-2 border-black">
                                                 <img src={currentProject.image} alt="Preview" className="w-full h-full object-cover" />
@@ -508,7 +500,7 @@ export default function ProjectsAdmin() {
                                 <div className="space-y-4">
                                     <Label className="font-bold uppercase text-xs text-gray-500">Project Cover Image (Main)</Label>
                                     <div className="border-4 border-dashed border-gray-200 rounded-2xl p-6 text-center hover:bg-gray-50 hover:border-black transition-all group relative cursor-pointer">
-                                        <input type="file" accept="image/*" onChange={handleFileUpload} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+                                        <input type="file" accept="image/*" onChange={handleImageUpload} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
                                         {currentProject.image ? (
                                             <div className="relative h-48 rounded-lg overflow-hidden border-2 border-black">
                                                 <img src={currentProject.image} alt="Preview" className="w-full h-full object-cover" />

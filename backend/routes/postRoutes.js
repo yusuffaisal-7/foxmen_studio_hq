@@ -38,7 +38,11 @@ router.get('/:idOrSlug', async (req, res) => {
 
 // Create post
 router.post('/', protect, async (req, res) => {
-    const { title, excerpt, content, coverImage, tags, author, date, slug } = req.body;
+    const {
+        title, excerpt, content, coverImage, tags, references,
+        author, authorRole, authorBio, authorImage, authorTwitter, authorLinkedin,
+        date, slug
+    } = req.body;
     try {
         const finalSlug = slug || title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
         const newPost = await prisma.post.create({
@@ -48,7 +52,13 @@ router.post('/', protect, async (req, res) => {
                 content,
                 coverImage,
                 tags,
+                references,
                 author,
+                authorRole,
+                authorBio,
+                authorImage,
+                authorTwitter,
+                authorLinkedin,
                 date: new Date(date),
                 slug: finalSlug
             }
@@ -61,7 +71,11 @@ router.post('/', protect, async (req, res) => {
 
 // Update post
 router.put('/:id', protect, async (req, res) => {
-    const { title, excerpt, content, coverImage, tags, author, date, slug } = req.body;
+    const {
+        title, excerpt, content, coverImage, tags, references,
+        author, authorRole, authorBio, authorImage, authorTwitter, authorLinkedin,
+        date, slug
+    } = req.body;
     try {
         const updatedPost = await prisma.post.update({
             where: { id: req.params.id },
@@ -71,7 +85,13 @@ router.put('/:id', protect, async (req, res) => {
                 content,
                 coverImage,
                 tags,
+                references,
                 author,
+                authorRole,
+                authorBio,
+                authorImage,
+                authorTwitter,
+                authorLinkedin,
                 date: date ? new Date(date) : undefined,
                 slug
             }
@@ -87,6 +107,61 @@ router.delete('/:id', protect, async (req, res) => {
     try {
         await prisma.post.delete({ where: { id: req.params.id } });
         res.json({ message: 'Post removed' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Add Comment
+router.post('/:id/comments', async (req, res) => {
+    const { name, email, content } = req.body;
+    try {
+        const comment = await prisma.comment.create({
+            data: {
+                name,
+                email,
+                content,
+                postId: req.params.id
+            }
+        });
+        res.status(201).json(comment);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
+// Get Comments
+router.get('/:id/comments', async (req, res) => {
+    try {
+        const comments = await prisma.comment.findMany({
+            where: { postId: req.params.id },
+            orderBy: { createdAt: 'desc' }
+        });
+        res.json(comments);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Update Comment
+router.put('/comments/:commentId', protect, async (req, res) => {
+    const { content } = req.body;
+    try {
+        const updatedComment = await prisma.comment.update({
+            where: { id: req.params.commentId },
+            data: { content }
+        });
+        res.json(updatedComment);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
+// Delete Comment
+router.delete('/comments/:commentId', protect, async (req, res) => {
+    try {
+        await prisma.comment.delete({ where: { id: req.params.commentId } });
+        res.json({ message: 'Comment removed' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

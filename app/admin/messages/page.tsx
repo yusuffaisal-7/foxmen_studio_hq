@@ -21,7 +21,7 @@ export default function MessagesAdmin() {
     const fetchMessages = async () => {
         try {
             const token = localStorage.getItem("adminToken");
-            const res = await fetch("http://localhost:5001/api/messages", {
+            const res = await fetch("https://paperfolio-backend.vercel.app/api/messages", {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await res.json();
@@ -44,7 +44,7 @@ export default function MessagesAdmin() {
         if (!confirm("Are you sure you want to delete this message?")) return;
         const token = localStorage.getItem("adminToken");
         try {
-            await fetch(`http://localhost:5001/api/messages/${id}`, {
+            await fetch(`https://paperfolio-backend.vercel.app/api/messages/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             });
@@ -164,8 +164,8 @@ export default function MessagesAdmin() {
     };
 
     return (
-        <div className="flex flex-col h-[calc(100vh-100px)]">
-            <div className="mb-8">
+        <div className="flex flex-col h-full lg:h-[calc(100vh-100px)]">
+            <div className={`mb-8 ${selectedMessageId ? "hidden lg:block" : "block"}`}>
                 <h1 className="text-5xl font-bold mb-2">Inbox</h1>
                 <p className="text-lg text-gray-500 font-medium flex items-center gap-2">
                     <Inbox className="w-5 h-5" />
@@ -180,10 +180,13 @@ export default function MessagesAdmin() {
                     No messages found.
                 </div>
             ) : (
-                <div className="flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8 overflow-hidden min-h-0">
+                <div className="flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8 overflow-hidden min-h-0 relative">
 
                     {/* LEFT COLUMN: Message List */}
-                    <div className="lg:col-span-4 overflow-y-auto pr-2 space-y-3 pb-8">
+                    <div className={`
+                        lg:col-span-4 overflow-y-auto pr-2 space-y-3 pb-8 transition-all duration-300
+                        ${selectedMessageId ? "hidden lg:block" : "block w-full"}
+                    `}>
                         {messages.map((msg) => (
                             <div
                                 key={msg._id}
@@ -211,9 +214,22 @@ export default function MessagesAdmin() {
                     </div>
 
                     {/* RIGHT COLUMN: Detail View */}
-                    <div className="lg:col-span-8 overflow-y-auto pb-8 min-h-[500px]">
+                    <div className={`
+                        lg:col-span-8 overflow-y-auto pb-8 min-h-[500px] transition-all duration-300
+                        ${selectedMessageId ? "block w-full animate-slide-in-right lg:animate-none" : "hidden lg:block"}
+                    `}>
                         {selectedMessage ? (
-                            <div className="bg-white border-4 border-black rounded-[32px] p-8 md:p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col relative overflow-hidden h-full">
+                            <div className="bg-white border-4 border-black rounded-[32px] p-6 md:p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col relative overflow-hidden h-full">
+
+                                {/* Mobile Back Button */}
+                                <div className="lg:hidden mb-6">
+                                    <button
+                                        onClick={() => setSelectedMessageId(null)}
+                                        className="flex items-center gap-2 text-gray-500 font-bold hover:text-black transition-colors"
+                                    >
+                                        <ChevronRight className="w-5 h-5 rotate-180" /> Back to Inbox
+                                    </button>
+                                </div>
 
                                 {/* Decorative Top Accent */}
                                 <div className="absolute top-0 left-0 w-full h-2 bg-black"></div>
@@ -235,14 +251,14 @@ export default function MessagesAdmin() {
                                     <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center border-2 border-black shrink-0">
                                         <Mail className="w-5 h-5" />
                                     </div>
-                                    <div>
+                                    <div className="overflow-hidden">
                                         <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-0.5">Reply To</p>
-                                        <a href={`mailto:${selectedMessage.email}`} className="text-lg font-bold hover:underline decoration-2 underline-offset-4">{selectedMessage.email}</a>
+                                        <a href={`mailto:${selectedMessage.email}`} className="text-lg font-bold hover:underline decoration-2 underline-offset-4 break-all">{selectedMessage.email}</a>
                                     </div>
                                 </div>
 
                                 {/* Subject */}
-                                <h3 className="text-3xl lg:text-4xl font-black mb-8 leading-tight">
+                                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black mb-8 leading-tight">
                                     {selectedMessage.subject || "No Subject"}
                                 </h3>
 
@@ -255,7 +271,7 @@ export default function MessagesAdmin() {
                                 <div className="pt-8 border-t-2 border-gray-100 flex justify-end mt-auto">
                                     <button
                                         onClick={() => handleDelete(selectedMessage._id)}
-                                        className="inline-flex items-center px-8 py-4 rounded-2xl bg-white text-[#FF4A60] border-4 border-[#FF4A60] hover:bg-[#FF4A60] hover:text-white font-bold text-lg transition-all hover:shadow-[6px_6px_0px_0px_rgba(255,74,96,0.3)] hover:-translate-y-1"
+                                        className="w-full md:w-auto inline-flex justify-center items-center px-8 py-4 rounded-2xl bg-white text-[#FF4A60] border-4 border-[#FF4A60] hover:bg-[#FF4A60] hover:text-white font-bold text-lg transition-all hover:shadow-[6px_6px_0px_0px_rgba(255,74,96,0.3)] hover:-translate-y-1"
                                     >
                                         <Trash2 className="w-5 h-5 mr-3" />
                                         Delete Message
@@ -263,7 +279,7 @@ export default function MessagesAdmin() {
                                 </div>
                             </div>
                         ) : (
-                            <div className="h-full flex flex-col items-center justify-center text-gray-400 border-4 border-dashed border-gray-200 rounded-[32px]">
+                            <div className="h-full hidden lg:flex flex-col items-center justify-center text-gray-400 border-4 border-dashed border-gray-200 rounded-[32px]">
                                 <Mail className="w-16 h-16 mb-4 opacity-20" />
                                 <p className="text-xl font-bold">Select a message to view details</p>
                             </div>
