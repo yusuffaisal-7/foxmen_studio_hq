@@ -1,7 +1,7 @@
 {
-    "name": "paperfolio-backend",
+    "name": "foxmen-studio-backend",
     "version": "1.0.0",
-    "description": "Backend for Paperfolio Portfolio",
+    "description": "Backend for Foxmen Studio Portfolio",
     "main": "server.js",
     "dependencies": {
         "bcryptjs": "^2.4.3",

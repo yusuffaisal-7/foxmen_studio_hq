@@ -26,7 +26,7 @@ export function ProjectGrid() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch("http://localhost:5001/api/projects")
+        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://paperfolio-backend.vercel.app/api'}/projects`)
             .then(res => res.json())
             .then(data => {
                 if (Array.isArray(data)) {
@@ -51,7 +51,7 @@ export function ProjectGrid() {
 
     return (
         <section className="py-20 px-4 bg-white border-b-4 border-black min-h-screen">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-[1800px] mx-auto">
                 {/* Category Filter */}
                 <div className="flex flex-wrap justify-center gap-4 mb-16">
                     {categories.map((cat) => (
@@ -71,31 +71,57 @@ export function ProjectGrid() {
                 {/* Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredProjects.map((project, index) => (
-                        <Link href={`/projects/${project.slug}`} key={project._id} className="group block">
-                            <div className="bg-white rounded-[24px] overflow-hidden border-4 border-black group-hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:-translate-y-1">
-                                <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden border-b-4 border-black">
-                                    {project.image ? (
-                                        <Image src={project.image} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                                    ) : (
-                                        <div className="absolute inset-0 flex items-center justify-center text-gray-300 text-6xl font-bold">
-                                            {project.title.substring(0, 2).toUpperCase()}
+                        <Link href={`/projects/${project.slug}`} key={project._id} className="group block h-full">
+                            <div className="relative aspect-square rounded-[32px] overflow-hidden border-4 border-black group-hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:-translate-y-1 bg-gray-100">
+                                {/* Full Background Image */}
+                                {project.image ? (
+                                    <Image
+                                        src={project.image}
+                                        alt={project.title}
+                                        fill
+                                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                    />
+                                ) : (
+                                    <div className="absolute inset-0 flex items-center justify-center text-gray-300 text-6xl font-bold bg-gray-100">
+                                        {project.title.substring(0, 2).toUpperCase()}
+                                    </div>
+                                )}
+
+                                {/* Overlay Content */}
+                                <div className="absolute bottom-6 left-6 right-6">
+                                    <div className="bg-white/40 backdrop-blur-xl border-[3px] border-black rounded-[24px] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all">
+
+                                        {/* Top Row: Category & Signal */}
+                                        <div className="flex items-center justify-between mb-4">
+                                            <div className="bg-[#FFC224] border-2 border-black px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider">
+                                                {project.tags?.[0] || 'Project'}
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Live</span>
+                                                <div className="relative flex shrink-0 w-3 h-3">
+                                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 border border-white"></span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    )}
-                                    {/* Overlay on Hover */}
-                                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <span className="bg-white text-black font-bold px-6 py-3 rounded-full flex items-center">
-                                            View Case Study <ArrowUpRight className="ml-2 w-5 h-5" />
-                                        </span>
+
+                                        {/* Title */}
+                                        <h3 className="text-3xl font-black text-black leading-none mb-6">
+                                            {project.title}
+                                        </h3>
+
+                                        {/* Button */}
+                                        <div className="flex items-center justify-between border-t-2 border-gray-200 pt-4 mt-4">
+                                            <div className="flex gap-1 overflow-hidden h-6">
+                                                {project.techStack?.slice(0, 3).map((tech: string, i: number) => (
+                                                    <span key={i} className="text-[10px] font-bold text-gray-400 uppercase">{tech}{i < (project.techStack?.length < 3 ? project.techStack.length : 2) ? '•' : ''}</span>
+                                                ))}
+                                            </div>
+                                            <span className="inline-flex items-center text-sm font-black uppercase border-b-2 border-black hover:border-[#FF4A60] hover:text-[#FF4A60] transition-colors pb-0.5">
+                                                Know More <ArrowRight className="ml-1 w-4 h-4" />
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="p-6">
-                                    <div className="flex flex-wrap gap-2 mb-3">
-                                        {project.tags && project.tags.map((tag: string) => (
-                                            <span key={tag} className="text-xs font-bold uppercase tracking-wider bg-gray-100 px-2 py-1 rounded-md">{tag}</span>
-                                        ))}
-                                    </div>
-                                    <h3 className="text-2xl font-bold mb-2 group-hover:text-[#FF4A60] transition-colors">{project.title}</h3>
-                                    <p className="text-gray-600 font-medium line-clamp-2">{project.description}</p>
                                 </div>
                             </div>
                         </Link>

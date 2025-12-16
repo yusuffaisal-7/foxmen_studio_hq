@@ -41,7 +41,7 @@ app.use('/api/upload', uploadRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.get('/', (req, res) => {
-    res.send('Paperfolio Backend is running');
+    res.send('Foxmen Studio Backend is running');
 });
 
 // Start Server

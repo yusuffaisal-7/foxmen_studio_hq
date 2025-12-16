@@ -1,12 +1,7 @@
 import Link from "next/link"
-import { Mail, ChevronDown } from "lucide-react"
+import { Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+
 
 export function Navigation() {
   return (
@@ -24,33 +19,13 @@ export function Navigation() {
             About
           </Link>
           <Link href="/projects" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity">
-            Portfolio
+            Projects
           </Link>
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity outline-none">
-              Pages
-              <ChevronDown className="w-4 h-4" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="center" className="bg-white border-2 border-black rounded-xl p-2 w-48 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <DropdownMenuItem asChild>
-                <Link href="/about" className="text-lg font-bold w-full cursor-pointer hover:bg-black hover:text-white rounded-lg px-3 py-2 transition-colors">
-                  About
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/projects" className="text-lg font-bold w-full cursor-pointer hover:bg-black hover:text-white rounded-lg px-3 py-2 transition-colors">
-                  Projects
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/contact" className="text-lg font-bold w-full cursor-pointer hover:bg-black hover:text-white rounded-lg px-3 py-2 transition-colors">
-                  Contact Us
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
           <Link href="/blog" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity">
-            Insights
+            Blogs
+          </Link>
+          <Link href="/contact" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity">
+            Contact Us
           </Link>
         </div>
 

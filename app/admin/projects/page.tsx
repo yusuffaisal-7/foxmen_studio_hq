@@ -220,8 +220,8 @@ export default function ProjectsAdmin() {
 
         try {
             const url = isEditing
-                ? `http://localhost:5001/api/projects/${currentProject._id}`
-                : "http://localhost:5001/api/projects";
+                ? `${process.env.NEXT_PUBLIC_API_URL || 'https://paperfolio-backend.vercel.app/api'}/projects/${currentProject._id}`
+                : `${process.env.NEXT_PUBLIC_API_URL || 'https://paperfolio-backend.vercel.app/api'}/projects`;
 
             const method = isEditing ? "PUT" : "POST";
 
@@ -261,7 +261,7 @@ export default function ProjectsAdmin() {
         const token = localStorage.getItem("adminToken");
 
         try {
-            const res = await fetch(`http://localhost:5001/api/projects/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://paperfolio-backend.vercel.app/api'}/projects/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             });
