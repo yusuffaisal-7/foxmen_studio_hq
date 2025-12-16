@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button"
 export function HeroSection() {
   return (
     <section className="container mx-auto px-4 py-16 md:py-24">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative">
+        <div className="space-y-6 relative z-10">
           <h1 className="text-[42px] leading-[50px] md:text-[72px] font-bold md:leading-[85px]">
             Welcome to <span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">Foxmen Studio</span>, a Creative
             Design Agency from <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block">New York</span>
@@ -32,14 +32,14 @@ export function HeroSection() {
         </div>
 
         <div className="flex justify-center md:justify-end">
-          <div className="relative w-full max-w-md aspect-square bg-[#FDB927] border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <div className="relative w-full max-w-lg aspect-square overflow-hidden scale-100 md:scale-110 origin-center md:origin-right z-0">
             <video
-              src="https://res.cloudinary.com/duh7c5x99/video/upload/v1765858252/Make_that_the_202512161007_stcou4.mov"
+              src="https://res.cloudinary.com/duh7c5x99/video/upload/v1765859617/At_last_of_202512161032_xotbcd.mov"
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover mix-blend-multiply"
             />
           </div>
         </div>
