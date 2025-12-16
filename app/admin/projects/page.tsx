@@ -25,6 +25,7 @@ type Project = {
     video?: string;
     gallery?: string[];
     tags: string[];
+    techStack?: string[]; // Dynamic Tech Stack
     features?: string[];
     link: string;
     github: string;
@@ -47,6 +48,7 @@ export default function ProjectsAdmin() {
     const [isEditing, setIsEditing] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [tagInput, setTagInput] = useState("");
+    const [techStackInput, setTechStackInput] = useState(""); // For tech stack input
 
     // Admin helper state (text areas for lists)
     const [featuresText, setFeaturesText] = useState("");
@@ -174,6 +176,21 @@ export default function ProjectsAdmin() {
                             </TabsContent>
     */
 
+    // Tech Stack Handlers
+    const handleAddTech = (e: React.KeyboardEvent) => {
+        if (e.key === "Enter" && techStackInput.trim()) {
+            e.preventDefault();
+            const newStack = currentProject.techStack ? [...currentProject.techStack, techStackInput.trim()] : [techStackInput.trim()];
+            setCurrentProject({ ...currentProject, techStack: newStack });
+            setTechStackInput("");
+        }
+    };
+
+    const handleRemoveTech = (index: number) => {
+        const newStack = currentProject.techStack?.filter((_, i) => i !== index);
+        setCurrentProject({ ...currentProject, techStack: newStack });
+    };
+
     const handleAddTag = () => {
         if (!tagInput.trim()) return;
         const currentTags = Array.isArray(currentProject.tags) ? currentProject.tags : [];
@@ -281,6 +298,23 @@ export default function ProjectsAdmin() {
         setIsDialogOpen(true);
     };
 
+    const openDialog = (project?: Project) => {
+        if (project) {
+            setCurrentProject(project);
+            setIsEditing(true);
+        } else {
+            setCurrentProject({
+                tags: [],
+                gallery: [],
+                features: [],
+                techStack: []
+            });
+            setFeaturesText("");
+            setIsEditing(false);
+        }
+        setIsDialogOpen(true);
+    };
+
     return (
         <div className="space-y-8 min-h-screen">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -289,7 +323,7 @@ export default function ProjectsAdmin() {
                     <p className="text-gray-500 font-bold text-lg">Manage your creative portfolio.</p>
                 </div>
                 <Button
-                    onClick={() => { setCurrentProject({}); setIsEditing(false); setIsDialogOpen(true); }}
+                    onClick={() => { openDialog(); }}
                     className="bg-[#FF4A60] text-white border-4 border-black hover:bg-black font-bold text-xl px-8 py-6 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all"
                 >
                     <Plus className="mr-2 h-6 w-6" /> Add Project
@@ -358,6 +392,27 @@ export default function ProjectsAdmin() {
                             </div>
 
                             <TabsContent value="overview" className="p-8 space-y-6 pt-4">
+                                <div className="space-y-2">
+                                    <Label>Tech Stack</Label>
+                                    <div className="flex gap-2 flex-wrap mb-2">
+                                        {currentProject.techStack?.map((tech, index) => (
+                                            <div key={index} className="bg-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center border border-black">
+                                                {tech}
+                                                <button onClick={() => handleRemoveTech(index)} className="ml-2 hover:text-red-500">
+                                                    <X className="w-3 h-3" />
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <Input
+                                        placeholder="Type tech (e.g. React) and press Enter"
+                                        value={techStackInput}
+                                        onChange={(e) => setTechStackInput(e.target.value)}
+                                        onKeyDown={handleAddTech}
+                                        className="border-2 border-black rounded-xl"
+                                    />
+                                </div>
+
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
                                         <Label className="font-bold uppercase text-xs text-gray-500">Title</Label>

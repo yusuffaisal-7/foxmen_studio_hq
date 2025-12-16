@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 
-import { ArrowRight, Search, ChevronRight, ChevronLeft, Mail } from "lucide-react"
+import { ArrowRight, Search, ChevronRight, ChevronLeft, Mail, Clock } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -88,17 +88,33 @@ export function ArticleGrid() {
             <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
                 {articles.map((art, i) => (
                     <Link href={`/blog/${art.slug}`} key={art._id} className="block h-full">
-                        <div className="bg-white rounded-[32px] md:rounded-[48px] border-4 border-black p-6 md:p-8 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all cursor-pointer flex flex-col h-full">
-                            <div className="aspect-[16/10] bg-gray-100 rounded-[24px] md:rounded-[32px] mb-6 md:mb-8 border-2 border-black/10 overflow-hidden relative">
+                        <div className="bg-white rounded-[40px] border-4 border-black p-5 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all cursor-pointer flex flex-col h-full group">
+
+                            {/* Image & Overlay Tag */}
+                            <div className="aspect-[4/3] bg-gray-100 rounded-[32px] mb-6 border-4 border-black overflow-hidden relative">
                                 {art.coverImage && <Image src={art.coverImage} alt={art.title} fill className="object-cover" />}
+                                <div className="absolute top-4 right-4 bg-black text-white px-5 py-2 rounded-full font-bold text-sm shadow-lg">
+                                    {art.tags?.[0] || "Resources"}
+                                </div>
                             </div>
-                            <div className="flex justify-between items-center mb-4 md:mb-6">
-                                <span className="bg-gray-100 px-3 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-bold uppercase">{art.tags?.[0] || "Blog"}</span>
-                                <span className="text-gray-400 text-sm md:text-base font-bold">{new Date(art.date).toLocaleDateString()}</span>
+
+                            {/* Title */}
+                            <h3 className="text-2xl md:text-3xl font-black mb-6 leading-tight group-hover:underline decoration-4 decoration-[#FFC224] underline-offset-4">
+                                {art.title}
+                            </h3>
+
+                            {/* Metadata Footer */}
+                            <div className="flex items-center gap-4 mt-auto text-gray-500 font-bold text-sm">
+                                <div className="flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-[#FFC224]"></span>
+                                    {new Date(art.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                </div>
+                                <div className="w-1 h-1 rounded-full bg-gray-300"></div>
+                                <div className="flex items-center gap-2">
+                                    <Clock className="w-4 h-4" />
+                                    {Math.ceil((art.content?.split(" ").length || 500) / 200)} min read
+                                </div>
                             </div>
-                            <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 leading-tight max-w-md">{art.title}</h3>
-                            <p className="text-gray-500 font-medium mb-6 md:mb-8 text-base md:text-lg flex-grow line-clamp-3">{art.excerpt}</p>
-                            <div className="font-bold border-b-2 border-black self-start text-base md:text-lg">Read Article</div>
                         </div>
                     </Link>
                 ))}

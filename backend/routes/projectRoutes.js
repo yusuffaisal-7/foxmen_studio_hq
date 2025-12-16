@@ -49,7 +49,7 @@ router.get('/:idOrSlug', async (req, res) => {
 // @access  Private
 router.post('/', protect, async (req, res) => {
     const {
-        title, description, image, tags, link, github, slug,
+        title, description, image, tags, techStack, link, github, slug,
         client, role, duration, challenge, solution, outcome, video, gallery, process, results, testimonial, features
     } = req.body;
 
@@ -57,7 +57,7 @@ router.post('/', protect, async (req, res) => {
         const finalSlug = slug || title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
         const newProject = await prisma.project.create({
             data: {
-                title, description, image, tags, link, github, slug: finalSlug,
+                title, description, image, tags, techStack, link, github, slug: finalSlug,
                 client, role, duration, challenge, solution, outcome, video, gallery, process, results, testimonial, features
             }
         });
@@ -72,7 +72,7 @@ router.post('/', protect, async (req, res) => {
 // @access  Private
 router.put('/:id', protect, async (req, res) => {
     const {
-        title, description, image, tags, link, github, slug,
+        title, description, image, tags, techStack, link, github, slug,
         client, role, duration, challenge, solution, outcome, video, gallery, process, results, testimonial, features
     } = req.body;
 
@@ -80,7 +80,7 @@ router.put('/:id', protect, async (req, res) => {
         const updatedProject = await prisma.project.update({
             where: { id: req.params.id },
             data: {
-                title, description, image, tags, link, github, slug,
+                title, description, image, tags, techStack, link, github, slug,
                 client, role, duration, challenge, solution, outcome, video, gallery, process, results, testimonial, features
             }
         });

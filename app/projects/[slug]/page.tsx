@@ -167,7 +167,7 @@ export default async function ProjectPage(props: { params: Promise<{ slug: strin
                         {features.map((feature: string, i: number) => (
                             <div key={i} className="flex items-center bg-white p-6 rounded-xl border-4 border-black hover:-translate-y-1 transition-transform">
                                 <CheckCircle2 className="w-8 h-8 text-[#FF4A60] mr-4 flex-shrink-0" />
-                                <span className="text-xl font-bold">{feature}</span>
+                                <span className="text-xl font-bold break-all">{feature}</span>
                             </div>
                         ))}
                     </div>
@@ -199,17 +199,21 @@ export default async function ProjectPage(props: { params: Promise<{ slug: strin
                 <section className="max-w-6xl mx-auto px-6 mb-24">
                     <h2 className="text-4xl md:text-5xl font-black uppercase mb-12 text-center">Technology Stack</h2>
                     <div className="flex flex-wrap justify-center gap-4">
-                        {project.tags?.map((tech: string) => (
-                            <span key={tech} className="px-8 py-4 bg-gray-100 rounded-2xl text-xl font-bold border-2 border-gray-300 text-gray-500 hover:border-black hover:text-black hover:bg-white transition-all cursor-default">
-                                {tech}
-                            </span>
-                        ))}
-                        {/* Default fallback tags if few are present */}
-                        {(!project.tags || project.tags.length < 4) && ["React", "TypeScript", "Node.js", "AWS"].map(tech => (
-                            <span key={tech} className="px-8 py-4 bg-gray-100 rounded-2xl text-xl font-bold border-2 border-gray-300 text-gray-500 hover:border-black hover:text-black hover:bg-white transition-all cursor-default">
-                                {tech}
-                            </span>
-                        ))}
+                        {/* Dynamic Tech Stack */}
+                        {project.techStack && project.techStack.length > 0 ? (
+                            project.techStack.map((tech: string) => (
+                                <span key={tech} className="px-8 py-4 bg-gray-100 rounded-2xl text-xl font-bold border-2 border-gray-300 text-gray-500 hover:border-black hover:text-black hover:bg-white transition-all cursor-default">
+                                    {tech}
+                                </span>
+                            ))
+                        ) : (
+                            // Fallback to tags or defaults if no specific tech stack provided
+                            (project.tags || ["React", "TypeScript", "Node.js"]).slice(0, 6).map((tech: string) => (
+                                <span key={tech} className="px-8 py-4 bg-gray-100 rounded-2xl text-xl font-bold border-2 border-gray-300 text-gray-500 hover:border-black hover:text-black hover:bg-white transition-all cursor-default">
+                                    {tech}
+                                </span>
+                            ))
+                        )}
                     </div>
                 </section>
 

@@ -22,6 +22,7 @@ model Project {
   video       String?
   gallery     String[]
   tags        String[]
+  techStack   String[]
   features    String[]
   link        String?
   github      String?
