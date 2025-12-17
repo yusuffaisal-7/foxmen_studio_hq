@@ -1,6 +1,7 @@
 import Link from "next/link"
-import { Mail } from "lucide-react"
+import { Mail, Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 
 
 export function Navigation() {
@@ -11,6 +12,7 @@ export function Navigation() {
           <div className="w-6 h-6 bg-white rounded-full"></div>
         </div>
 
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6 flex-1 justify-center">
           <Link href="/" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity">
             Home
@@ -29,9 +31,51 @@ export function Navigation() {
           </Link>
         </div>
 
-        <Button className="bg-black text-white hover:bg-black/90 rounded-sm px-5 h-12 min-w-[48px] flex-shrink-0">
+        {/* Desktop Mail Button */}
+        <Button className="hidden md:flex bg-black text-white hover:bg-black/90 rounded-sm px-5 h-12 min-w-[48px] flex-shrink-0">
           <Mail className="w-10 h-10" strokeWidth={2.5} />
         </Button>
+
+        {/* Mobile Navigation (Menu Icon) */}
+        <div className="md:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button className="bg-black text-white hover:bg-black/90 rounded-sm px-3 h-12 min-w-[48px] flex-shrink-0">
+                <Menu className="w-6 h-6" strokeWidth={3} />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] border-l-4 border-black p-0">
+              <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+              <div className="flex flex-col h-full pt-16 px-6 pb-8">
+                <div className="flex flex-col gap-8">
+                  <Link href="/" className="text-3xl font-bold hover:underline">
+                    Home
+                  </Link>
+                  <Link href="/about" className="text-3xl font-bold hover:underline">
+                    About
+                  </Link>
+                  <Link href="/projects" className="text-3xl font-bold hover:underline">
+                    Projects
+                  </Link>
+                  <Link href="/blog" className="text-3xl font-bold hover:underline">
+                    Blogs
+                  </Link>
+                  <Link href="/contact" className="text-3xl font-bold hover:underline">
+                    Contact Us
+                  </Link>
+                </div>
+
+                {/* Mobile Mail Option */}
+                <div className="mt-auto pt-8 border-t-4 border-black">
+                  <Button className="w-full bg-black text-white hover:bg-black/90 rounded-sm h-14 flex items-center justify-center gap-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] active:translate-y-[2px] active:shadow-none transition-all">
+                    <Mail className="w-6 h-6" />
+                    <span className="text-xl font-bold">Get in Touch</span>
+                  </Button>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </nav>
     </div>
   )
