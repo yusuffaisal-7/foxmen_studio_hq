@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
+import { useEffect, useRef } from "react"
 
 export function FeaturedProjectsSection() {
     const projects = [
@@ -81,6 +82,15 @@ export function FeaturedProjectsSection() {
 }
 
 function FeaturedProjectCard({ project }: { project: any }) {
+    const videoRef = useRef<HTMLVideoElement>(null)
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.muted = true
+            videoRef.current.play().catch((e) => console.log("Autoplay blocked:", e))
+        }
+    }, [])
+
     return (
         <div className="sticky top-28 group bg-white border-[3px] border-black rounded-[24px] md:rounded-[32px] overflow-hidden hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all flex flex-col aspect-[4/3] md:aspect-[16/10]">
             {/* Browser Window Header */}
@@ -104,17 +114,13 @@ function FeaturedProjectCard({ project }: { project: any }) {
                     {/* Placeholder for project image - using the illustration as background */}
                     {project.video ? (
                         <video
-                            ref={(el) => {
-                                if (el) {
-                                    el.muted = true
-                                    el.play().catch((e) => console.log("Autoplay blocked:", e))
-                                }
-                            }}
+                            ref={videoRef}
                             src={project.video}
                             autoPlay
                             loop
                             muted
-                            playsInline
+                            playsInline={true}
+                            preload="auto"
                             className="w-full h-full object-cover"
                         />
                     ) : (

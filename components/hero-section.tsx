@@ -1,7 +1,17 @@
 import { Mail, FolderOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useEffect, useRef } from "react"
 
 export function HeroSection() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true
+      videoRef.current.play().catch((e) => console.log("Autoplay blocked:", e))
+    }
+  }, [])
+
   return (
     <section className="container mx-auto px-4 py-16 md:py-24">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative">
@@ -34,17 +44,13 @@ export function HeroSection() {
         <div className="flex justify-center md:justify-end">
           <div className="relative w-full max-w-lg aspect-square overflow-hidden scale-100 md:scale-110 origin-center md:origin-right z-0">
             <video
-              ref={(el) => {
-                if (el) {
-                  el.muted = true; // Ensure muted is set property-wise
-                  el.play().catch((e) => console.log("Autoplay blocked:", e));
-                }
-              }}
+              ref={videoRef}
               src="https://res.cloudinary.com/duh7c5x99/video/upload/v1765859617/At_last_of_202512161032_xotbcd.mov"
               autoPlay
               loop
               muted
-              playsInline
+              playsInline={true}
+              preload="auto"
               className="w-full h-full object-cover mix-blend-multiply"
             />
           </div>

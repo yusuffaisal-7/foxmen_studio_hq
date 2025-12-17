@@ -1,6 +1,7 @@
 import { Mail } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { useEffect, useRef } from "react"
 
 export function ServicesSection() {
   const services = [
@@ -80,22 +81,27 @@ export function ServicesSection() {
 }
 
 function ServiceCard({ service }: { service: any }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true
+      videoRef.current.play().catch((e) => console.log("Autoplay blocked:", e))
+    }
+  }, [])
+
   return (
     <div className="bg-white border-[3px] border-black rounded-[32px] overflow-hidden hover:translate-y-[-4px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 aspect-square flex flex-col group">
       <div className="flex-1 -mx-[3px] -mt-[3px] overflow-hidden rounded-t-[29px] relative bg-[#F3F4F6]">
         {service.video ? (
           <video
-            ref={(el) => {
-              if (el) {
-                el.muted = true
-                el.play().catch((e) => console.log("Autoplay blocked:", e))
-              }
-            }}
+            ref={videoRef}
             src={service.video}
             autoPlay
             loop
             muted
-            playsInline
+            playsInline={true}
+            preload="auto"
             className="w-full h-full rounded-t-[29px] group-hover:scale-110 transition-transform duration-500 ease-out object-contain block"
           />
         ) : (
