@@ -34,6 +34,12 @@ export function HeroSection() {
         <div className="flex justify-center md:justify-end">
           <div className="relative w-full max-w-lg aspect-square overflow-hidden scale-100 md:scale-110 origin-center md:origin-right z-0">
             <video
+              ref={(el) => {
+                if (el) {
+                  el.muted = true; // Ensure muted is set property-wise
+                  el.play().catch((e) => console.log("Autoplay blocked:", e));
+                }
+              }}
               src="https://res.cloudinary.com/duh7c5x99/video/upload/v1765859617/At_last_of_202512161032_xotbcd.mov"
               autoPlay
               loop

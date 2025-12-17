@@ -65,66 +65,7 @@ export function FeaturedProjectsSection() {
 
                 <div className="space-y-8 mb-12">
                     {projects.map((project, index) => (
-                        <div
-                            key={index}
-                            className="sticky top-28 group bg-white border-[3px] border-black rounded-[24px] md:rounded-[32px] overflow-hidden hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all flex flex-col aspect-[4/3] md:aspect-[16/10]"
-                        >
-                            {/* Browser Window Header */}
-                            <div className="border-b-[3px] border-black p-3 md:p-4 flex items-center gap-3 bg-white z-10 relative shrink-0">
-                                <div className="flex gap-1.5 md:gap-2">
-                                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#FF5F56] border-[1.5px] border-black" />
-                                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#FFBD2E] border-[1.5px] border-black" />
-                                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#27C93F] border-[1.5px] border-black" />
-                                </div>
-                                <div className="flex-1 bg-[#F3F4F6] border-[1.5px] border-black rounded-full h-7 md:h-8 flex items-center px-3 md:px-4 min-w-0">
-                                    <span className="text-[10px] md:text-xs font-mono text-gray-500 truncate w-full">
-                                        {(project as any).displayUrl || `https://${project.title.toLowerCase().replace(/ /g, '-')}.com`}
-                                    </span>
-                                </div>
-                            </div>
-
-                            {/* Card Body - Laptop Screen Content */}
-                            <div className={`flex-1 relative overflow-hidden ${project.bgColor}`}>
-                                {/* Full Screen Image/Background */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    {/* Placeholder for project image - using the illustration as background */}
-                                    {(project as any).video ? (
-                                        <video
-                                            src={(project as any).video}
-                                            autoPlay
-                                            loop
-                                            muted
-                                            playsInline
-                                            className="w-full h-full object-cover"
-                                        />
-                                    ) : (
-                                        <Image
-                                            src={project.illustration || "/placeholder.svg"}
-                                            alt={project.title}
-                                            fill
-                                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                                        />
-                                    )}
-                                </div>
-
-                                {/* Floating Content Card */}
-                                <div className="absolute bottom-3 right-3 w-[60%] md:w-[480px] md:left-6 md:right-auto md:bottom-6 bg-white/60 backdrop-blur-md border-[3px] border-black rounded-xl md:rounded-2xl p-3 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all">
-                                    <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-2 md:mb-4">
-                                        <span className="inline-block bg-[#F3F4F6] border border-black text-black text-[9px] md:text-[10px] font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-wider">
-                                            {project.tag}
-                                        </span>
-                                        <div className="w-1 h-1 rounded-full bg-black"></div>
-                                        <h3 className="text-sm md:text-xl font-bold leading-tight text-[#0B0B0B]">
-                                            {project.title}
-                                        </h3>
-                                    </div>
-
-                                    <p className="text-[10px] md:text-base text-[#393939] mb-0 md:mb-6 leading-relaxed font-medium line-clamp-2">
-                                        {project.description}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        <FeaturedProjectCard key={index} project={project} />
                     ))}
                 </div>
 
@@ -136,5 +77,73 @@ export function FeaturedProjectsSection() {
                 </div>
             </div>
         </section>
+    )
+}
+
+function FeaturedProjectCard({ project }: { project: any }) {
+    return (
+        <div className="sticky top-28 group bg-white border-[3px] border-black rounded-[24px] md:rounded-[32px] overflow-hidden hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all flex flex-col aspect-[4/3] md:aspect-[16/10]">
+            {/* Browser Window Header */}
+            <div className="border-b-[3px] border-black p-3 md:p-4 flex items-center gap-3 bg-white z-10 relative shrink-0">
+                <div className="flex gap-1.5 md:gap-2">
+                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#FF5F56] border-[1.5px] border-black" />
+                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#FFBD2E] border-[1.5px] border-black" />
+                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#27C93F] border-[1.5px] border-black" />
+                </div>
+                <div className="flex-1 bg-[#F3F4F6] border-[1.5px] border-black rounded-full h-7 md:h-8 flex items-center px-3 md:px-4 min-w-0">
+                    <span className="text-[10px] md:text-xs font-mono text-gray-500 truncate w-full">
+                        {project.displayUrl || `https://${project.title.toLowerCase().replace(/ /g, '-')}.com`}
+                    </span>
+                </div>
+            </div>
+
+            {/* Card Body - Laptop Screen Content */}
+            <div className={`flex-1 relative overflow-hidden ${project.bgColor}`}>
+                {/* Full Screen Image/Background */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                    {/* Placeholder for project image - using the illustration as background */}
+                    {project.video ? (
+                        <video
+                            ref={(el) => {
+                                if (el) {
+                                    el.muted = true
+                                    el.play().catch((e) => console.log("Autoplay blocked:", e))
+                                }
+                            }}
+                            src={project.video}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-full object-cover"
+                        />
+                    ) : (
+                        <Image
+                            src={project.illustration || "/placeholder.svg"}
+                            alt={project.title}
+                            fill
+                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        />
+                    )}
+                </div>
+
+                {/* Floating Content Card */}
+                <div className="absolute bottom-3 right-3 w-[60%] md:w-[480px] md:left-6 md:right-auto md:bottom-6 bg-white/60 backdrop-blur-md border-[3px] border-black rounded-xl md:rounded-2xl p-3 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-2 md:mb-4">
+                        <span className="inline-block bg-[#F3F4F6] border border-black text-black text-[9px] md:text-[10px] font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-wider">
+                            {project.tag}
+                        </span>
+                        <div className="w-1 h-1 rounded-full bg-black"></div>
+                        <h3 className="text-sm md:text-xl font-bold leading-tight text-[#0B0B0B]">
+                            {project.title}
+                        </h3>
+                    </div>
+
+                    <p className="text-[10px] md:text-base text-[#393939] mb-0 md:mb-6 leading-relaxed font-medium line-clamp-2">
+                        {project.description}
+                    </p>
+                </div>
+            </div>
+        </div>
     )
 }

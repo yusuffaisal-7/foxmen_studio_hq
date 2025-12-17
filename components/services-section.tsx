@@ -50,34 +50,7 @@ export function ServicesSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-white border-[3px] border-black rounded-[32px] overflow-hidden hover:translate-y-[-4px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 aspect-square flex flex-col group"
-              >
-                <div className="flex-1 -mx-[3px] -mt-[3px] overflow-hidden rounded-t-[29px] relative bg-[#F3F4F6]">
-                  {(service as any).video ? (
-                    <video
-                      src={(service as any).video}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full rounded-t-[29px] group-hover:scale-110 transition-transform duration-500 ease-out object-contain block"
-                    />
-                  ) : (
-                    <Image
-                      src={service.image || "/placeholder.svg"}
-                      alt={service.title}
-                      fill
-                      className="object-contain rounded-t-[29px] group-hover:scale-110 transition-transform duration-500 ease-out"
-                    />
-                  )}
-                </div>
-                <div className="p-5 flex flex-col">
-                  <h3 className="text-2xl font-bold mb-2 text-[#0B0B0B]">{service.title}</h3>
-                  <p className="text-sm leading-relaxed font-medium text-[#393939]">{service.description}</p>
-                </div>
-              </div>
+              <ServiceCard key={index} service={service} />
             ))}
 
             <div className="bg-[#FFC224] border-[3px] border-black rounded-[32px] p-6 md:p-8 flex flex-col items-center justify-center text-center hover:translate-y-[-4px] transition-transform aspect-square relative shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
@@ -103,5 +76,41 @@ export function ServicesSection() {
         </div>
       </div>
     </section>
+  )
+}
+
+function ServiceCard({ service }: { service: any }) {
+  return (
+    <div className="bg-white border-[3px] border-black rounded-[32px] overflow-hidden hover:translate-y-[-4px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 aspect-square flex flex-col group">
+      <div className="flex-1 -mx-[3px] -mt-[3px] overflow-hidden rounded-t-[29px] relative bg-[#F3F4F6]">
+        {service.video ? (
+          <video
+            ref={(el) => {
+              if (el) {
+                el.muted = true
+                el.play().catch((e) => console.log("Autoplay blocked:", e))
+              }
+            }}
+            src={service.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full rounded-t-[29px] group-hover:scale-110 transition-transform duration-500 ease-out object-contain block"
+          />
+        ) : (
+          <Image
+            src={service.image || "/placeholder.svg"}
+            alt={service.title}
+            fill
+            className="object-contain rounded-t-[29px] group-hover:scale-110 transition-transform duration-500 ease-out"
+          />
+        )}
+      </div>
+      <div className="p-5 flex flex-col">
+        <h3 className="text-2xl font-bold mb-2 text-[#0B0B0B]">{service.title}</h3>
+        <p className="text-sm leading-relaxed font-medium text-[#393939]">{service.description}</p>
+      </div>
+    </div>
   )
 }
