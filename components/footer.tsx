@@ -160,16 +160,21 @@ export function Footer() {
             <div>
               <h3 className="font-bold mb-4">Contact us</h3>
               <ul className="space-y-3 text-gray-400 text-sm">
-                <li className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  <a href="mailto:hello@john.com" className="hover:text-white transition-colors">
-                    nikhil@helpinggeeks.com
-                  </a>
+                <li className="flex items-start gap-2">
+                  <Mail className="w-4 h-4 mt-1 flex-shrink-0" />
+                  <div className="flex flex-col">
+                    <a href="mailto:contact@foxmenstudio.com" className="hover:text-white transition-colors">
+                      contact@foxmenstudio.com
+                    </a>
+                    <a href="mailto:info@foxmenstudio.com" className="hover:text-white transition-colors">
+                      info@foxmenstudio.com
+                    </a>
+                  </div>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  <a href="tel:246234-4643" className="hover:text-white transition-colors">
-                    +91-9000057810
+                  <a href="tel:+8801753973892" className="hover:text-white transition-colors">
+                    +880 1753973892
                   </a>
                 </li>
               </ul>
@@ -177,7 +182,7 @@ export function Footer() {
           </div>
 
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-            <p>Made by Nikhil - Powered by V0</p>
+            <p>&copy; 2026 Foxmen Studio. All rights reserved.</p>
           </div>
         </div>
       </div>

@@ -1,105 +1,110 @@
-# Foxmen Studio HQ
+# 🦊 Foxmen Studio HQ
 
-A high-performance portfolio and agency website with a custom Admin Dashboard, built for **Foxmen Studio**.
+> **A high-performance implementation portfolio and agency platform built for the future.**
+> Featuring a custom Neo-Brutalist Admin Dashboard, dynamic content management, and a cutting-edge tech stack.
 
-![Project Status](https://img.shields.io/badge/Status-In%20Development-yellow?style=for-the-badge)
-![Tech Stack](https://img.shields.io/badge/Stack-Next.js%20%7C%20Tailwind%20%7C%20Node%20%7C%20Prisma-blue?style=for-the-badge)
+![Project Status](https://img.shields.io/badge/Status-Active_Development-FFC224?style=for-the-badge&logoColor=black&labelColor=black)
+![Tech Stack](https://img.shields.io/badge/Stack-Next.js_15_%7C_React_19_%7C_Tailwind_4-000000?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Private-gray?style=for-the-badge)
 
-## 🚀 Usage Guide
+---
+
+## ✨ Key Features
+
+### 🎨 Neo-Brutalist Design System
+-   **Bold Aesthetics**: High-contrast, thick borders, and vibrant colors (Yellow/Black) defining the Foxmen brand.
+-   **Premium UI/UX**: Glassmorphism overlays, smooth transitions, and marquee effects.
+-   **Responsive Layouts**: Mobile-first approach ensuring a flawless experience across all devices.
+
+### ⚡ Cutting-Edge Tech Stack
+-   **Next.js 15**: Leveraging the latest App Router, Server Actions, and Partial Prerendering.
+-   **React 19 RC**: Utilizing the newest React features for concurrent rendering and state management.
+-   **Tailwind CSS 4.0**: Alpha build for blazing fast styles and zero-runtime overhead.
+-   **PostgreSQL (Neon)**: Serverless Postgres for robust, scalable data storage.
+
+### 🛠️ Powerful Admin Dashboard
+-   **CMS Capabilities**: Full CRUD for Projects, Blogs, and Messages.
+-   **Secure Auth**: Custom middleware protection with smart session handling.
+-   **Media Management**: Drag-and-drop image uploads with instant previews and gallery management.
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to set up the **Foxmen Studio** local development environment.
 
 ### Prerequisites
-- Node.js (v18+)
-- PostgreSQL Database (Neon DB recommended)
+-   **Node.js**: v18 or higher
+-   **Database**: PostgreSQL connection string (Neon DB recommended)
 
-### 1. Start the Backend
-The backend handles authentication, database connections, and file uploads.
+### 1. Backend Setup
+The backend service manages authentication, API routes, and database interactions.
+
 ```bash
 cd backend
 npm install
 npm run dev
 ```
-*Runs on: `http://localhost:5001`*
+> **Status**: Running on `http://localhost:5001`
 
-### 2. Start the Frontend
-The Next.js application for the portfolio and admin panel.
+### 2. Frontend Setup
+The main Next.js application powering the public portfolio and admin panel.
+
 ```bash
+# In the root directory
 npm install
 npm run dev
 ```
-*Runs on: `http://localhost:3000`*
+> **Status**: Running on `http://localhost:3000`
 
 ---
 
-## 📅 dev Log: Latest Updates (Dec 12, 2025)
+## 📂 Project Structure
 
-We have successfully overhauled the **Admin Control Panel** to match the premium "Neo-Brutalist" aesthetic of the main brand.
-
-### ✅ Completed Features
-1.  **Admin Panel Redesign**
-    *   Applied the **Foxmen Studio** branding (Yellow/Black/Bold) to the entire Admin functionality.
-    *   Redesigned Sidebar with dynamic user welcome message.
-    *   Redesigned **Messages** page with split-view layout and visual parsers.
-    *   Redesigned **Projects** page with heavy border cards and hover effects.
-
-2.  **Image Upload System**
-    *   Built a custom file upload pipeline.
-    *   **Backend**: `multer` integration to save images to `backend/uploads`.
-    *   **Frontend**: Drag-and-drop style input with instant preview.
-    *   **Database**: Stores valid image paths in Neon PostgreSQL.
-
-3.  **Authentication & Stability**
-    *   **Smart Session Handling**: Auto-redirects to Login if session expires (401).
-    *   **Crash Protection**: Distinguishes between "Wrong Password" and "Database Offline".
-    *   **UI Feedback**: Friendly error messages when the database connection is paused.
-    *   **SSL Fix**: Resolved local connectivity issues with Neon DB using custom SSL config.
-
-4.  **Infrastructure**
-    *   Fixed Git repository issues (removed large `node_modules` from history).
-    *   Validated full CRUD operations for Projects.
+```bash
+├── 📁 app              # Next.js App Router pages (Frontend & Admin)
+│   ├── 📁 admin        # Protected Admin Dashboard routes
+│   │   ├── 📁 blog     # Blog management
+│   │   ├── 📁 projects # Project case studies
+│   │   └── 📁 messages # Contact form submissions
+│   └── 📁 (public)     # Public facing pages (Home, Portfolio, Contact)
+├── 📁 components       # Reusable UI components (Neo-Brutalist style)
+├── 📁 backend          # Express.js Server & API Routes
+│   ├── 📁 config       # Database & Environment config
+│   ├── 📁 controllers  # Business logic
+│   └── 📁 routes       # API Endpoints
+└── 📁 public           # Static assets, images, and icons
+```
 
 ---
 
-## 🗺️ Roadmap: What's Next?
+## 📅 Development Log
 
-### Phase 1: Frontend Integration (Immediate Focus)
-- [ ] **Dynamic Home Page**: Connect the public homepage (`app/page.tsx`) to the live Database.
-    - [ ] Fetch and display real Projects.
-    - [ ] Fetch and display real Testimonials/Clients.
-- [ ] **Dynamic Blog**: Build the public Blog Listing and Post Details pages using real data.
+### Latest Update: **Dynamic Content Overhaul** (Dec 13, 2025)
+We have successfully transitioned from static templates to a fully dynamic, database-driven content system.
 
-### Phase 2: Admin Expansion
-- [ ] **Blog Management**: Create the Admin Blog View (Write/Edit/Delete articles).
-- [ ] **Rich Text Editor**: Integrate a Markdown or Rich Text editor for writing blog posts.
+-   ✅ **Dynamic Project Details**: Case studies now pull Challenge, Solution, and Outcome data directly from the DB.
+-   ✅ **Media Galleries**: Support for multiple project images, mobile views, and video links (Cloudinary integration).
+-   ✅ **Admin Polish**: Redesigned "Add Project" flow with tabbed interfaces and better form validation.
+-   ✅ **Security**: Enhanced session expiry handling and robust error feedback.
 
-### Phase 3: Deployment
-- [ ] **Production Build**: Configure build scripts for Vercel (Frontend) and Render/Railway (Backend).
-- [ ] **Storage Strategy**: Move from local `uploads/` folder to Cloud Storage (AWS S3 or Cloudinary) for production persistence.
-
----
-
-## 📅 dev Log: Latest Updates (Dec 13, 2025)
-
-Today we focused on making the **Project Details** completely dynamic and unlocking the full potential of the Portfolio content management system.
-
-### ✅ Completed Features
-1.  **Dynamic Project Data**
-    *   **Advanced Database Schema**: Expanded `Project` model to support extensive case study details (Challenge, Solution, Outcome).
-    *   **Live Connectivity**: Added fields for `Live Site URL`, `GitHub URL`, and structured `Client Testimonials`.
-
-2.  **Admin Panel Upgrades**
-    *   **Tabbed Interface**: Organized the "Add Project" form into `Overview`, `Story`, `Media`, and `Details` tabs for a cleaner UX.
-    *   **Bento Grid Support**: Added dedicated upload slots for the Gallery layout (Main, Mobile View, System View).
-    *   **Dynamic Inputs**: Added dedicated inputs for testimonials and external links.
-
-3.  **Frontend Polish**
-    *   **Project Details Page**: Now fetches and displays the actual Testimonial, Gallery images, and Video from the database.
-    *   **Fallback Handling**: Implemented graceful fallbacks for optional fields like roles, duration, and gallery images.
-
-4.  **Security & Stability**
-    *   **Robust Delete**: Improved error handling for project deletion, giving clear feedback on session expiry or server errors.
-    *   **Syntax Fixes**: Resolved build errors in the Admin dashboard.
+### Previous Update: **Admin Redesign** (Dec 12, 2025)
+-   ✅ Complete visual overhaul of the Admin Panel to match the **Foxmen Studio** brand.
+-   ✅ Integrated `multer` for local file uploads.
+-   ✅ Fixed SSL and connection stability issues with Neon DB.
 
 ---
 
-**Yousuf H. Faysal**
-**CEO and Founder of Foxmen Studio**
+## 🗺️ Roadmap
+
+-   [ ] **Blog Integration**: Connect public Blog pages to live database data.
+-   [ ] **Rich Text Editor**: Implement a WYSIWYG editor for writing blog posts in Admin.
+-   [ ] **Cloud Storage**: Migrate from local uploads to AWS S3/Cloudinary for production.
+-   [ ] **CI/CD**: Automate deployment pipelines for Vercel and Render.
+
+---
+
+<p align="center">
+  <strong>Foxmen Studio</strong> &copy; 2026. All rights reserved.<br>
+  <em>Built with precision, designed for impact.</em>
+</p>

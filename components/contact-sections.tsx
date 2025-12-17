@@ -35,23 +35,67 @@ export function ContactHero() {
 
 export function ContactOptions() {
     const options = [
-        { icon: Mail, label: "Email", value: "hello@foxmenstudio.com", desc: "Best for project inquiries and collaboration." },
-        { icon: Phone, label: "Phone / WhatsApp", value: "+880123456789", desc: "Fast communication, quick clarifications." },
-        { icon: MapPin, label: "Location", value: "Dhaka, Bangladesh", desc: "Meetings, consultations, and presentations." },
+        {
+            icon: Mail,
+            label: "Emails",
+            value: ["contact@foxmenstudio.com", "info@foxmenstudio.com"],
+            desc: "Best for project inquiries and collaboration.",
+            link: "mailto:contact@foxmenstudio.com"
+        },
+        {
+            icon: Phone,
+            label: "Phone / WhatsApp",
+            value: "+880 1753973892",
+            desc: "Fast communication, quick clarifications.",
+            link: "https://wa.me/8801753973892"
+        },
+        {
+            icon: MapPin,
+            label: "Location",
+            value: "Dhaka, Bangladesh",
+            desc: "Meetings, consultations, and presentations.",
+            link: null
+        },
     ]
     return (
         <section className="py-20 px-4 bg-white border-b-4 border-black">
             <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-                {options.map((opt, i) => (
-                    <div key={i} className="bg-white border-4 border-black rounded-[24px] p-8 text-center hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-shadow">
-                        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <opt.icon className="w-8 h-8 text-gray-700" />
+                {options.map((opt, i) => {
+                    const content = (
+                        <div className="h-full">
+                            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <opt.icon className="w-8 h-8 text-gray-700" />
+                            </div>
+                            <h3 className="text-2xl font-bold mb-2">{opt.label}</h3>
+                            <div className="mb-4">
+                                {Array.isArray(opt.value) ? (
+                                    opt.value.map((v, idx) => (
+                                        <p key={idx} className="text-lg font-bold text-[#FF4A60]">{v}</p>
+                                    ))
+                                ) : (
+                                    <p className="text-lg font-bold text-[#FF4A60]">{opt.value}</p>
+                                )}
+                            </div>
+                            <p className="text-gray-500 font-medium">{opt.desc}</p>
                         </div>
-                        <h3 className="text-2xl font-bold mb-2">{opt.label}</h3>
-                        <p className="text-lg font-bold text-[#FF4A60] mb-4">{opt.value}</p>
-                        <p className="text-gray-500 font-medium">{opt.desc}</p>
-                    </div>
-                ))}
+                    );
+
+                    const className = "bg-white border-4 border-black rounded-[24px] p-8 text-center hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-shadow block h-full";
+
+                    if (opt.link) {
+                        return (
+                            <Link key={i} href={opt.link} target={opt.link.startsWith("http") ? "_blank" : undefined} className={className}>
+                                {content}
+                            </Link>
+                        )
+                    }
+
+                    return (
+                        <div key={i} className={className}>
+                            {content}
+                        </div>
+                    )
+                })}
             </div>
         </section>
     )
@@ -259,9 +303,9 @@ export function QuickActions() {
                     <button className="flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-[#FFC224] text-black border-4 border-black text-xl font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
                         <Video className="w-6 h-6" /> Book a Meeting
                     </button>
-                    <button className="flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-white text-black border-4 border-black text-xl font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
+                    <a href="https://wa.me/8801753973892" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-white text-black border-4 border-black text-xl font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
                         <MessageCircle className="w-6 h-6" /> Chat on WhatsApp
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
