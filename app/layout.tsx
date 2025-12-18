@@ -3,10 +3,10 @@ import type { Metadata } from "next"
 
 import "./globals.css"
 
-import { Onest, Geist_Mono as V0_Font_Geist_Mono } from "next/font/google"
+import { Onest, Geist_Mono as Geist_Mono_Font } from "next/font/google"
 
 // Initialize fonts
-const _geistMono = V0_Font_Geist_Mono({
+const _geistMono = Geist_Mono_Font({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 })
@@ -21,7 +21,6 @@ const onest = Onest({
 export const metadata: Metadata = {
   title: "Foxmen Studio | Building End-to-End Premium Web, Mobile, UI/UX & SaaS Experiences",
   description: "FOXMEN Studio builds end-to-end premium web, mobile, UI/UX and SaaS products. From strategy and design to development, launch and growth.",
-  generator: "v0.app",
 }
 
 export default function RootLayout({
