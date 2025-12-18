@@ -26,14 +26,14 @@ export function ServicesSection() {
       video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1765987892/A_darkthemed_code_1080p_202512172206_s6n6n1.mov"
     },
     {
-      title: "User research",
-      description: "Lacus adipiscing lectus convallis purus aliquet cursus magnaol dolori montes augue donec cras.",
-      image: "/images/user-research.svg",
+      title: "AI Agent & Automation",
+      description: "Custom AI solutions and intelligent automation to streamline operations, optimize workflows, and scale your business efficiency.",
+      image: "https://res.cloudinary.com/duh7c5x99/image/upload/v1766073345/Gemini_Generated_Image_3460b53460b53460_pjugzt.png",
     },
     {
-      title: "Motion graphics",
-      description: "Lacus adipiscing lectus convallis purus aliquet cursus magnaol dolori montes augue donec cras.",
-      image: "/images/motion-graphics.svg",
+      title: "Branding",
+      description: "Strategic brand identity design that communicates your core values, resonates with your audience, and creates lasting market impact.",
+      image: "https://res.cloudinary.com/duh7c5x99/image/upload/v1766073045/__11_gexklm.jpg",
     },
   ]
 

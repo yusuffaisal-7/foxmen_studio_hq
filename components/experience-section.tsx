@@ -1,4 +1,5 @@
-import { FileText } from "lucide-react"
+import { Briefcase } from "lucide-react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
@@ -46,10 +47,12 @@ export function ExperienceSection() {
               Eu pellentesque arcu ornare velit faucibus egestas gravida sed in purus enim molestie gravida imperdiet
               integer.
             </p>
-            <Button className="bg-white text-black hover:bg-gray-50 rounded-lg py-5 px-8 md:py-[22px] md:px-[62px] text-base md:text-lg font-semibold h-auto w-full sm:w-auto sm:min-w-[240px]">
-              <FileText className="w-5 h-5" />
-              See full resume
-            </Button>
+            <Link href="/services">
+              <Button className="bg-white text-black hover:bg-gray-50 rounded-lg py-5 px-8 md:py-[22px] md:px-[62px] text-base md:text-lg font-semibold h-auto w-full sm:w-auto sm:min-w-[240px]">
+                <Briefcase className="w-5 h-5 mr-2" />
+                Our services
+              </Button>
+            </Link>
           </div>
 
           <div className="space-y-6">

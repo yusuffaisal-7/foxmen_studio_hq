@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Mail, Menu } from "lucide-react"
+import { Phone, Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 
@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 export function Navigation() {
   return (
     <div className="container mx-auto px-4 pt-8 pb-4 relative z-50">
-      <nav className="flex items-center justify-between bg-white border-4 border-black rounded-xl px-5 py-3 max-w-2xl mx-auto shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+      <nav className="flex items-center justify-between bg-white border-4 border-black rounded-xl px-5 py-3 max-w-4xl mx-auto shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
         <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center flex-shrink-0">
           <div className="w-6 h-6 bg-white rounded-full"></div>
         </div>
@@ -19,6 +19,9 @@ export function Navigation() {
           </Link>
           <Link href="/about" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity">
             About
+          </Link>
+          <Link href="/services" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity">
+            Services
           </Link>
           <Link href="/projects" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity">
             Projects
@@ -32,9 +35,11 @@ export function Navigation() {
         </div>
 
         {/* Desktop Mail Button */}
-        <Button className="hidden md:flex bg-black text-white hover:bg-black/90 rounded-sm px-5 h-12 min-w-[48px] flex-shrink-0">
-          <Mail className="w-10 h-10" strokeWidth={2.5} />
-        </Button>
+        <Link href="https://wa.me/8801753973892" target="_blank">
+          <Button className="hidden md:flex bg-black text-white hover:bg-black/90 rounded-sm px-5 h-12 min-w-[48px] flex-shrink-0">
+            <Phone className="w-10 h-10" strokeWidth={2.5} />
+          </Button>
+        </Link>
 
         {/* Mobile Navigation (Menu Icon) */}
         <div className="md:hidden">
@@ -54,6 +59,9 @@ export function Navigation() {
                   <Link href="/about" className="text-3xl font-bold hover:underline">
                     About
                   </Link>
+                  <Link href="/services" className="text-3xl font-bold hover:underline">
+                    Services
+                  </Link>
                   <Link href="/projects" className="text-3xl font-bold hover:underline">
                     Projects
                   </Link>
@@ -67,10 +75,12 @@ export function Navigation() {
 
                 {/* Mobile Mail Option */}
                 <div className="mt-auto pt-8 border-t-4 border-black">
-                  <Button className="w-full bg-black text-white hover:bg-black/90 rounded-sm h-14 flex items-center justify-center gap-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] active:translate-y-[2px] active:shadow-none transition-all">
-                    <Mail className="w-6 h-6" />
-                    <span className="text-xl font-bold">Get in Touch</span>
-                  </Button>
+                  <Link href="https://wa.me/8801753973892" target="_blank" className="w-full">
+                    <Button className="w-full bg-black text-white hover:bg-black/90 rounded-sm h-14 flex items-center justify-center gap-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] active:translate-y-[2px] active:shadow-none transition-all">
+                      <Phone className="w-6 h-6" />
+                      <span className="text-xl font-bold">Get in Touch</span>
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </SheetContent>
