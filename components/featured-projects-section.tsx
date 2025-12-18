@@ -7,10 +7,10 @@ import { useEffect, useRef } from "react"
 export function FeaturedProjectsSection() {
     const projects = [
         {
-            title: "Vastspace Managing Application",
+            title: "Business Management Website",
             description:
-                "A complete redesign of a mobile banking experience, focusing on user accessibility and intuitive navigation flow for complex financial transactions.",
-            tag: "Fintech",
+                "A comprehensive management platform for an aerospace company, designed to streamline complex operations in the astro and space industry.",
+            tag: "Commercial",
             logo: "/logos/company.svg",
             bgColor: "bg-[#FFC224]",
             illustration: "/images/studio-workspace.svg", // Using existing placeholder
@@ -25,7 +25,8 @@ export function FeaturedProjectsSection() {
             logo: "/logos/startup.svg",
             bgColor: "bg-[#FF90E8]",
             illustration: "/images/venture-workspace.svg", // Using existing placeholder
-            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766047326/Screen_Recording_2025-12-18_at_2.32.23_PM_nmuegb.mov"
+            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766047326/Screen_Recording_2025-12-18_at_2.32.23_PM_nmuegb.mov",
+            displayUrl: "https://www.pluralsight.com/"
         },
         {
             title: "Fintech, Investment, Wefunder",
@@ -48,6 +49,17 @@ export function FeaturedProjectsSection() {
             illustration: "/images/venture-workspace.svg",
             video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766061712/coinbase_brand_film_1080p_ym70u6.mp4",
             displayUrl: "https://www.coinbase.com"
+        },
+        {
+            title: "Mobile App: Wallet",
+            description:
+                "A comprehensive banking and financial mobile app designed for seamless money transfers and digital payment services.",
+            tag: "Fintech",
+            logo: "/logos/startup.svg",
+            bgColor: "bg-[#4F46E5]",
+            illustration: "/images/studio-workspace.svg",
+            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766068763/From_KlickPin_CF_UI_Design_for_money_transfer_and_digital_payment_services_Payoneer_Interactive_web_design_Mobile_app_design_inspiration_Banking_app_b58lz8.mp4",
+            displayUrl: "# Mobile App: Wallet"
         },
     ]
 

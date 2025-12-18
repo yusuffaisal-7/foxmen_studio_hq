@@ -12,6 +12,12 @@ import {
     AuthorSpotlight,
     BlogCTA
 } from "@/components/blog-sections"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+    title: "Blog & Insights",
+    description: "Explore the latest insights, trends, and articles on web development, UI/UX design, and SaaS product strategies from Foxmen Studio.",
+}
 
 export default function BlogPage() {
     return (

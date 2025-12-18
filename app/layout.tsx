@@ -19,8 +19,83 @@ const onest = Onest({
 })
 
 export const metadata: Metadata = {
-  title: "Foxmen Studio | Building End-to-End Premium Web, Mobile, UI/UX & SaaS Experiences",
-  description: "FOXMEN Studio builds end-to-end premium web, mobile, UI/UX and SaaS products. From strategy and design to development, launch and growth.",
+  metadataBase: new URL("https://foxmen.studio"),
+  title: {
+    default: "Foxmen Studio | Building End-to-End Premium Web, Mobile, UI/UX & SaaS Experiences",
+    template: "%s | Foxmen Studio",
+  },
+  description:
+    "FOXMEN Studio builds end-to-end premium web, mobile, UI/UX and SaaS products. From strategy and design to development, launch and growth.",
+  keywords: [
+    "Foxmen Studio",
+    "Web Design",
+    "UI/UX",
+    "SaaS",
+    "Mobile App Development",
+    "Branding",
+    "foxmen.studio",
+    "Premium Web Development",
+    "End-to-End Product Development",
+  ],
+  authors: [{ name: "Foxmen Studio", url: "https://foxmen.studio" }],
+  creator: "Foxmen Studio",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://foxmen.studio",
+    title: "Foxmen Studio | Building End-to-End Premium Web, Mobile, UI/UX & SaaS Experiences",
+    description:
+      "FOXMEN Studio builds end-to-end premium web, mobile, UI/UX and SaaS products. From strategy and design to development, launch and growth.",
+    siteName: "Foxmen Studio",
+    images: [
+      {
+        url: "/images/og-image.jpg", // We need to ensure this exists or use a placeholder
+        width: 1200,
+        height: 630,
+        alt: "Foxmen Studio - Premium Digital Products",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Foxmen Studio | Building End-to-End Premium Web, Mobile, UI/UX & SaaS Experiences",
+    description:
+      "FOXMEN Studio builds end-to-end premium web, mobile, UI/UX and SaaS products. From strategy and design to development, launch and growth.",
+    images: ["/images/og-image.jpg"],
+    creator: "@foxmenstudio", // Assuming handle
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://foxmen.studio",
+  },
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Foxmen Studio",
+  url: "https://foxmen.studio",
+  logo: "https://foxmen.studio/icon.svg",
+  sameAs: [
+    "https://twitter.com/foxmenstudio",
+    "https://www.linkedin.com/company/foxmenstudio",
+    "https://www.instagram.com/foxmenstudio",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+880-1753973892",
+    contactType: "customer service",
+  },
 }
 
 export default function RootLayout({
@@ -30,7 +105,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${onest.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>{children}</body>
+      <body className={`${onest.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   )
 }
