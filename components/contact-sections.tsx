@@ -22,10 +22,10 @@ import {
 
 export function ContactHero() {
     return (
-        <section className="py-24 md:py-32 bg-[#FFFBF5] text-center px-4 border-b-4 border-black">
+        <section className="py-12 md:py-32 bg-[#FFFBF5] text-center px-4 border-b-4 border-black">
             <div className="max-w-4xl mx-auto">
-                <h1 className="text-5xl md:text-7xl font-bold mb-6">Let's Build Your Digital Existence.</h1>
-                <p className="text-xl md:text-3xl text-gray-600 font-medium leading-relaxed max-w-3xl mx-auto">
+                <h1 className="text-4xl md:text-7xl font-bold mb-6">Let's Build Your Digital Existence.</h1>
+                <p className="text-lg md:text-3xl text-gray-600 font-medium leading-relaxed max-w-3xl mx-auto">
                     Whether it’s a website, web app, mobile app, or an intelligent AI solution — tell us what you want to create.
                 </p>
             </div>
@@ -58,8 +58,8 @@ export function ContactOptions() {
         },
     ]
     return (
-        <section className="py-20 px-4 bg-white border-b-4 border-black">
-            <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        <section className="py-12 md:py-20 px-4 bg-white border-b-4 border-black">
+            <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 md:gap-8">
                 {options.map((opt, i) => {
                     const content = (
                         <div className="h-full">
@@ -155,42 +155,42 @@ export function InquiryForm() {
     }
 
     return (
-        <section className="py-24 px-4 bg-[#F3F4F6] border-b-4 border-black">
+        <section className="py-12 md:py-24 px-4 bg-[#F3F4F6] border-b-4 border-black">
             <div className="max-w-6xl mx-auto">
-                <div className="bg-white p-8 md:p-16 rounded-[48px] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
-                    <div className="text-center mb-16">
-                        <h2 className="text-5xl md:text-6xl font-bold mb-6">Start a Project</h2>
-                        <p className="text-xl text-gray-500 font-medium">Tell us about your goals and let's craft something unique.</p>
+                <div className="bg-white p-5 md:p-16 rounded-[32px] md:rounded-[48px] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] md:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+                    <div className="text-center mb-10 md:mb-16">
+                        <h2 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6">Start a Project</h2>
+                        <p className="text-lg md:text-xl text-gray-500 font-medium">Tell us about your goals and let's craft something unique.</p>
                     </div>
 
-                    <form className="space-y-8" onSubmit={handleSubmit}>
-                        <div className="grid md:grid-cols-2 gap-8">
+                    <form className="space-y-6 md:space-y-8" onSubmit={handleSubmit}>
+                        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                             <div className="space-y-3">
                                 <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Full Name</label>
-                                <Input id="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="h-16 rounded-2xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-xl px-6 bg-gray-50/50" required />
+                                <Input id="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="h-14 md:h-16 rounded-2xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-lg md:text-xl px-4 md:px-6 bg-gray-50/50" required />
                             </div>
                             <div className="space-y-3">
                                 <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Email Address</label>
-                                <Input id="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="h-16 rounded-2xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-xl px-6 bg-gray-50/50" required />
+                                <Input id="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="h-14 md:h-16 rounded-2xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-lg md:text-xl px-4 md:px-6 bg-gray-50/50" required />
                             </div>
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-8">
+                        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                             <div className="space-y-3">
                                 <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Phone (Optional)</label>
-                                <Input id="phone" value={formData.phone} onChange={handleChange} placeholder="+1 (555) 000-0000" className="h-16 rounded-2xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-xl px-6 bg-gray-50/50" />
+                                <Input id="phone" value={formData.phone} onChange={handleChange} placeholder="+1 (555) 000-0000" className="h-14 md:h-16 rounded-2xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-lg md:text-xl px-4 md:px-6 bg-gray-50/50" />
                             </div>
                             <div className="space-y-3">
                                 <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Company (Optional)</label>
-                                <Input id="company" value={formData.company} onChange={handleChange} placeholder="Acme Inc." className="h-16 rounded-2xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-xl px-6 bg-gray-50/50" />
+                                <Input id="company" value={formData.company} onChange={handleChange} placeholder="Acme Inc." className="h-14 md:h-16 rounded-2xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-lg md:text-xl px-4 md:px-6 bg-gray-50/50" />
                             </div>
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-8">
+                        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                             <div className="space-y-3">
                                 <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Project Type</label>
                                 <Select onValueChange={(val) => handleSelectChange("projectType", val)}>
-                                    <SelectTrigger className="h-16 rounded-2xl border-2 border-gray-200 focus:ring-0 focus:border-black focus:border-4 transition-all text-xl px-6 bg-gray-50/50">
+                                    <SelectTrigger className="h-14 md:h-16 rounded-2xl border-2 border-gray-200 focus:ring-0 focus:border-black focus:border-4 transition-all text-lg md:text-xl px-4 md:px-6 bg-gray-50/50">
                                         <SelectValue placeholder="Select Type" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -205,7 +205,7 @@ export function InquiryForm() {
                             <div className="space-y-3">
                                 <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Budget Range</label>
                                 <Select onValueChange={(val) => handleSelectChange("budget", val)}>
-                                    <SelectTrigger className="h-16 rounded-2xl border-2 border-gray-200 focus:ring-0 focus:border-black focus:border-4 transition-all text-xl px-6 bg-gray-50/50">
+                                    <SelectTrigger className="h-14 md:h-16 rounded-2xl border-2 border-gray-200 focus:ring-0 focus:border-black focus:border-4 transition-all text-lg md:text-xl px-4 md:px-6 bg-gray-50/50">
                                         <SelectValue placeholder="Select Range" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -220,12 +220,12 @@ export function InquiryForm() {
 
                         <div className="space-y-3">
                             <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Project Details</label>
-                            <Textarea id="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project goals..." className="min-h-[200px] rounded-2xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-xl p-6 bg-gray-50/50 resize-y" required />
+                            <Textarea id="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project goals..." className="min-h-[160px] md:min-h-[200px] rounded-2xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-lg md:text-xl p-4 md:p-6 bg-gray-50/50 resize-y" required />
                         </div>
 
-                        <div className="pt-8">
-                            <Button type="submit" disabled={status === "sending"} className="w-full h-20 text-2xl font-bold rounded-full bg-[#FF4A60] hover:bg-black text-white hover:text-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all uppercase tracking-wide">
-                                {status === "sending" ? "Sending..." : "Start Your Project"} <ArrowRight className="ml-3 w-8 h-8" />
+                        <div className="pt-4 md:pt-8">
+                            <Button type="submit" disabled={status === "sending"} className="w-full h-16 md:h-20 text-xl md:text-2xl font-bold rounded-full bg-[#FF4A60] hover:bg-black text-white hover:text-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all uppercase tracking-wide">
+                                {status === "sending" ? "Sending..." : "Start Your Project"} <ArrowRight className="ml-3 w-6 h-6 md:w-8 md:h-8" />
                             </Button>
                             {status === "success" && <p className="text-green-600 mt-4 text-center text-lg font-bold">Message sent successfully!</p>}
                             {status === "error" && <p className="text-red-600 mt-4 text-center text-lg font-bold">Something went wrong. Please try again.</p>}
@@ -246,17 +246,17 @@ export function ContactFAQ() {
         { q: "Do you work with startups?", a: "We love startups! We have special packages designed to help early-stage companies launch quickly and scale effectively." },
     ]
     return (
-        <section className="py-24 px-4 bg-white border-b-4 border-black">
+        <section className="py-12 md:py-24 px-4 bg-white border-b-4 border-black">
             <div className="max-w-4xl mx-auto">
-                <h2 className="text-4xl font-bold mb-16 text-center">Before You Contact Us</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-10 md:mb-16 text-center">Before You Contact Us</h2>
                 <div className="space-y-4">
                     <Accordion type="single" collapsible className="w-full space-y-4">
                         {faqs.map((faq, i) => (
-                            <AccordionItem key={i} value={`item-${i}`} className="border-4 border-black rounded-2xl px-6 bg-white data-[state=open]:bg-gray-50 transition-colors">
-                                <AccordionTrigger className="hover:no-underline py-6">
-                                    <span className="text-xl md:text-2xl font-bold text-left mr-4">{faq.q}</span>
+                            <AccordionItem key={i} value={`item-${i}`} className="border-4 border-black rounded-2xl px-4 md:px-6 bg-white data-[state=open]:bg-gray-50 transition-colors">
+                                <AccordionTrigger className="hover:no-underline py-4 md:py-6">
+                                    <span className="text-lg md:text-2xl font-bold text-left mr-4">{faq.q}</span>
                                 </AccordionTrigger>
-                                <AccordionContent className="text-lg text-gray-600 font-medium pb-6 leading-relaxed">
+                                <AccordionContent className="text-base md:text-lg text-gray-600 font-medium pb-4 md:pb-6 leading-relaxed">
                                     {faq.a}
                                 </AccordionContent>
                             </AccordionItem>
@@ -270,9 +270,9 @@ export function ContactFAQ() {
 
 export function StartProcess() {
     return (
-        <section className="py-24 px-4 bg-[#FFFBF5] border-b-4 border-black">
+        <section className="py-12 md:py-24 px-4 bg-[#FFFBF5] border-b-4 border-black">
             <div className="max-w-6xl mx-auto">
-                <h2 className="text-3xl font-bold mb-16 text-center">How It Starts</h2>
+                <h2 className="text-3xl md:text-3xl font-bold mb-10 md:mb-16 text-center">How It Starts</h2>
                 <div className="grid md:grid-cols-3 gap-8 text-center relative">
                     <div className="hidden md:block absolute top-[28px] left-[16%] right-[16%] h-1 bg-gray-200 z-0"></div>
                     {[
@@ -296,15 +296,15 @@ export function StartProcess() {
 
 export function QuickActions() {
     return (
-        <section className="py-24 px-4 bg-white border-b-4 border-black">
+        <section className="py-12 md:py-24 px-4 bg-white border-b-4 border-black">
             <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl md:text-5xl font-bold mb-12">Need Answers Faster?</h2>
-                <div className="flex flex-col md:flex-row justify-center gap-6">
-                    <button className="flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-[#FFC224] text-black border-4 border-black text-xl font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
-                        <Video className="w-6 h-6" /> Book a Meeting
+                <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-12">Need Answers Faster?</h2>
+                <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
+                    <button className="flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 rounded-full bg-[#FFC224] text-black border-4 border-black text-lg md:text-xl font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
+                        <Video className="w-5 h-5 md:w-6 md:h-6" /> Book a Meeting
                     </button>
-                    <a href="https://wa.me/8801753973892" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-white text-black border-4 border-black text-xl font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
-                        <MessageCircle className="w-6 h-6" /> Chat on WhatsApp
+                    <a href="https://wa.me/8801753973892" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 rounded-full bg-white text-black border-4 border-black text-lg md:text-xl font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
+                        <MessageCircle className="w-5 h-5 md:w-6 md:h-6" /> Chat on WhatsApp
                     </a>
                 </div>
             </div>
@@ -321,13 +321,13 @@ export function SocialConnect() {
         { icon: Dribbble, name: "Dribbble", color: "hover:bg-[#EA4C89] hover:text-white" },
     ]
     return (
-        <section className="py-24 px-4 bg-[#F3F4F6] border-b-4 border-black">
+        <section className="py-12 md:py-24 px-4 bg-[#F3F4F6] border-b-4 border-black">
             <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl md:text-5xl font-bold mb-16">Stay Connected</h2>
-                <div className="flex justify-center gap-6 md:gap-10 flex-wrap">
+                <h2 className="text-3xl md:text-5xl font-bold mb-10 md:mb-16">Stay Connected</h2>
+                <div className="flex justify-center gap-4 md:gap-10 flex-wrap">
                     {socials.map((soc, i) => (
-                        <div key={i} className={`group cursor-pointer bg-white w-24 h-24 md:w-32 md:h-32 rounded-[24px] border-4 border-black flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all ${soc.color}`}>
-                            <soc.icon className="w-10 h-10 md:w-12 md:h-12 transition-colors duration-300" />
+                        <div key={i} className={`group cursor-pointer bg-white w-20 h-20 md:w-32 md:h-32 rounded-[20px] md:rounded-[24px] border-4 border-black flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all ${soc.color}`}>
+                            <soc.icon className="w-8 h-8 md:w-12 md:h-12 transition-colors duration-300" />
                         </div>
                     ))}
                 </div>
@@ -338,10 +338,10 @@ export function SocialConnect() {
 
 export function LocationMap() {
     return (
-        <section className="py-24 px-4 bg-white border-b-4 border-black">
+        <section className="py-12 md:py-24 px-4 bg-white border-b-4 border-black">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-3xl font-bold mb-12 text-center">Visit Us</h2>
-                <div className="w-full h-[400px] bg-gray-200 rounded-[32px] border-4 border-black overflow-hidden flex items-center justify-center">
+                <h2 className="text-3xl font-bold mb-8 md:mb-12 text-center">Visit Us</h2>
+                <div className="w-full h-[300px] md:h-[400px] bg-gray-200 rounded-[24px] md:rounded-[32px] border-4 border-black overflow-hidden flex items-center justify-center">
                     <p className="text-xl font-bold text-gray-500">Google Map Embed Placeholder</p>
                 </div>
             </div>
@@ -351,10 +351,10 @@ export function LocationMap() {
 
 export function ContactCTA() {
     return (
-        <section className="py-32 px-4 bg-[#FFFBF5] text-center">
+        <section className="py-20 md:py-32 px-4 bg-[#FFFBF5] text-center">
             <div className="max-w-4xl mx-auto">
-                <h2 className="text-5xl md:text-6xl font-bold mb-8">Ready to Build Your Digital Presence?</h2>
-                <Link href="#form" className="inline-flex items-center justify-center bg-[#FF4A60] text-white border-4 border-black rounded-full px-12 py-6 text-xl font-bold hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1">
+                <h2 className="text-4xl md:text-6xl font-bold mb-8">Ready to Build Your Digital Presence?</h2>
+                <Link href="#form" className="inline-flex items-center justify-center bg-[#FF4A60] text-white border-4 border-black rounded-full px-8 md:px-12 py-5 md:py-6 text-xl font-bold hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1">
                     Start Your Project <ArrowRight className="ml-3 w-6 h-6" />
                 </Link>
             </div>
