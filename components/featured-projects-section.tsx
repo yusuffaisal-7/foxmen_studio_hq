@@ -18,22 +18,25 @@ export function FeaturedProjectsSection() {
             displayUrl: "https://www.vastspace.com/?ref=siteinspire"
         },
         {
-            title: "E-commerce dashboard interface",
+            title: "LMS & Online Learning Platform",
             description:
-                "Comprehensive dashboard for online retailers to manage inventory, track sales, and analyze customer behavior in real-time.",
-            tag: "SaaS",
+                "A comprehensive learning management system inspired by Pluralsight, featuring online courses and interactive learning paths.",
+            tag: "EdTech",
             logo: "/logos/startup.svg",
             bgColor: "bg-[#FF90E8]",
             illustration: "/images/venture-workspace.svg", // Using existing placeholder
+            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766047326/Screen_Recording_2025-12-18_at_2.32.23_PM_nmuegb.mov"
         },
         {
-            title: "Healthcare patient portal",
+            title: "Fintech, Investment, Wefunder",
             description:
-                "A secure and user-friendly portal for patients to access medical records, schedule appointments, and communicate with healthcare providers.",
-            tag: "Healthcare",
+                "A secure investment platform for funders and investors, built to handle complex financial situations with top-tier security.",
+            tag: "Fintech",
             logo: "/logos/healthcare.svg",
             bgColor: "bg-[#27C93F]",
             illustration: "/images/studio-workspace.svg",
+            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766050597/Screen_Recording_2025-12-18_at_3.23.38_PM_1_b0becr.mov",
+            displayUrl: "https://wefunder.com/home"
         },
         {
             title: "Creative agency portfolio",
