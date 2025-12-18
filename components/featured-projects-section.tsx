@@ -39,13 +39,15 @@ export function FeaturedProjectsSection() {
             displayUrl: "https://wefunder.com/home"
         },
         {
-            title: "Creative agency portfolio",
+            title: "Coinbase — Futuristic Brand Identity",
             description:
-                "An immersive portfolio tailored for creative agencies to showcase high-resolution work and attract top-tier clients.",
-            tag: "Design",
+                "Emotion-led and futuristic branding for marketing, designed for Coinbase Ltd to redefine their visual identity.",
+            tag: "Branding",
             logo: "/logos/agency.svg",
             bgColor: "bg-[#FF5F56]",
             illustration: "/images/venture-workspace.svg",
+            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766061712/coinbase_brand_film_1080p_ym70u6.mp4",
+            displayUrl: "https://www.coinbase.com"
         },
     ]
 
