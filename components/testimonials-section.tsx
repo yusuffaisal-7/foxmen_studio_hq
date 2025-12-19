@@ -13,8 +13,7 @@ export function TestimonialsSection() {
             about <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block">our work</span>
           </h2>
           <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto pb-8">
-            Lacus, adipiscing lectus convallis purus aliquet cursus magnaol montes augue donec cras turpis ultrices
-            nulla sed doler.
+            Delivering luxurious impact-driven web development, premium UI/UX design, and scalable SaaS solutions for visionary leaders.
           </p>
         </div>
 
@@ -33,13 +32,12 @@ export function TestimonialsSection() {
 
               <div className="md:max-w-[65%]">
                 <p className="text-sm md:text-base lg:text-lg mb-6 leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim et minim quis nostrud exercitation ullamco laboris.
+                  "Foxmen Studio's professional attitude and ability to execute complex web development with a seamless, luxury style is unparalleled. Their strategic approach to our branding and platform architecture was instrumental in our successful Series B funding. A true partner in innovation."
                 </p>
 
                 <div>
-                  <div className="font-bold text-base md:text-lg">Lily Woods</div>
-                  <div className="text-gray-600 text-sm md:text-base">VP of Design at Google</div>
+                  <div className="font-bold text-base md:text-lg">William P. Jackson</div>
+                  <div className="text-gray-600 text-sm md:text-base">CTO, VastSpace Technology</div>
                 </div>
               </div>
             </div>

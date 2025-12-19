@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 import { Onest, Geist_Mono as Geist_Mono_Font } from "next/font/google"
+import localFont from "next/font/local"
 
 // Initialize fonts
 const _geistMono = Geist_Mono_Font({
@@ -17,6 +18,12 @@ const onest = Onest({
   weight: ["500", "700"],
   variable: "--font-onest",
 })
+
+const sfProFont = localFont({
+  src: "../public/Fonts/SFPRODISPLAYBOLD.otf",
+  variable: "--font-sfpro",
+})
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://foxmen.studio"),
@@ -115,7 +122,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${onest.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
+      <body className={`${onest.variable} ${sfProFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

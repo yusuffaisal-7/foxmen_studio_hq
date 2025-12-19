@@ -4,6 +4,8 @@ import { Mail, FolderOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef } from "react"
 
+import RotatingText from "@/components/RotatingText"
+
 export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -18,14 +20,27 @@ export function HeroSection() {
     <section className="container mx-auto px-4 py-16 md:py-24">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative">
         <div className="space-y-6 relative z-10">
-          <h1 className="text-[42px] leading-[50px] md:text-[72px] font-bold md:leading-[85px]">
-            Welcome to <span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">Foxmen Studio</span>, a Creative
-            Design Agency from <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block">New York</span>
+          <h1
+            className="text-[44px] leading-[52px] md:text-[76px] font-bold md:leading-[88px]"
+            style={{ fontFamily: "var(--font-sfpro)" }}
+          >
+            Welcome to <span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">Foxmen Studio</span>,<br className="block md:hidden" /> A creative agency for Building<br />
+            <RotatingText
+              texts={['Web Platforms', 'Mobile Apps', 'Global UI/UX', '3D Website', 'AI - Agents', 'Digital Marketing', 'Branding']}
+              mainClassName="px-2 sm:px-2 md:px-3 bg-[#5227ff] text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg inline-flex"
+              staggerFrom="last"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={2000}
+            />
           </h1>
 
-          <p className="text-[#393939] text-[16px] md:text-[18px] font-medium leading-[28px] md:leading-[30px] max-w-xl">
-            We craft innovative digital experiences and stunning visual designs that transform brands and engage
-            audiences worldwide.
+          <p className="text-[#393939] text-[18px] md:text-[22px] font-medium leading-[30px] md:leading-[34px] max-w-xl">
+            We transform brands and build solutions that engage audiences worldwide - luxurious in design, dominant in presence, and unique by nature.
           </p>
 
           <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-7 pt-4">
