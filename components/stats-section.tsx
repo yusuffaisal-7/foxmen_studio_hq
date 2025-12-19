@@ -1,6 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useSpring, useInView } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
 
 const stats = [
     {
@@ -17,6 +18,43 @@ const stats = [
     },
 ]
 
+function Counter({ value }: { value: string }) {
+    const ref = useRef(null)
+    const inView = useInView(ref, { once: true, margin: "-100px" })
+    const motionValue = useSpring(0, {
+        damping: 30,
+        stiffness: 100,
+        duration: 2, // Slower duration for smoother count
+    })
+
+    // Extract numeric part and non-numeric part (suffix)
+    const numericValue = parseInt(value.replace(/[^0-9]/g, "")) || 0
+    const suffix = value.replace(/[0-9]/g, "")
+
+    useEffect(() => {
+        if (inView) {
+            motionValue.set(numericValue)
+        }
+    }, [inView, motionValue, numericValue])
+
+    const [displayValue, setDisplayValue] = useState(0)
+
+    useEffect(() => {
+        const unsubscribe = motionValue.on("change", (latest) => {
+            setDisplayValue(Math.round(latest))
+        })
+        return unsubscribe
+    }, [motionValue])
+
+    return (
+        <span ref={ref}>
+            {displayValue}{suffix}
+        </span>
+    )
+}
+
+
+
 export function StatsSection() {
     return (
         <section className="container mx-auto px-4 py-16 md:py-32">
@@ -32,10 +70,10 @@ export function StatsSection() {
                             className="flex flex-col items-center justify-center text-center p-8 md:p-12"
                         >
                             <h3
-                                className="text-6xl md:text-8xl font-bold text-black mb-4 tracking-tight"
+                                className="text-6xl md:text-8xl font-bold text-black mb-4 tracking-tight tabular-nums"
                                 style={{ fontFamily: "var(--font-sfpro-bold)" }}
                             >
-                                {stat.number}
+                                <Counter value={stat.number} />
                             </h3>
                             <p
                                 className="text-lg md:text-xl font-medium text-gray-500 uppercase tracking-widest"

@@ -1,10 +1,15 @@
+"use client"
+
 import Link from "next/link"
-import { Phone, Menu } from "lucide-react"
+import { useState } from "react"
+import { Phone } from "lucide-react"
+import { AnimatedHamburgerButton } from "@/components/animated-hamburger"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 
 
 export function Navigation() {
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="container mx-auto px-4 pt-8 pb-4 relative z-50">
       <nav className="flex items-center justify-between bg-white border-4 border-black rounded-xl px-5 py-3 max-w-4xl mx-auto shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
@@ -43,12 +48,8 @@ export function Navigation() {
 
         {/* Mobile Navigation (Menu Icon) */}
         <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button className="bg-black text-white hover:bg-black/90 rounded-sm px-3 h-12 min-w-[48px] flex-shrink-0">
-                <Menu className="w-6 h-6" strokeWidth={3} />
-              </Button>
-            </SheetTrigger>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <AnimatedHamburgerButton active={isOpen} onClick={() => setIsOpen(!isOpen)} />
             <SheetContent side="right" className="w-[300px] border-l-4 border-black p-0">
               <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
               <div className="flex flex-col h-full pt-16 px-6 pb-8">

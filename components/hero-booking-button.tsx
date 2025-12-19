@@ -10,7 +10,7 @@ export function HeroBookingButton() {
 
     return (
         <motion.button
-            className="group relative flex items-center justify-between overflow-hidden rounded-full bg-[#1F1F1F] p-[6px] transition-all w-full sm:w-auto sm:min-w-[300px] h-[60px] sm:h-[72px]"
+            className="group relative flex items-center justify-between overflow-hidden rounded-full bg-[#1F1F1F] p-[4px] sm:p-[6px] transition-all w-auto cursor-pointer min-w-[240px] sm:min-w-[300px] h-[50px] sm:h-[72px]"
             data-cal-link="yousuf-faysal/discussion-call"
             data-cal-namespace="discussion-call"
             data-cal-config='{"layout":"month_view"}'
@@ -22,8 +22,8 @@ export function HeroBookingButton() {
             <motion.span
                 layout
                 className={cn(
-                    "flex-1 text-center font-medium text-white text-lg md:text-2xl px-8",
-                    isHovered ? "text-right" : "text-left" // Optional: alignment shift
+                    "flex-1 text-center font-medium text-white text-[16px] sm:text-2xl px-2 sm:px-8",
+                    isHovered ? "text-right" : "text-center"
                 )}
             >
                 Book a Meeting
@@ -32,7 +32,7 @@ export function HeroBookingButton() {
                 layout
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 className={cn(
-                    "flex h-12 w-12 md:h-[60px] md:w-[60px] items-center justify-center rounded-full transition-colors duration-300",
+                    "flex h-[42px] w-[42px] sm:h-[60px] sm:w-[60px] items-center justify-center rounded-full transition-colors duration-300 flex-shrink-0",
                     isHovered
                         ? "order-first border border-white bg-transparent text-white"
                         : "order-last bg-white text-black"
