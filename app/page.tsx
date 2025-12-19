@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/hero-section"
 import { LogoMarquee } from "@/components/logo-marquee"
 import { FeaturedProjectsSection } from "@/components/featured-projects-section"
 import { ServicesSection } from "@/components/services-section"
+import { StatsSection } from "@/components/stats-section"
 import { AboutSection } from "@/components/about-section"
 import { PortfolioSection } from "@/components/portfolio-section"
 import { ExperienceSection } from "@/components/experience-section"
@@ -18,6 +19,7 @@ export default function Home() {
       <LogoMarquee />
       <FeaturedProjectsSection />
       <ServicesSection />
+      <StatsSection />
       <AboutSection />
       <PortfolioSection />
       <ExperienceSection />
