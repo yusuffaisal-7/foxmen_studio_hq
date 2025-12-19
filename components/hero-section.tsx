@@ -67,7 +67,7 @@ export function HeroSection() {
             className="text-[44px] leading-[52px] md:text-[76px] font-bold md:leading-[88px]"
             style={{ fontFamily: "var(--font-sfpro)" }}
           >
-            Welcome to <span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">Foxmen Studio</span>,<br className="block md:hidden" /> A creative agency for Building<br />
+            Welcome to <br className="block md:hidden" /><span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">Foxmen Studio</span>,<br className="block md:hidden" /> A creative agency for Building<br />
             <RotatingText
               texts={['Web Platforms', 'Mobile Apps', 'Global UI/UX', '3D Website', 'AI - Agents', 'Digital Marketing', 'Branding']}
               mainClassName="px-2 sm:px-2 md:px-3 bg-[#5227ff] text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg inline-flex"

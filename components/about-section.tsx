@@ -1,5 +1,4 @@
-import { User } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { AboutButton } from "./about-button"
 import Image from "next/image"
 
 export function AboutSection() {
@@ -45,10 +44,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          <Button className="bg-[#0B0B0B] text-white hover:bg-black/90 rounded-lg py-5 px-8 md:py-[22px] md:px-[62px] text-base md:text-lg font-semibold h-auto w-full sm:w-auto sm:min-w-[240px]">
-            <User className="w-5 h-5" />
-            Learn about us
-          </Button>
+          <AboutButton />
         </div>
       </div>
     </section>
