@@ -21,12 +21,12 @@ const onest = Onest({
 })
 
 const sfProFont = localFont({
-  src: "../public/Fonts/SFPRODISPLAYBOLD.otf",
+  src: "./fonts/SFPRODISPLAYBOLD.otf",
   variable: "--font-sfpro",
 })
 
 const sfProRegularFont = localFont({
-  src: "../public/Fonts/SFPRODISPLAYREGULAR.otf",
+  src: "./fonts/SFPRODISPLAYREGULAR.otf",
   variable: "--font-sfpro-regular",
 })
 
