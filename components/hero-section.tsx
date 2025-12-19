@@ -19,8 +19,8 @@ export function HeroSection() {
     }
 
     // Cal.com embed initialization
-    ; (function (C, A, L) {
-      let p = function (a, ar) {
+    ; (function (C: any, A: string, L: string) {
+      let p = function (a: any, ar: any) {
         a.q.push(ar)
       }
       let d = C.document
@@ -51,10 +51,10 @@ export function HeroSection() {
           p(cal, ar)
         }
     })(window, "https://app.cal.com/embed/embed.js", "init")
+    const cal = (window as any).Cal
+    cal("init", "discussion-call", { origin: "https://app.cal.com" })
 
-    Cal("init", "discussion-call", { origin: "https://app.cal.com" })
-
-    Cal.ns["discussion-call"]("ui", {
+    cal.ns["discussion-call"]("ui", {
       cssVarsPerTheme: { dark: { "cal-brand": "#755ed2" } },
       hideEventTypeDetails: false,
       layout: "month_view",
