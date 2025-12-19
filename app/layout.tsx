@@ -24,6 +24,11 @@ const sfProFont = localFont({
   variable: "--font-sfpro",
 })
 
+const sfProRegularFont = localFont({
+  src: "../public/Fonts/SFPRODISPLAYREGULAR.otf",
+  variable: "--font-sfpro-regular",
+})
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://foxmen.studio"),
@@ -122,7 +127,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${onest.variable} ${sfProFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
+      <body className={`${onest.variable} ${sfProFont.variable} ${sfProRegularFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

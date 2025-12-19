@@ -3,6 +3,7 @@
 import { Mail, FolderOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef } from "react"
+import { HeroBookingButton } from "./hero-booking-button"
 
 import RotatingText from "@/components/RotatingText"
 
@@ -14,6 +15,48 @@ export function HeroSection() {
       videoRef.current.muted = true
       videoRef.current.play().catch((e) => console.log("Autoplay blocked:", e))
     }
+
+    // Cal.com embed initialization
+    ; (function (C, A, L) {
+      let p = function (a, ar) {
+        a.q.push(ar)
+      }
+      let d = C.document
+      C.Cal =
+        C.Cal ||
+        function () {
+          let cal = C.Cal
+          let ar = arguments
+          if (!cal.loaded) {
+            cal.ns = {}
+            cal.q = cal.q || []
+            d.head.appendChild(d.createElement("script")).src = A
+            cal.loaded = true
+          }
+          if (ar[0] === L) {
+            const api = function () {
+              p(api, arguments)
+            }
+            const namespace = ar[1]
+            api.q = api.q || []
+            if (typeof namespace === "string") {
+              cal.ns[namespace] = cal.ns[namespace] || api
+              p(cal.ns[namespace], ar)
+              p(cal, ["initNamespace", namespace])
+            } else p(cal, ar)
+            return
+          }
+          p(cal, ar)
+        }
+    })(window, "https://app.cal.com/embed/embed.js", "init")
+
+    Cal("init", "discussion-call", { origin: "https://app.cal.com" })
+
+    Cal.ns["discussion-call"]("ui", {
+      cssVarsPerTheme: { dark: { "cal-brand": "#755ed2" } },
+      hideEventTypeDetails: false,
+      layout: "month_view",
+    })
   }, [])
 
   return (
@@ -39,15 +82,15 @@ export function HeroSection() {
             />
           </h1>
 
-          <p className="text-[#393939] text-[18px] md:text-[22px] font-medium leading-[30px] md:leading-[34px] max-w-xl">
-            We transform brands and build solutions that engage audiences worldwide - luxurious in design, dominant in presence, and unique by nature.
+          <p
+            className="text-[#393939] text-[18px] md:text-[22px] font-medium leading-[30px] md:leading-[34px] max-w-xl"
+            style={{ fontFamily: "var(--font-sfpro-regular)" }}
+          >
+            We transform brands and build solutions that engage audiences worldwide<br />- luxurious in design, dominant in presence, and unique by nature.
           </p>
 
           <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-7 pt-4">
-            <Button className="bg-[#0B0B0B] text-white hover:bg-black/90 rounded-lg py-5 px-8 md:py-[22px] md:px-[62px] text-base md:text-lg font-semibold h-auto w-full sm:w-auto sm:min-w-[240px]">
-              <Mail className="w-5 h-5" />
-              Get in touch
-            </Button>
+            <HeroBookingButton />
             <Button
               variant="outline"
               className="bg-white border-[3px] border-black hover:bg-gray-50 rounded-lg py-5 px-8 md:py-[22px] md:px-[62px] text-base md:text-lg font-semibold h-auto w-full sm:w-auto sm:min-w-[240px]"
