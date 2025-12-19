@@ -82,10 +82,20 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   name: "Foxmen Studio",
   url: "https://foxmen.studio",
   logo: "https://foxmen.studio/icon.svg",
+  image: "https://foxmen.studio/images/og-image.jpg",
+  description: "Foxmen Studio is a creative design agency from New York building end-to-end premium web, mobile, UI/UX and SaaS products.",
+  address: {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "addressCountry": "All"
+  },
+  areaServed: "Worldwide",
+  priceRange: "$$",
   sameAs: [
     "https://twitter.com/foxmenstudio",
     "https://www.linkedin.com/company/foxmenstudio",
