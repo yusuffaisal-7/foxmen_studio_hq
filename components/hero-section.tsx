@@ -89,7 +89,7 @@ export function HeroSection() {
             We transform brands and build solutions that engage audiences worldwide<br />- luxurious in design, dominant in presence, and unique by nature.
           </p>
 
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-7 pt-4">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-7 pt-4 items-start">
             <HeroBookingButton />
             <Button
               variant="outline"
