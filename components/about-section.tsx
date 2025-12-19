@@ -17,8 +17,7 @@ export function AboutSection() {
               Who's behind all this <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block">great work?</span>
             </h2>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-              Foxmen Studio is a team of passionate designers, developers, and creative professionals dedicated to
-              delivering exceptional digital solutions for brands around the globe.
+              Foxmen Studio is a premier Creative Company specializing in building high-performance digital products. We combine strategic insight with world-class engineering to launch brands that dominate their markets.
             </p>
           </div>
 
@@ -26,9 +25,9 @@ export function AboutSection() {
             <div className="flex gap-4 items-start">
               <div className="w-5 h-5 bg-[#6366F1] border-2 border-black rounded-[5px] flex-shrink-0 mt-1"></div>
               <div>
-                <h3 className="text-lg md:text-xl font-bold mb-2">10+ years of combined expertise</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-2">5+ Years of Industry Experience</h3>
                 <p className="text-gray-600 text-sm md:text-base">
-                  Our team brings decades of experience in creative design, branding, and digital innovation.
+                  Proven expertise in crafting award-winning web and mobile experiences.
                 </p>
               </div>
             </div>
@@ -36,9 +35,9 @@ export function AboutSection() {
             <div className="flex gap-4 items-start">
               <div className="w-5 h-5 bg-[#FF6B7A] border-2 border-black rounded-[5px] flex-shrink-0 mt-1"></div>
               <div>
-                <h3 className="text-lg md:text-xl font-bold mb-2">100+ completed projects</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-2">200+ Complex Projects Delivered</h3>
                 <p className="text-gray-600 text-sm md:text-base">
-                  We've successfully delivered premium designs for startups, enterprises, and everything in between.
+                  Successfully executed high-end solutions for startups and global enterprises.
                 </p>
               </div>
             </div>
