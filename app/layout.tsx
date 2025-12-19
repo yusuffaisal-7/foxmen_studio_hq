@@ -5,6 +5,7 @@ import "./globals.css"
 
 import { Onest, Geist_Mono as Geist_Mono_Font } from "next/font/google"
 import localFont from "next/font/local"
+import TargetCursor from "@/components/target-cursor"
 
 // Initialize fonts
 const _geistMono = Geist_Mono_Font({
@@ -131,6 +132,12 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <TargetCursor
+          spinDuration={2}
+          hideDefaultCursor={true}
+          parallaxOn={true}
+          targetSelector="a, button, input, textarea, .cursor-pointer, .cursor-target, [role='button'], [data-cal-link]"
         />
         {children}
       </body>

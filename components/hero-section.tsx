@@ -4,6 +4,8 @@ import { Mail, FolderOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef } from "react"
 import { HeroBookingButton } from "./hero-booking-button"
+import { ViewProjectsButton } from "@/components/view-projects-button"
+import { UserCoordinates, LocalTime } from "@/components/hero-addons"
 
 import RotatingText from "@/components/RotatingText"
 
@@ -60,7 +62,9 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="container mx-auto px-4 py-16 md:py-24">
+    <section className="relative w-full px-4 py-16 md:py-24">
+      <UserCoordinates />
+      <LocalTime />
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative">
         <div className="space-y-6 relative z-10">
           <h1
@@ -91,13 +95,7 @@ export function HeroSection() {
 
           <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-7 pt-4 items-start">
             <HeroBookingButton />
-            <Button
-              variant="outline"
-              className="bg-white border-[3px] border-black hover:bg-gray-50 rounded-lg py-5 px-8 md:py-[22px] md:px-[62px] text-base md:text-lg font-semibold h-auto w-full sm:w-auto sm:min-w-[240px]"
-            >
-              <FolderOpen className="w-5 h-5" />
-              View portfolio
-            </Button>
+            <ViewProjectsButton />
           </div>
         </div>
 
