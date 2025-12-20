@@ -71,7 +71,7 @@ export function StatsSection() {
                         >
                             <h3
                                 className="text-6xl md:text-8xl font-bold text-black mb-4 tracking-tight tabular-nums"
-                                style={{ fontFamily: "var(--font-sfpro-bold)" }}
+                                style={{ fontFamily: "var(--font-sfpro)" }}
                             >
                                 <Counter value={stat.number} />
                             </h3>

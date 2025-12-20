@@ -13,7 +13,7 @@ export function AboutSection() {
 
         <div className="space-y-6 md:space-y-8">
           <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>
               Who's behind all this <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block">great work?</span>
             </h2>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed">
@@ -25,7 +25,7 @@ export function AboutSection() {
             <div className="flex gap-4 items-start">
               <div className="w-5 h-5 bg-[#6366F1] border-2 border-black rounded-[5px] flex-shrink-0 mt-1"></div>
               <div>
-                <h3 className="text-lg md:text-xl font-bold mb-2">5+ Years of Industry Experience</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-2" style={{ fontFamily: "var(--font-sfpro)" }}>5+ Years of Industry Experience</h3>
                 <p className="text-gray-600 text-sm md:text-base">
                   Proven expertise in crafting award-winning web and mobile experiences.
                 </p>
@@ -35,7 +35,7 @@ export function AboutSection() {
             <div className="flex gap-4 items-start">
               <div className="w-5 h-5 bg-[#FF6B7A] border-2 border-black rounded-[5px] flex-shrink-0 mt-1"></div>
               <div>
-                <h3 className="text-lg md:text-xl font-bold mb-2">200+ Complex Projects Delivered</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-2" style={{ fontFamily: "var(--font-sfpro)" }}>200+ Complex Projects Delivered</h3>
                 <p className="text-gray-600 text-sm md:text-base">
                   Successfully executed high-end solutions for startups and global enterprises.
                 </p>

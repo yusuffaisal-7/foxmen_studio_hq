@@ -22,7 +22,7 @@ export function Footer() {
 
               <div className="w-full flex-1 bg-white border-4 border-black rounded-3xl py-4 px-4 md:py-6 md:px-8 flex flex-col md:flex-row items-center gap-4 md:gap-6">
                 <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-xl md:text-2xl font-bold text-black">Subscribe to our newsletter</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-black" style={{ fontFamily: "var(--font-sfpro)" }}>Subscribe to our newsletter</h3>
                 </div>
 
                 <div className="relative w-full md:w-auto md:min-w-[400px] lg:min-w-[480px]">
@@ -91,7 +91,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-bold mb-4">Pages</h3>
+              <h3 className="font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>Pages</h3>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li>
                   <a href="#" className="hover:text-white transition-colors">
@@ -122,7 +122,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-bold mb-4">Utility Pages</h3>
+              <h3 className="font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>Utility Pages</h3>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li>
                   <a href="#" className="hover:text-white transition-colors">
@@ -158,7 +158,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-bold mb-4">Contact us</h3>
+              <h3 className="font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>Contact us</h3>
               <ul className="space-y-3 text-gray-400 text-sm">
                 <li className="flex items-start gap-2">
                   <Mail className="w-4 h-4 mt-1 flex-shrink-0" />

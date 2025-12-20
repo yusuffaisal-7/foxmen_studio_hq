@@ -27,7 +27,7 @@ export function PortfolioSection() {
     <section className="container mx-auto px-4 py-16 md:py-24">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>
             Take a look at our <br />
             <span className="bg-[#FFC224] text-black px-3 py-1 inline-block">design portfolio</span>
           </h2>
@@ -54,7 +54,7 @@ export function PortfolioSection() {
                   {project.tag}
                 </span>
 
-                <h3 className="text-xl md:text-[28px] font-bold mb-4 leading-tight md:leading-[40px] text-[#0B0B0B]">
+                <h3 className="text-xl md:text-[28px] font-bold mb-4 leading-tight md:leading-[40px] text-[#0B0B0B]" style={{ fontFamily: "var(--font-sfpro)" }}>
                   {project.title}
                 </h3>
 

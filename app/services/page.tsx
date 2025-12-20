@@ -1,6 +1,6 @@
 import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
-import { ServicesSection } from "@/components/services-section"
+import { ServicesListSection } from "@/components/services-list-section"
 
 export const metadata = {
     title: "Our Services | Foxmen Studio",
@@ -12,7 +12,7 @@ export default function ServicesPage() {
         <div className="min-h-screen bg-white font-sans selection:bg-[#FFC224] selection:text-black">
             <Navigation />
             <main className="pt-20">
-                <ServicesSection />
+                <ServicesListSection />
             </main>
             <Footer />
         </div>

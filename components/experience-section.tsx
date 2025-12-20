@@ -40,7 +40,7 @@ export function ExperienceSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
           <div className="text-white pt-0 md:pt-12 md:sticky md:top-12 self-start">
-            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 md:mb-8 leading-[1.3]">
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 md:mb-8 leading-[1.3]" style={{ fontFamily: "var(--font-sfpro)" }}>
               Take a look at our <span className="bg-[#6366F1] text-white px-3 py-1 inline-block">past experience</span>
             </h2>
             <p className="text-gray-400 mb-8 md:mb-10 leading-relaxed text-base md:text-lg">
@@ -76,7 +76,7 @@ export function ExperienceSection() {
                 <div className="border-t-[3px] border-black mb-4 md:mb-6"></div>
 
                 <div className="px-6 md:px-8 pb-6 md:pb-8">
-                  <h3 className="text-xl md:text-[28px] leading-tight md:leading-[40px] font-bold text-[#0B0B0B] mb-2 md:mb-3">
+                  <h3 className="text-xl md:text-[28px] leading-tight md:leading-[40px] font-bold text-[#0B0B0B] mb-2 md:mb-3" style={{ fontFamily: "var(--font-sfpro)" }}>
                     {exp.title}
                   </h3>
                   <p className="text-[#393939] text-base md:text-[20px] leading-relaxed md:leading-[32px]">

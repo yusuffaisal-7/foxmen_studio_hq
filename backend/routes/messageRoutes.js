@@ -6,12 +6,16 @@ const prisma = new PrismaClient();
 
 // Submit a message (Public)
 router.post('/', async (req, res) => {
-    const { name, email, subject, message } = req.body;
+    const { name, email, phone, company, projectType, country, subject, message } = req.body;
     try {
         const newMessage = await prisma.message.create({
             data: {
                 name,
                 email,
+                phone,
+                company,
+                projectType,
+                country,
                 subject,
                 message
             }

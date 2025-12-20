@@ -68,7 +68,7 @@ export function FeaturedProjectsSection() {
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <div className="space-y-4">
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ fontFamily: "var(--font-sfpro)" }}>
                             Featured <span className="bg-[#FF90E8] px-2 italic border-2 border-black rounded-lg transform -rotate-2 inline-block">projects</span>
                         </h2>
                         <p className="text-xl text-[#393939] max-w-2xl">
@@ -159,7 +159,7 @@ function FeaturedProjectCard({ project }: { project: any }) {
                             {project.tag}
                         </span>
                         <div className="w-1 h-1 rounded-full bg-black"></div>
-                        <h3 className="text-sm md:text-xl font-bold leading-tight text-[#0B0B0B]">
+                        <h3 className="text-sm md:text-xl font-bold leading-tight text-[#0B0B0B]" style={{ fontFamily: "var(--font-sfpro)" }}>
                             {project.title}
                         </h3>
                     </div>

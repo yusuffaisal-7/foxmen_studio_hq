@@ -9,7 +9,7 @@ export function ArticlesSection() {
     <section className="container mx-auto px-4 py-16 md:py-24">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Articles & News</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ fontFamily: "var(--font-sfpro)" }}>Articles & News</h2>
           <Button
             asChild
             variant="outline"
@@ -37,7 +37,7 @@ export function ArticlesSection() {
               />
             </div>
             <div className="p-6 md:p-8">
-              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">
+              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6" style={{ fontFamily: "var(--font-sfpro)" }}>
                 What is the right design tool to choose in 2023?
               </h3>
               <div className="flex items-center gap-3 md:gap-4">
@@ -77,7 +77,7 @@ export function ArticlesSection() {
                 </div>
                 {/* Content area */}
                 <div className="p-6 md:p-10 flex flex-col justify-center">
-                  <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4">
+                  <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>
                     Font sizes in UI design: The complete guide to follow
                   </h3>
                   <p className="text-gray-600 text-sm md:text-lg leading-relaxed">
@@ -104,7 +104,7 @@ export function ArticlesSection() {
                 </div>
                 {/* Content area */}
                 <div className="p-6 md:p-10 flex flex-col justify-center">
-                  <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4">
+                  <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>
                     6 practical exercises to learn become a pro UI/UX designer
                   </h3>
                   <p className="text-gray-600 text-sm md:text-lg leading-relaxed">

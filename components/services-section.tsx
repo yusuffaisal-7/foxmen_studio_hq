@@ -9,19 +9,19 @@ export function ServicesSection() {
   const services = [
     {
       title: "Website Development",
-      description: "Lacus adipiscing lectus convallis purus aliquet cursus magnaol dolori montes augue donec cras.",
+      description: "Custom, high-performance websites built with modern technologies to capture your brand's essence and convert visitors.",
       image: "/images/web-design.svg",
       video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1765989198/ef3c79c3a83dd64ca8a9ee6aa8cc5bab_gk2t5n.mov"
     },
     {
       title: "UI/UX design",
-      description: "Arcu venenatis sit nullam pellentesq varius urna non sed aliquam colemir imperdiet amet imperdiet.",
+      description: "User-centric design that blends aesthetics with functionality, creating intuitive and engaging digital experiences.",
       image: "/images/ui-ux-design.svg",
       video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1765984569/Cinematic_screen_recording_1080p_20251217202_uwdlly.mov"
     },
     {
       title: "Mobile app development",
-      description: "Arcu venenatis sit nullam pellentesq varius urna non sed aliquam colemir imperdiet amet imperdiet.",
+      description: "Scalable, native and cross-platform mobile applications engineered for seamless performance and user retention.",
       image: "/images/product-design.svg",
       video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1765987892/A_darkthemed_code_1080p_202512172206_s6n6n1.mov"
     },
@@ -38,16 +38,18 @@ export function ServicesSection() {
   ]
 
   return (
-    <section className="bg-white py-16 md:py-24">
-      <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto">
+    <section className="bg-white py-16 md:py-24" style={{
+      backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.15) 1px, transparent 1px)",
+      backgroundSize: "40px 40px"
+    }}>
+      <div className="w-full px-4 md:px-8 lg:px-16">
+        <div className="max-w-full mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-4xl md:text-[52px] md:leading-[60px] font-bold mb-4">
+            <h2 className="text-4xl md:text-[52px] md:leading-[60px] font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>
               Our broad <span className="bg-[#FF4A60] text-white px-3 py-1 inline-block">set of services</span>
             </h2>
             <p className="text-[#393939] text-base md:text-lg font-medium leading-relaxed md:leading-[30px] max-w-2xl mx-auto">
-              Lacus, adipiscing lectus convallis purus aliquet cursus magnaol montes augue donec cras turpis ultrices
-              nulla sed doler.
+              We craft bespoke web, mobile, and AI solutions that transform ambitious brands.
             </p>
           </div>
 
@@ -66,7 +68,7 @@ export function ServicesSection() {
                   className="w-[64px] h-[64px]"
                 />
               </div>
-              <h3 className="text-[28px] leading-[40px] font-bold mb-4 text-[#0B0B0B]">Get in touch</h3>
+              <h3 className="text-[28px] leading-[40px] font-bold mb-4 text-[#0B0B0B]" style={{ fontFamily: "var(--font-sfpro)" }}>Get in touch</h3>
               <p className="text-[18px] leading-[30px] font-medium text-[#393939] mb-6">
                 Looking for another service? Get in touch with us!
               </p>
@@ -116,7 +118,7 @@ function ServiceCard({ service }: { service: any }) {
         )}
       </div>
       <div className="p-5 flex flex-col">
-        <h3 className="text-2xl font-bold mb-2 text-[#0B0B0B]">{service.title}</h3>
+        <h3 className="text-2xl font-bold mb-2 text-[#0B0B0B]" style={{ fontFamily: "var(--font-sfpro)" }}>{service.title}</h3>
         <p className="text-sm leading-relaxed font-medium text-[#393939]">{service.description}</p>
       </div>
     </div>

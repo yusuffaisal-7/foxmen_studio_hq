@@ -81,6 +81,10 @@ model Message {
   id        String   @id @default(uuid())
   name      String
   email     String
+  phone     String?
+  company   String?
+  projectType String?
+  country   String?
   subject   String?
   message   String
   createdAt DateTime @default(now())

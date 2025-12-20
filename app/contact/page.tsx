@@ -2,8 +2,7 @@ import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import {
     ContactHero,
-    ContactOptions,
-    InquiryForm,
+    ContactSplitSection,
     ContactFAQ,
     StartProcess,
     QuickActions,
@@ -24,10 +23,7 @@ export default function ContactPage() {
             <Navigation />
             <main>
                 <ContactHero />
-                <ContactOptions />
-                <div id="form">
-                    <InquiryForm />
-                </div>
+                <ContactSplitSection />
                 <ContactFAQ />
                 <StartProcess />
                 <QuickActions />
