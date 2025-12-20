@@ -67,6 +67,15 @@ export function HeroSection() {
       <LocalTime />
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative">
         <div className="space-y-6 relative z-10">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff6b7a] opacity-75 duration-1000"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-[#ff6b7a] shadow-[0_0_8px_2px_rgba(255,107,122,0.5)]"></span>
+            </span>
+            <span className="font-mono text-sm md:text-base font-medium text-[#393939]">
+              Available for new projects
+            </span>
+          </div>
           <h1
             className="text-[44px] leading-[52px] md:text-[76px] font-bold md:leading-[88px]"
             style={{ fontFamily: "var(--font-sfpro)" }}
