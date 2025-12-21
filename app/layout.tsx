@@ -91,6 +91,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://foxmen.studio",
   },
+  icons: {
+    icon: "https://res.cloudinary.com/duh7c5x99/image/upload/v1766298303/logo_33_eve7gs.svg",
+  },
 }
 
 const jsonLd = {

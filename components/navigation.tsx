@@ -15,7 +15,7 @@ export function Navigation() {
     <div className="container mx-auto px-4 pt-8 pb-4 relative z-50">
       <nav className="flex items-center justify-between bg-white border-4 border-black rounded-xl px-5 py-3 max-w-5xl mx-auto shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
         <Link href="/" className="h-10 w-auto flex items-center justify-center flex-shrink-0 cursor-pointer">
-          <img src="https://res.cloudinary.com/duh7c5x99/image/upload/v1766298303/logo_33_eve7gs.svg" alt="Foxmen Studio Logo" className="h-full w-auto object-contain rounded-lg" />
+          <img src="https://res.cloudinary.com/duh7c5x99/image/upload/v1766298303/logo_33_eve7gs.svg" alt="Foxmen Studio Logo" className="h-full w-auto object-contain rounded-[1px]" />
         </Link>
 
         {/* Desktop Navigation */}
