@@ -107,9 +107,12 @@ function ServiceRow({ service, index }: { service: any, index: number }) {
                             {service.description.split('.').slice(1).join('.')}
                         </p>
 
-                        <Button className="h-14 px-8 rounded-full bg-black text-white hover:bg-[#FF4A60] hover:text-white transition-colors text-lg font-medium group-hover:px-10 transition-all duration-300">
-                            Start Project <ArrowRight className="ml-2 w-5 h-5" />
-                        </Button>
+                        <button className="group/btn relative flex items-center justify-between bg-[#1C1C1C] text-white rounded-full p-2 pl-8 pr-2 w-full max-w-[280px] hover:scale-[1.02] transition-transform duration-300">
+                            <span className="text-lg font-medium">Start Project</span>
+                            <div className="bg-white rounded-full p-4 text-black group-hover/btn:rotate-[-45deg] transition-transform duration-300">
+                                <ArrowRight className="w-6 h-6" />
+                            </div>
+                        </button>
                     </div>
                 </div>
 

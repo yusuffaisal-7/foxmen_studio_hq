@@ -6,9 +6,9 @@ import Image from "next/image"
 
 export function AboutHero() {
     return (
-        <section className="py-24 md:py-32 bg-[#FFFBF5] text-center px-4 border-b-4 border-black">
+        <section className="py-24 md:py-32 bg-[#FFFBF5] text-center px-4">
             <div className="max-w-4xl mx-auto">
-                <h1 className="text-5xl md:text-7xl font-bold mb-6">Who We Are</h1>
+                <h1 className="text-5xl md:text-7xl font-bold mb-6" style={{ fontFamily: "var(--font-sfpro)" }}>Who We Are</h1>
                 <p className="text-xl md:text-3xl text-gray-600 font-medium leading-relaxed">
                     A studio built to design, engineer, and elevate digital experiences.
                 </p>
@@ -19,10 +19,10 @@ export function AboutHero() {
 
 export function AboutStory() {
     return (
-        <section className="py-20 px-4 bg-white border-b-4 border-black">
+        <section className="py-20 px-4 bg-white">
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8">Our Story</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-8" style={{ fontFamily: "var(--font-sfpro)" }}>Our Story</h2>
                     <div className="space-y-6 text-lg md:text-xl text-gray-700 font-medium leading-relaxed">
                         <p>
                             Foxmen Studio started with a simple belief: that digital products should not only function perfectly but feel alive. We noticed a gap between rigid engineering and fluid design, so we set out to bridge it.
@@ -46,20 +46,20 @@ export function AboutStory() {
 
 export function AboutMission() {
     return (
-        <section className="py-20 px-4 bg-[#FFFBF5] border-b-4 border-black">
+        <section className="py-20 px-4 bg-[#FFFBF5]">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold">What We Believe</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold" style={{ fontFamily: "var(--font-sfpro)" }}>What We Believe</h2>
                 </div>
                 <div className="grid md:grid-cols-2 gap-8">
                     <div className="bg-[#FFC224] p-10 rounded-[32px] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                        <h3 className="text-3xl font-bold mb-4">Our Mission</h3>
+                        <h3 className="text-3xl font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>Our Mission</h3>
                         <p className="text-xl font-bold leading-relaxed">
                             To empower businesses by creating digital tools that are intuitive, powerful, and delightfully simple to use.
                         </p>
                     </div>
                     <div className="bg-[#FF90E8] p-10 rounded-[32px] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                        <h3 className="text-3xl font-bold mb-4">Our Vision</h3>
+                        <h3 className="text-3xl font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>Our Vision</h3>
                         <p className="text-xl font-bold leading-relaxed">
                             A future where technology serves humanity with elegance, removing friction and sparking joy in everyday interactions.
                         </p>
@@ -80,10 +80,10 @@ export function AboutServices() {
         { title: "Digital Marketing", icon: Users, desc: "Strategic growth and brand positioning." },
     ]
     return (
-        <section className="py-20 px-4 bg-white border-b-4 border-black">
+        <section className="py-20 px-4 bg-white">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">What We Do</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>What We Do</h2>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((service, index) => (
@@ -91,7 +91,7 @@ export function AboutServices() {
                             <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-6">
                                 <service.icon className="w-6 h-6 text-white" />
                             </div>
-                            <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+                            <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: "var(--font-sfpro)" }}>{service.title}</h3>
                             <p className="text-gray-600 font-medium">{service.desc}</p>
                         </div>
                     ))}
@@ -103,10 +103,10 @@ export function AboutServices() {
 
 export function AboutApproach() {
     return (
-        <section className="py-20 px-4 bg-[#F3F4F6] border-b-4 border-black">
+        <section className="py-20 px-4 bg-[#F3F4F6]">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold">How We Work</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold" style={{ fontFamily: "var(--font-sfpro)" }}>How We Work</h2>
                 </div>
                 <div className="grid md:grid-cols-3 gap-8 text-center relative">
                     {/* Connector Line (Desktop) */}
@@ -121,7 +121,7 @@ export function AboutApproach() {
                             <div className="w-16 h-16 bg-white border-4 border-black rounded-full flex items-center justify-center text-xl font-bold mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                                 {item.step}
                             </div>
-                            <h3 className="text-3xl font-bold mb-2">{item.title}</h3>
+                            <h3 className="text-3xl font-bold mb-2" style={{ fontFamily: "var(--font-sfpro)" }}>{item.title}</h3>
                             <p className="text-xl text-gray-600 font-medium">{item.desc}</p>
                         </div>
                     ))}
@@ -134,9 +134,9 @@ export function AboutApproach() {
 export function AboutTech() {
     const techs = ["Django", "MERN", "Next.js", "Nest.js", "Python", "React", "Figma", "Framer", "AI Tools"]
     return (
-        <section className="py-20 px-4 bg-white border-b-4 border-black">
+        <section className="py-20 px-4 bg-white">
             <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-4xl md:text-5xl font-bold mb-12">Built on Modern Engineering</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-sfpro)" }}>Built on Modern Engineering</h2>
                 <div className="flex flex-wrapjustify-center gap-6 md:gap-10 justify-center">
                     {techs.map((tech, i) => (
                         <div key={i} className="bg-gray-100 px-6 py-3 rounded-xl border-2 border-transparent hover:border-black transition-colors font-bold text-lg md:text-xl text-gray-700">
@@ -151,9 +151,9 @@ export function AboutTech() {
 
 export function AboutTeam() {
     return (
-        <section className="py-20 px-4 bg-[#FFFBF5] border-b-4 border-black">
+        <section className="py-20 px-4 bg-[#FFFBF5]">
             <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-4xl md:text-5xl font-bold mb-12">The Team Behind the Work</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-sfpro)" }}>The Team Behind the Work</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
                     {[1, 2, 3, 4].map((i) => (
                         <div key={i} className="flex flex-col items-center">
@@ -163,7 +163,7 @@ export function AboutTeam() {
                                     {String.fromCharCode(64 + i)}
                                 </div>
                             </div>
-                            <h3 className="text-xl font-bold">Team Member {i}</h3>
+                            <h3 className="text-xl font-bold" style={{ fontFamily: "var(--font-sfpro)" }}>Team Member {i}</h3>
                             <p className="text-gray-500 font-medium">Role Title</p>
                         </div>
                     ))}
@@ -176,10 +176,10 @@ export function AboutTeam() {
 export function AboutValues() {
     const values = ["Integrity", "Innovation", "Precision", "Creativity", "Collaboration", "Quality Engineering"]
     return (
-        <section className="py-20 px-4 bg-white border-b-4 border-black">
+        <section className="py-20 px-4 bg-white">
             <div className="max-w-5xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold">What Drives Us</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold" style={{ fontFamily: "var(--font-sfpro)" }}>What Drives Us</h2>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     {values.map((value, i) => (
@@ -201,10 +201,10 @@ export function AboutStats() {
         { label: "Client Satisfaction", value: "99%" },
     ]
     return (
-        <section className="py-20 px-4 bg-[#111] text-white border-b-4 border-black">
+        <section className="py-20 px-4 bg-[#111] text-white">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-2">By the Numbers</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-2" style={{ fontFamily: "var(--font-sfpro)" }}>By the Numbers</h2>
                     <p className="text-gray-400">Our impact in digits</p>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -224,7 +224,7 @@ export function AboutCTA() {
     return (
         <section className="py-24 px-4 bg-[#FFFBF5]">
             <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl md:text-6xl font-bold mb-8">Ready to Build Something Meaningful?</h2>
+                <h2 className="text-4xl md:text-6xl font-bold mb-8" style={{ fontFamily: "var(--font-sfpro)" }}>Ready to Build Something Meaningful?</h2>
                 <Link href="/contact" className="inline-flex items-center justify-center bg-[#FF4A60] text-white border-4 border-black rounded-full px-12 py-6 text-xl font-bold hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1">
                     Start Your Project <ArrowRight className="ml-3 w-6 h-6" />
                 </Link>

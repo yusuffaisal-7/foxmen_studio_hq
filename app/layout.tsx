@@ -98,7 +98,7 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Foxmen Studio",
   url: "https://foxmen.studio",
-  logo: "https://foxmen.studio/icon.svg",
+  logo: "https://res.cloudinary.com/duh7c5x99/image/upload/v1766298303/logo_33_eve7gs.svg",
   image: "https://foxmen.studio/images/og-image.jpg",
   description: "Foxmen Studio is a creative design agency from New York building end-to-end premium web, mobile, UI/UX and SaaS products.",
   address: {

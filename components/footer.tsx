@@ -42,13 +42,11 @@ export function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
-                  <Image
-                    src="/images/footer-logo.jpeg"
+                <div className="h-12 w-auto flex-shrink-0">
+                  <img
+                    src="https://res.cloudinary.com/duh7c5x99/image/upload/v1766298303/logo_33_eve7gs.svg"
                     alt="Foxmen Studio Logo"
-                    width={32}
-                    height={32}
-                    className="object-cover"
+                    className="h-full w-auto object-contain"
                   />
                 </div>
                 <span className="text-lg md:text-xl font-bold">Foxmen Studio</span>
