@@ -46,7 +46,7 @@ export function Footer() {
                   <img
                     src="https://res.cloudinary.com/duh7c5x99/image/upload/v1766298303/logo_33_eve7gs.svg"
                     alt="Foxmen Studio Logo"
-                    className="h-full w-auto object-contain"
+                    className="h-full w-auto object-contain rounded-lg"
                   />
                 </div>
                 <span className="text-lg md:text-xl font-bold">Foxmen Studio</span>
