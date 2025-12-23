@@ -3,9 +3,7 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from 'react';
 import { motion, AnimatePresence, Transition, Variant } from 'framer-motion';
 
-function cn(...classes: (string | undefined | null | false)[]) {
-    return classes.filter(Boolean).join(' ');
-}
+import { cn } from "@/lib/utils";
 
 export interface RotatingTextProps {
     texts: string[];
@@ -169,7 +167,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>((props, ref)
 
     return (
         <motion.span
-            className={cn('flex flex-wrap whitespace-pre-wrap relative', mainClassName)}
+            className={cn('inline-block whitespace-pre-wrap relative', mainClassName)}
             {...rest}
             layout
             transition={transition}
@@ -178,14 +176,14 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>((props, ref)
             <AnimatePresence mode={animatePresenceMode} initial={animatePresenceInitial}>
                 <motion.span
                     key={currentTextIndex}
-                    className={cn(splitBy === 'lines' ? 'flex flex-col w-full' : 'flex flex-wrap whitespace-pre-wrap relative')}
+                    className={cn(splitBy === 'lines' ? 'block w-full' : 'inline-block whitespace-pre-wrap relative')}
                     layout
                     aria-hidden="true"
                 >
                     {elements.map((wordObj, wordIndex, array) => {
                         const previousCharsCount = array.slice(0, wordIndex).reduce((sum, word) => sum + word.characters.length, 0);
                         return (
-                            <span key={wordIndex} className={cn('inline-flex', splitLevelClassName)}>
+                            <span key={wordIndex} className={cn('inline-block', splitLevelClassName)}>
                                 {wordObj.characters.map((char, charIndex) => (
                                     <motion.span
                                         key={charIndex}

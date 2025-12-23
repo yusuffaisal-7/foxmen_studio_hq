@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 
 import "./globals.css"
 
-import { Onest, Geist_Mono as Geist_Mono_Font } from "next/font/google"
+import { Geist_Mono as Geist_Mono_Font } from "next/font/google"
 import localFont from "next/font/local"
 import TargetCursor from "@/components/target-cursor"
 
@@ -11,13 +11,6 @@ import TargetCursor from "@/components/target-cursor"
 const _geistMono = Geist_Mono_Font({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-})
-
-// Initialize Onest font with weights 500 and 700
-const onest = Onest({
-  subsets: ["latin"],
-  weight: ["500", "700"],
-  variable: "--font-onest",
 })
 
 const sfProFont = localFont({
@@ -28,6 +21,16 @@ const sfProFont = localFont({
 const sfProRegularFont = localFont({
   src: "./fonts/SFPRODISPLAYREGULAR.otf",
   variable: "--font-sfpro-regular",
+})
+
+const ownersMediumFont = localFont({
+  src: "./fonts/OwnersTRIAL-Medium-BF64361ef81f92b.otf",
+  variable: "--font-owners-medium",
+})
+
+const interSemiBoldFont = localFont({
+  src: "./fonts/Inter-SemiBold.otf",
+  variable: "--font-inter-semibold",
 })
 
 
@@ -131,7 +134,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${onest.variable} ${sfProFont.variable} ${sfProRegularFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
+      <body className={`${sfProFont.variable} ${sfProRegularFont.variable} ${ownersMediumFont.variable} ${interSemiBoldFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

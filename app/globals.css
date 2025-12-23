@@ -64,6 +64,8 @@
   --chart-3: #737373;
   --chart-4: #737373;
   --chart-5: #737373;
+  --chart-4: #737373;
+  --chart-5: #737373;
   --sidebar: #171717;
   --sidebar-foreground: #fafafa;
   --sidebar-primary: #fafafa;
@@ -75,7 +77,8 @@
 }
 
 @theme inline {
-  --font-sans: "Onest", "Onest Fallback", system-ui, sans-serif;
+  --font-sans: var(--font-sfpro-regular), "Onest", "Onest Fallback", system-ui, sans-serif;
+  --font-heading: var(--font-sfpro), "Onest", "Onest Fallback", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "JetBrains Mono Fallback", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -119,8 +122,18 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-bold;
   }
 }
 
@@ -129,6 +142,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -143,6 +157,7 @@
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -151,4 +166,23 @@
 
 .animate-slide-in-right {
   animation: slideInRight 0.3s ease-out forwards;
+}
+
+/* Character Staggered Reveal */
+@keyframes reveal-char {
+  0% {
+    opacity: 0.2;
+    color: #cecece;
+  }
+
+  100% {
+    opacity: 1;
+    color: #393939;
+    /* Match body text color */
+  }
+}
+
+.char-reveal {
+  /* No default timeline here, we will attach it in inline styles or scoped class */
+  /* If we use timeline-scope, we need unique names, so we might just use scoped styles in JS */
 }

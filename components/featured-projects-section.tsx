@@ -4,6 +4,43 @@ import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useRef } from "react"
 
+function ScrollRevealText({ text }: { text: string }) {
+    const chars = text.split("")
+    const id = "reveal-" + Math.random().toString(36).substr(2, 9)
+
+    // We want the reveal to happen as the element enters the viewport.
+    // Total range: entry 0% to cover 50% (visible).
+    // Stagger each char across this range.
+
+    return (
+        <span style={{ viewTimelineName: `--${id}`, viewTimelineAxis: 'block' } as any} className="inline-block w-full">
+            {chars.map((char, i) => {
+                const step = 40 / chars.length // spread over 40% of viewport height
+                const start = 10 + (i * step) // start at 10% entry
+                const end = start + 20 // each char takes 20% of viewport to fully fade in (smooth)
+
+                return (
+                    <span
+                        key={i}
+                        className="inline-block transition-colors duration-0"
+                        style={{
+                            color: '#cecece', // start color
+                            animationName: 'reveal-char',
+                            animationTimeline: `--${id}`,
+                            animationRangeStart: `entry ${start}%`,
+                            animationRangeEnd: `entry ${end}%`,
+                            animationFillMode: 'both',
+                            // Ensure animation logic matches the keyframes
+                        } as any}
+                    >
+                        {char === " " ? "\u00A0" : char}
+                    </span>
+                )
+            })}
+        </span>
+    )
+}
+
 export function FeaturedProjectsSection() {
     const projects = [
         {
@@ -66,20 +103,23 @@ export function FeaturedProjectsSection() {
     return (
         <section className="container mx-auto px-4 py-16 md:py-24">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                    <div className="space-y-4">
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ fontFamily: "var(--font-sfpro)" }}>
-                            Featured <span className="bg-[#FF90E8] px-2 italic border-2 border-black rounded-lg transform -rotate-2 inline-block">projects</span>
-                        </h2>
-                        <p className="text-xl text-[#393939] max-w-2xl">
-                            Highlights from our recent work in digital product design and branding.
-                        </p>
+                <div className="mb-20 text-center max-w-4xl mx-auto">
+                    {/* Header */}
+                    <h2 className="text-[clamp(2rem,6vw,4rem)] font-bold leading-tight mb-6" style={{ fontFamily: "var(--font-sfpro)" }}>
+                        Featured <span className="bg-[#6e35ff] text-white px-3 py-1 rounded-lg inline-block transform -rotate-2">projects</span>
+                    </h2>
+
+                    {/* Body - Staggered Reveal */}
+                    <div className="text-xl md:text-2xl text-[#393939] font-medium leading-relaxed mb-8 flex flex-wrap justify-center gap-[0.25em]" style={{ fontFamily: 'var(--font-sfpro-regular)' }}>
+                        <ScrollRevealText text="Highlights from our recent work in digital product design and branding." />
                     </div>
+
                     <a
                         href="#"
-                        className="hidden md:flex items-center gap-2 font-bold hover:gap-3 transition-all"
+                        className="inline-flex items-center gap-2 font-bold hover:gap-3 transition-all text-xl mt-4"
+                        style={{ fontFamily: 'var(--font-sfpro-regular)' }}
                     >
-                        View all projects <ArrowRight className="w-5 h-5" />
+                        View all projects <ArrowRight className="w-6 h-6" />
                     </a>
                 </div>
 
