@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { useEffect, useRef } from "react"
 import { HeroBookingButton } from "./hero-booking-button"
 import { ViewProjectsButton } from "@/components/view-projects-button"
-import { UserCoordinates, LocalTime } from "@/components/hero-addons"
+
 
 import { MorphingText } from "@/components/ui/liquid-text";
 
@@ -63,8 +63,7 @@ export function HeroSection() {
 
   return (
     <section className="relative w-full px-4 py-16 md:py-24">
-      <UserCoordinates />
-      <LocalTime />
+
       <div className="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-12 items-center relative">
         <div className="space-y-6 relative z-10">
           <div className="flex items-center gap-3 mb-4">
@@ -80,9 +79,17 @@ export function HeroSection() {
             className="text-[36px] leading-[44px] sm:text-[44px] sm:leading-[52px] md:text-[92px] font-bold md:leading-[104px]"
             style={{ fontFamily: "var(--font-owners-regular)" }}
           >
-            Welcome to <br className="block md:hidden" /><span className="whitespace-nowrap"><span className="bg-[#6E35FF] text-white px-3 py-1 inline-block">Foxmen Studio</span>,</span><br className="block md:hidden" /> <span className="whitespace-normal md:whitespace-nowrap bg-white/20 backdrop-blur-md border border-white/20 rounded-lg px-2">A creative agency for Building</span><br />
+            Welcome to <br className="block md:hidden" />
+            <span className="inline-block md:inline md:my-0">
+              <span className="whitespace-nowrap"><span className="bg-[#6E35FF] text-white px-3 py-1 inline-block rounded-md md:rounded-none">Foxmen Studio</span>,</span>
+            </span>
+            <br className="block md:hidden" />
+            <span className="inline-block md:inline md:mb-0">
+              <span className="whitespace-normal md:whitespace-nowrap bg-white/20 backdrop-blur-md border border-white/20 rounded-lg px-2 py-1 inline-block">A creative agency for Building</span>
+            </span>
+            <br className="max-md:hidden" />
             <MorphingText
-              className="!text-[36px] sm:!text-[44px] md:!text-[92px] !leading-[44px] sm:!leading-[52px] md:!leading-[104px] !text-left !mx-0 w-auto h-12 sm:h-16 md:h-[112px]"
+              className="!text-[42px] sm:!text-[44px] md:!text-[92px] !leading-[48px] sm:!leading-[52px] md:!leading-[104px] !text-left !mx-0 w-full md:w-auto h-24 sm:h-28 md:h-[112px]"
               texts={['Web Platforms', 'Mobile Apps', 'Global UI/UX', '3D Website', 'AI - Agents', 'Digital Marketing', 'Branding']}
             />
           </h1>

@@ -12,25 +12,25 @@ import { ContactButton } from "@/components/contact-button"
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <div className="container mx-auto px-4 pt-8 pb-4 relative z-50">
-      <nav className="flex items-center justify-between bg-white border-4 border-black rounded-xl px-5 py-3 max-w-5xl mx-auto shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-        <Link href="/" className="h-10 w-auto flex items-center justify-center flex-shrink-0 cursor-pointer">
-          <img src="https://res.cloudinary.com/duh7c5x99/image/upload/v1766298303/logo_33_eve7gs.svg" alt="Foxmen Studio Logo" className="h-full w-auto object-contain rounded-[1px]" />
+    <div className="w-full relative z-50 bg-white/80 backdrop-blur-md border-b border-black/30">
+      <nav className="flex items-center justify-between px-6 py-10 w-full max-w-[1440px] mx-auto">
+        <Link href="/" className="h-12 w-auto flex items-center justify-center flex-shrink-0 cursor-pointer">
+          <img src="https://res.cloudinary.com/duh7c5x99/image/upload/v1766298303/logo_33_eve7gs.svg" alt="Foxmen Studio Logo" className="h-full w-auto object-contain" />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
+        <div className="hidden md:flex items-center gap-10 flex-1 justify-center">
 
-          <Link href="/about" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity" style={{ fontFamily: "var(--font-sfpro-regular)" }}>
+          <Link href="/about" className="text-[18px] font-normal leading-[22px] hover:opacity-70 transition-opacity" style={{ fontFamily: "var(--font-inter-regular)" }}>
             About Us
           </Link>
-          <Link href="/services" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity" style={{ fontFamily: "var(--font-sfpro-regular)" }}>
+          <Link href="/services" className="text-[18px] font-normal leading-[22px] hover:opacity-70 transition-opacity" style={{ fontFamily: "var(--font-inter-regular)" }}>
             Services
           </Link>
-          <Link href="/projects" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity" style={{ fontFamily: "var(--font-sfpro-regular)" }}>
+          <Link href="/projects" className="text-[18px] font-normal leading-[22px] hover:opacity-70 transition-opacity" style={{ fontFamily: "var(--font-inter-regular)" }}>
             Projects
           </Link>
-          <Link href="/blog" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity" style={{ fontFamily: "var(--font-sfpro-regular)" }}>
+          <Link href="/blog" className="text-[18px] font-normal leading-[22px] hover:opacity-70 transition-opacity" style={{ fontFamily: "var(--font-inter-regular)" }}>
             Blogs
           </Link>
         </div>
@@ -43,27 +43,27 @@ export function Navigation() {
         <div className="md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <AnimatedHamburgerButton active={isOpen} onClick={() => setIsOpen(!isOpen)} />
-            <SheetContent side="right" className="w-[300px] border-l-4 border-black p-0">
+            <SheetContent side="right" className="w-[300px] border-l border-black/10 p-0">
               <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
               <div className="flex flex-col h-full pt-16 px-6 pb-8">
                 <div className="flex flex-col gap-8">
 
-                  <Link href="/about" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-sfpro-regular)" }}>
+                  <Link href="/about" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }}>
                     About Us
                   </Link>
-                  <Link href="/services" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-sfpro-regular)" }}>
+                  <Link href="/services" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }}>
                     Services
                   </Link>
-                  <Link href="/projects" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-sfpro-regular)" }}>
+                  <Link href="/projects" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }}>
                     Projects
                   </Link>
-                  <Link href="/blog" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-sfpro-regular)" }}>
+                  <Link href="/blog" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }}>
                     Blogs
                   </Link>
                 </div>
 
                 {/* Mobile Contact Option */}
-                <div className="mt-auto pt-8 border-t-4 border-black">
+                <div className="mt-auto pt-8 border-t border-black/10">
                   <ContactButton className="w-full" />
                 </div>
               </div>
@@ -71,6 +71,6 @@ export function Navigation() {
           </Sheet>
         </div>
       </nav>
-    </div >
+    </div>
   )
 }

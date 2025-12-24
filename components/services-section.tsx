@@ -58,21 +58,21 @@ export function ServicesSection() {
               <ServiceCard key={index} service={service} />
             ))}
 
-            <div className="bg-[#FFC224] border-[3px] border-black rounded-[32px] p-6 md:p-8 flex flex-col items-center justify-center text-center hover:translate-y-[-4px] transition-transform aspect-square relative shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-              <div className="mb-4">
+            <div className="bg-[#6E35FF] border-[3px] border-black rounded-[32px] p-6 md:p-8 flex flex-col items-center justify-center text-center hover:translate-y-[-4px] transition-transform aspect-square relative shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="mb-6 bg-white w-20 h-20 rounded-full flex items-center justify-center border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <Image
                   src="/images/get-in-touch.svg"
                   alt="Get in touch"
                   width={64}
                   height={64}
-                  className="w-[64px] h-[64px]"
+                  className="w-10 h-10 object-contain"
                 />
               </div>
-              <h3 className="text-[28px] leading-[40px] font-bold mb-4 text-[#0B0B0B]" style={{ fontFamily: "var(--font-sfpro)" }}>Get in touch</h3>
-              <p className="text-[18px] leading-[30px] font-medium text-[#393939] mb-6">
+              <h3 className="text-[28px] leading-[40px] font-bold mb-4 text-white" style={{ fontFamily: "var(--font-owners-medium)" }}>Get in touch</h3>
+              <p className="text-[18px] leading-[30px] font-medium text-white/90 mb-6" style={{ fontFamily: "var(--font-inter-regular)" }}>
                 Looking for another service? Get in touch with us!
               </p>
-              <Button className="bg-black text-white hover:bg-black/90 rounded-[16px] px-12 py-4 font-medium text-[18px] w-full max-w-[340px] h-[52px]">
+              <Button className="bg-black text-white hover:bg-gray-900 rounded-[16px] px-12 py-4 font-medium text-[18px] w-full max-w-[340px] h-[52px]" style={{ fontFamily: "var(--font-inter-regular)" }}>
                 <Mail className="w-5 h-5 mr-2" />
                 Get in touch
               </Button>
@@ -118,8 +118,8 @@ function ServiceCard({ service }: { service: any }) {
         )}
       </div>
       <div className="p-5 flex flex-col">
-        <h3 className="text-2xl font-bold mb-2 text-[#0B0B0B]" style={{ fontFamily: "var(--font-sfpro)" }}>{service.title}</h3>
-        <p className="text-sm leading-relaxed font-medium text-[#393939]">{service.description}</p>
+        <h3 className="text-2xl font-bold mb-2 text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-medium)" }}>{service.title}</h3>
+        <p className="text-sm leading-relaxed font-medium text-[#393939]" style={{ fontFamily: "var(--font-inter-regular)" }}>{service.description}</p>
       </div>
     </div>
   )

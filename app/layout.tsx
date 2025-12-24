@@ -29,6 +29,11 @@ const interSemiBoldFont = localFont({
   variable: "--font-inter-semibold",
 })
 
+const interRegularFont = localFont({
+  src: "./fonts/Inter-Regular.otf",
+  variable: "--font-inter-regular",
+})
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://foxmen.studio"),
@@ -104,12 +109,32 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={`${ownersMediumFont.variable} ${ownersRegularFont.variable} ${interSemiBoldFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
-        <div hidden>
-          <TargetCursor />
-        </div>
+      <body className={`${ownersMediumFont.variable} ${ownersRegularFont.variable} ${interSemiBoldFont.variable} ${interRegularFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
         <script
           type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Foxmen Studio",
+              url: "https://foxmen.studio",
+              logo: "https://foxmen.studio/logo.png",
+              sameAs: [
+                "https://twitter.com/foxmenstudio",
+                "https://linkedin.com/company/foxmenstudio",
+                "https://github.com/foxmenstudio",
+              ],
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+1-555-0123",
+                contactType: "sales",
+                areaServed: "Worldwide",
+                availableLanguage: "English",
+              },
+            }),
+          }}
+        />
+        <TargetCursor
           spinDuration={2}
           hideDefaultCursor={true}
           parallaxOn={true}

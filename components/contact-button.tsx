@@ -17,7 +17,7 @@ export function ContactButton({ className }: ContactButtonProps) {
         <Link href="/contact">
             <motion.button
                 className={cn(
-                    "group relative flex items-center justify-between overflow-hidden rounded-full bg-[#1F1F1F] p-[4px] transition-all w-auto cursor-pointer min-w-[160px] sm:min-w-[180px] h-[50px]",
+                    "group relative flex items-center justify-between overflow-hidden rounded-full bg-[#1F1F1F] p-[4px] transition-all w-auto cursor-pointer min-w-[180px] sm:min-w-[200px] h-[58px]",
                     className
                 )}
                 onHoverStart={() => setIsHovered(true)}
@@ -28,7 +28,7 @@ export function ContactButton({ className }: ContactButtonProps) {
                 <motion.span
                     layout
                     className={cn(
-                        "flex-1 text-center font-medium text-white text-base sm:text-lg px-4",
+                        "flex-1 text-center font-medium text-white text-lg sm:text-xl px-4",
                         isHovered ? "text-right" : "text-center"
                     )}
                 >
@@ -38,7 +38,7 @@ export function ContactButton({ className }: ContactButtonProps) {
                     layout
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     className={cn(
-                        "flex h-[42px] w-[42px] items-center justify-center rounded-full transition-colors duration-300 flex-shrink-0",
+                        "flex h-[50px] w-[50px] items-center justify-center rounded-full transition-colors duration-300 flex-shrink-0",
                         isHovered
                             ? "order-first border border-white bg-transparent text-white"
                             : "order-last bg-white text-black"

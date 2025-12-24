@@ -83,7 +83,7 @@ function ServiceRow({ service, index }: { service: any, index: number }) {
                 <div>
                     <h2
                         className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#0B0B0B] mb-8 md:mb-10 tracking-tight"
-                        style={{ fontFamily: "var(--font-sfpro)" }}
+                        style={{ fontFamily: "var(--font-owners-medium)" }}
                     >
                         {service.title}
                     </h2>
@@ -93,6 +93,7 @@ function ServiceRow({ service, index }: { service: any, index: number }) {
                             <span
                                 key={i}
                                 className="px-4 py-2 rounded-full border border-gray-200 text-xs md:text-sm font-bold uppercase tracking-wide text-gray-600 hover:border-black hover:text-black transition-colors cursor-default"
+                                style={{ fontFamily: "var(--font-inter-regular)" }}
                             >
                                 {tag}
                             </span>
@@ -100,15 +101,15 @@ function ServiceRow({ service, index }: { service: any, index: number }) {
                     </div>
 
                     <div className="space-y-6 md:space-y-8 max-w-2xl">
-                        <h3 className="text-2xl md:text-4xl font-medium leading-tight text-[#0B0B0B]" style={{ fontFamily: "var(--font-sfpro-regular)" }}>
+                        <h3 className="text-2xl md:text-4xl font-medium leading-tight text-[#0B0B0B]" style={{ fontFamily: "var(--font-inter-regular)" }}>
                             {service.description.split('.')[0]}.
                         </h3>
-                        <p className="text-gray-500 text-lg md:text-xl leading-relaxed">
+                        <p className="text-gray-500 text-lg md:text-xl leading-relaxed" style={{ fontFamily: "var(--font-inter-regular)" }}>
                             {service.description.split('.').slice(1).join('.')}
                         </p>
 
                         <button className="group/btn relative flex items-center justify-between bg-[#1C1C1C] text-white rounded-full p-2 pl-8 pr-2 w-full max-w-[280px] hover:scale-[1.02] transition-transform duration-300">
-                            <span className="text-lg font-medium">Start Project</span>
+                            <span className="text-lg font-medium" style={{ fontFamily: "var(--font-inter-regular)" }}>Start Project</span>
                             <div className="bg-white rounded-full p-4 text-black group-hover/btn:rotate-[-45deg] transition-transform duration-300">
                                 <ArrowRight className="w-6 h-6" />
                             </div>

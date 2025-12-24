@@ -110,7 +110,7 @@ export function FeaturedProjectsSection() {
                     </h2>
 
                     {/* Body - Staggered Reveal */}
-                    <div className="text-xl md:text-2xl text-[#393939] font-medium leading-relaxed mb-8 flex flex-wrap justify-center gap-[0.25em]" style={{ fontFamily: 'var(--font-sfpro-regular)' }}>
+                    <div className="text-xl md:text-2xl text-[#393939] font-medium leading-relaxed mb-8 flex flex-wrap justify-center gap-[0.25em]" style={{ fontFamily: 'var(--font-inter-regular)' }}>
                         <ScrollRevealText text="Highlights from our recent work in digital product design and branding." />
                     </div>
 
@@ -160,7 +160,7 @@ function FeaturedProjectCard({ project }: { project: any }) {
                     <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#27C93F] border-[1.5px] border-black" />
                 </div>
                 <div className="flex-1 bg-[#F3F4F6] border-[1.5px] border-black rounded-full h-7 md:h-8 flex items-center px-3 md:px-4 min-w-0">
-                    <span className="text-[10px] md:text-xs font-mono text-gray-500 truncate w-full">
+                    <span className="text-[10px] md:text-xs font-mono text-gray-500 truncate w-full" style={{ fontFamily: "var(--font-inter-regular)" }}>
                         {project.displayUrl || `https://${project.title.toLowerCase().replace(/ /g, '-')}.com`}
                     </span>
                 </div>
@@ -195,16 +195,16 @@ function FeaturedProjectCard({ project }: { project: any }) {
                 {/* Floating Content Card */}
                 <div className="absolute bottom-3 right-3 w-[60%] md:w-[480px] md:left-6 md:right-auto md:bottom-6 bg-white/60 backdrop-blur-md border-[3px] border-black rounded-xl md:rounded-2xl p-3 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all">
                     <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-2 md:mb-4">
-                        <span className="inline-block bg-[#F3F4F6] border border-black text-black text-[9px] md:text-[10px] font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-wider">
+                        <span className="inline-block bg-[#F3F4F6] border border-black text-black text-[9px] md:text-[10px] font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-wider" style={{ fontFamily: "var(--font-inter-regular)" }}>
                             {project.tag}
                         </span>
                         <div className="w-1 h-1 rounded-full bg-black"></div>
-                        <h3 className="text-sm md:text-xl font-bold leading-tight text-[#0B0B0B]" style={{ fontFamily: "var(--font-sfpro)" }}>
+                        <h3 className="text-sm md:text-xl font-bold leading-tight text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-regular)" }}>
                             {project.title}
                         </h3>
                     </div>
 
-                    <p className="text-[10px] md:text-base text-[#393939] mb-0 md:mb-6 leading-relaxed font-medium line-clamp-2">
+                    <p className="text-[10px] md:text-base text-[#393939] mb-0 md:mb-6 leading-relaxed font-medium line-clamp-2" style={{ fontFamily: "var(--font-inter-regular)" }}>
                         {project.description}
                     </p>
                 </div>
