@@ -78,7 +78,7 @@ export function HeroSection() {
           </div>
           <h1
             className="text-[36px] leading-[44px] sm:text-[44px] sm:leading-[52px] md:text-[92px] font-bold md:leading-[104px]"
-            style={{ fontFamily: "var(--font-inter-semibold)" }}
+            style={{ fontFamily: "var(--font-owners-regular)" }}
           >
             Welcome to <br className="block md:hidden" /><span className="whitespace-nowrap"><span className="bg-[#6E35FF] text-white px-3 py-1 inline-block">Foxmen Studio</span>,</span><br className="block md:hidden" /> <span className="whitespace-normal md:whitespace-nowrap bg-white/20 backdrop-blur-md border border-white/20 rounded-lg px-2">A creative agency for Building</span><br />
             <MorphingText

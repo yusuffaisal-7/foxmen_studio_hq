@@ -13,19 +13,15 @@ const _geistMono = Geist_Mono_Font({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 })
 
-const sfProFont = localFont({
-  src: "./fonts/SFPRODISPLAYBOLD.otf",
-  variable: "--font-sfpro",
-})
 
-const sfProRegularFont = localFont({
-  src: "./fonts/SFPRODISPLAYREGULAR.otf",
-  variable: "--font-sfpro-regular",
-})
 
 const ownersMediumFont = localFont({
   src: "./fonts/OwnersTRIAL-Medium-BF64361ef81f92b.otf",
   variable: "--font-owners-medium",
+})
+const ownersRegularFont = localFont({
+  src: "./fonts/OwnersTRIAL-Regular-BF64361ef86ac54.otf",
+  variable: "--font-owners-regular",
 })
 
 const interSemiBoldFont = localFont({
@@ -41,44 +37,43 @@ export const metadata: Metadata = {
     template: "%s | Foxmen Studio",
   },
   description:
-    "FOXMEN Studio builds end-to-end premium web, mobile, UI/UX and SaaS products. From strategy and design to development, launch and growth.",
+    "We are a full-service creative agency specializing in custom web development, mobile apps, UI/UX design, and scalable SaaS solutions. We build digital products that drive growth.",
   keywords: [
-    "Foxmen Studio",
-    "Web Design",
-    "UI/UX",
-    "SaaS",
+    "Web Development",
     "Mobile App Development",
-    "Branding",
-    "foxmen.studio",
-    "Premium Web Development",
-    "End-to-End Product Development",
+    "UI/UX Design",
+    "SaaS Development",
+    "Next.js",
+    "Tailwind CSS",
+    "React Native",
+    "Foxmen Studio",
   ],
-  authors: [{ name: "Foxmen Studio", url: "https://foxmen.studio" }],
+  authors: [{ name: "Foxmen Studio" }],
   creator: "Foxmen Studio",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://foxmen.studio",
-    title: "Foxmen Studio | Building End-to-End Premium Web, Mobile, UI/UX & SaaS Experiences",
+    title: "Foxmen Studio | Premium Digital Product Development",
     description:
-      "FOXMEN Studio builds end-to-end premium web, mobile, UI/UX and SaaS products. From strategy and design to development, launch and growth.",
+      "From idea to launch, we build high-performance websites and mobile apps. Expert developers & designers for your next big project.",
     siteName: "Foxmen Studio",
     images: [
       {
-        url: "/images/og-image.jpg", // We need to ensure this exists or use a placeholder
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Foxmen Studio - Premium Digital Products",
+        alt: "Foxmen Studio - Building the Future of Digital",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Foxmen Studio | Building End-to-End Premium Web, Mobile, UI/UX & SaaS Experiences",
+    title: "Foxmen Studio | Premium Digital Product Development",
     description:
-      "FOXMEN Studio builds end-to-end premium web, mobile, UI/UX and SaaS products. From strategy and design to development, launch and growth.",
-    images: ["/images/og-image.jpg"],
-    creator: "@foxmenstudio", // Assuming handle
+      "Expert web & mobile app development. We turn complex ideas into elegant digital solutions.",
+    images: ["/og-image.png"],
+    creator: "@foxmenstudio",
   },
   robots: {
     index: true,
@@ -95,35 +90,7 @@ export const metadata: Metadata = {
     canonical: "https://foxmen.studio",
   },
   icons: {
-    icon: "https://res.cloudinary.com/duh7c5x99/image/upload/v1766298303/logo_33_eve7gs.svg",
-  },
-}
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Foxmen Studio",
-  url: "https://foxmen.studio",
-  logo: "https://res.cloudinary.com/duh7c5x99/image/upload/v1766298303/logo_33_eve7gs.svg",
-  image: "https://foxmen.studio/images/og-image.jpg",
-  description: "Foxmen Studio is a creative design agency from New York building end-to-end premium web, mobile, UI/UX and SaaS products.",
-  address: {
-    "@type": "PostalAddress",
-    "addressLocality": "New York",
-    "addressRegion": "NY",
-    "addressCountry": "All"
-  },
-  areaServed: "Worldwide",
-  priceRange: "$$",
-  sameAs: [
-    "https://twitter.com/foxmenstudio",
-    "https://www.linkedin.com/company/foxmenstudio",
-    "https://www.instagram.com/foxmenstudio",
-  ],
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+880-1753973892",
-    contactType: "customer service",
+    icon: "/favicon.ico",
   },
 }
 
@@ -133,13 +100,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${sfProFont.variable} ${sfProRegularFont.variable} ${ownersMediumFont.variable} ${interSemiBoldFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <body className={`${ownersMediumFont.variable} ${ownersRegularFont.variable} ${interSemiBoldFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
+        <div hidden>
+          <TargetCursor />
+        </div>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <TargetCursor
           spinDuration={2}
           hideDefaultCursor={true}
           parallaxOn={true}
