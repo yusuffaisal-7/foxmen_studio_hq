@@ -22,6 +22,9 @@ const useMorphingText = (texts: string[]) => {
             const [current1, current2] = [text1Ref.current, text2Ref.current];
             if (!current1 || !current2 || !texts || texts.length === 0) return;
 
+            // Apply hardware acceleration hints dynamically or via class
+            // We set them in the Ref initialization or CSS usually, but setting properties here ensures they are updated
+
             current2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
             current2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
 
@@ -34,6 +37,16 @@ const useMorphingText = (texts: string[]) => {
         },
         [texts],
     );
+
+    // Initial setup to ensure hardware acceleration
+    useEffect(() => {
+        [text1Ref.current, text2Ref.current].forEach(el => {
+            if (el) {
+                el.style.willChange = "filter, opacity";
+                el.style.transform = "translate3d(0,0,0)";
+            }
+        });
+    }, []);
 
     const doMorph = useCallback(() => {
         morphRef.current -= cooldownRef.current;
