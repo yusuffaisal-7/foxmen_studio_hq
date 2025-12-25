@@ -24,6 +24,9 @@ export default function BlogPage() {
             <Navigation />
             <main>
                 <BlogHero />
+                {/* SearchFilter and FeaturedArticle removed for new layout */}
+                {/* <SearchFilter /> */}
+                {/* <FeaturedArticle /> */}
                 <ArticleGrid />
                 <Pagination />
                 <EmailSubscribe />

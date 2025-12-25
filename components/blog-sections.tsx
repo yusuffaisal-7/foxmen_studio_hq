@@ -9,22 +9,16 @@ import { Input } from "@/components/ui/input"
 
 export function BlogHero() {
     return (
-        <section className="py-16 md:py-24 bg-[#F8F8F8] px-4 md:px-8">
-            <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
-                {/* Left Label */}
+        <section className="py-16 md:py-24 bg-[#f8f8f8] px-4 md:px-8">
+            <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start gap-8 md:gap-16">
                 <div className="flex items-center gap-3">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#B256FF]"></div>
-                    <span className="text-gray-500 font-medium text-lg" style={{ fontFamily: "var(--font-inter-regular)" }}>{"{01} — Our Blogs"}</span>
+                    <div className="w-3 h-3 rounded-full bg-[#6E35FF]"></div>
+                    <span className="text-gray-500 font-medium text-lg md:text-xl" style={{ fontFamily: "var(--font-inter-regular)" }}>&#123;01&#125; — Our Blogs</span>
                 </div>
 
-                {/* Right Description */}
-                <div className="max-w-2xl text-right md:text-left">
-                    {/* Note: In the image it's right aligned relative to container, but text align is left? 
-                         Actually looking at image, text is on the right side of screen, left aligned. */}
-                    <p className="text-xl md:text-2xl text-[#333333] font-normal leading-relaxed" style={{ fontFamily: "var(--font-inter-regular)" }}>
-                        We are a digital agency creating responsive 3D websites, engaging 3D animations, and impactful branding, combined with results-driven digital marketing; helping businesses grow online at a price that fits your budget.
-                    </p>
-                </div>
+                <p className="text-lg md:text-2xl lg:text-3xl text-[#333333] font-medium leading-relaxed max-w-3xl" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                    We share our thoughts on technology, AI, development, and digital experiences, helping you stay ahead in the digital world.
+                </p>
             </div>
         </section>
     )
@@ -75,59 +69,51 @@ export function ArticleGrid() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://paperfolio-backend.vercel.app/api'}/posts`);
-                const data = await res.json();
-
-                // Static Featured Article to match the design reference top-heavy layout
-                const featured = {
-                    _id: "featured-1",
-                    slug: "post-1",
-                    title: "What is a 3D website? Simple Guide",
-                    content: "What is a 3D website? Learn how 3D websites work, why they convert, and tools to build them.",
-                    date: new Date().toISOString(),
-                    coverImage: "https://res.cloudinary.com/duh7c5x99/image/upload/v1766675000/gradient-bg_c5yqjg.jpg",
-                    tags: ["Methods"],
-                    isFeatured: true
-                };
-
-                // If data is array, prepend. If not, just use featured.
-                const allArticles = Array.isArray(data) ? [featured, ...data] : [featured];
-                setArticles(allArticles);
-                setLoading(false);
-            } catch (err) {
-                console.error(err);
-                setLoading(false);
-            }
-        }
-        fetchPosts();
+        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://paperfolio-backend.vercel.app/api'}/posts`)
+            .then(res => res.json())
+            .then(data => {
+                setArticles(data)
+                setLoading(false)
+            })
+            .catch(err => {
+                console.error(err)
+                setLoading(false)
+            })
     }, [])
 
     if (loading) return <div className="py-20 text-center" style={{ fontFamily: "var(--font-inter-regular)" }}>Loading Articles...</div>
 
     return (
-        <section className="py-12 md:py-20 px-4 md:px-8 bg-[#f8f8f8]">
+        <section className="pb-12 md:pb-20 px-4 md:px-8 bg-[#f8f8f8]">
             <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {articles.map((art, i) => {
                     const isFeatured = i === 0;
 
                     if (isFeatured) {
                         return (
-                            <Link href={`/blog/${art.slug}`} key={art._id} className="block group col-span-1 md:col-span-2 row-span-1 md:row-span-1 h-full min-h-[400px]">
-                                <div className="relative h-full rounded-[32px] overflow-hidden p-8 flex flex-col justify-end bg-gradient-to-br from-[#E0AAFF] to-[#D0D0FF] shadow-sm hover:shadow-lg transition-all duration-300 group-hover:scale-[1.005]">
-                                    {/* Overlay for text readability if image exists, though we use gradient bg here */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                            <Link href={`/blog/${art.slug}`} key={art._id} className="block group md:col-span-2 row-span-1 h-full">
+                                <div className="bg-[#6E35FF] text-white rounded-2xl w-full relative overflow-hidden transition-all duration-300 hover:shadow-xl aspect-video">
+                                    {/* Background Image */}
+                                    {art.coverImage && <Image src={art.coverImage} alt={art.title} fill className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 mix-blend-multiply" />}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
-                                    <div className="relative z-10 text-white">
-                                        <div className="text-sm font-medium mb-3 opacity-90" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                                    {/* Top Row: Date & Arrow */}
+                                    <div className="absolute top-6 left-6 right-6 flex justify-between items-start z-20">
+                                        <span className="text-white/90 text-sm font-medium uppercase tracking-wide bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full" style={{ fontFamily: "var(--font-inter-regular)" }}>
                                             {new Date(art.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                        </span>
+                                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:bg-white text-white group-hover:text-black transition-all">
+                                            <ArrowRight className="w-5 h-5" />
                                         </div>
-                                        <h3 className="text-3xl md:text-5xl font-bold mb-4 leading-tight" style={{ fontFamily: "var(--font-owners-regular)" }}>
+                                    </div>
+
+                                    {/* Bottom Content */}
+                                    <div className="absolute inset-x-0 bottom-0 p-6 md:p-10 flex flex-col justify-end z-10">
+                                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.1] mb-3 max-w-2xl drop-shadow-lg" style={{ fontFamily: "var(--font-owners-regular)" }}>
                                             {art.title}
                                         </h3>
-                                        <p className="text-white/95 text-base md:text-lg leading-relaxed max-w-xl line-clamp-3" style={{ fontFamily: "var(--font-inter-regular)" }}>
-                                            {art.content}
+                                        <p className="text-white/90 text-sm md:text-base line-clamp-2 max-w-xl font-medium drop-shadow-md" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                                            {art.content ? art.content.replace(/<[^>]*>?/gm, '').substring(0, 120) + "..." : "Explore the latest insights."}
                                         </p>
                                     </div>
                                 </div>
@@ -137,35 +123,35 @@ export function ArticleGrid() {
 
                     return (
                         <Link href={`/blog/${art.slug}`} key={art._id} className="block group">
-                            <div className="bg-white rounded-[32px] p-5 h-full min-h-[320px] border border-transparent hover:border-black/5 hover:shadow-lg transition-all duration-300 flex flex-col">
+                            <div className="bg-white rounded-2xl p-5 h-full border border-transparent hover:border-black/5 hover:shadow-lg transition-all duration-300 flex flex-col">
 
                                 {/* Top Row: Image & Plus Icon */}
                                 <div className="flex justify-between items-start mb-8">
-                                    <div className="w-20 h-20 md:w-24 md:h-24 relative rounded-[20px] overflow-hidden shadow-sm bg-gray-100">
+                                    <div className="w-full aspect-video relative rounded-xl overflow-hidden shadow-sm bg-gray-100">
                                         {art.coverImage && <Image src={art.coverImage} alt={art.title} fill className="object-cover" />}
                                     </div>
-                                    <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#6E35FF] transition-colors">
-                                        <Plus className="w-5 h-5" />
+                                    <div className="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#6E35FF] transition-colors ml-4 shrink-0">
+                                        <Plus className="w-4 h-4" />
                                     </div>
                                 </div>
 
                                 {/* Date */}
-                                <div className="mb-3 text-gray-400 text-xs font-medium" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                                <div className="mb-2 text-gray-400 text-xs font-medium" style={{ fontFamily: "var(--font-inter-regular)" }}>
                                     {new Date(art.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                 </div>
 
                                 {/* Title */}
-                                <h3 className="text-xl md:text-2xl font-bold mb-3 leading-[1.1] text-black group-hover:text-[#6E35FF] transition-colors" style={{ fontFamily: "var(--font-owners-regular)" }}>
+                                <h3 className="text-lg md:text-xl font-bold mb-2 leading-[1.2] text-black group-hover:text-[#6E35FF] transition-colors" style={{ fontFamily: "var(--font-owners-regular)" }}>
                                     {art.title}
                                 </h3>
 
                                 {/* Description */}
-                                <p className="text-[#666666] text-sm leading-relaxed line-clamp-3" style={{ fontFamily: "var(--font-inter-regular)" }}>
-                                    {art.content ? art.content.replace(/<[^>]*>?/gm, '').substring(0, 150) + "..." : "Explore the latest insights and trends in design and technology."}
+                                <p className="text-[#666666] text-xs md:text-sm leading-relaxed line-clamp-3 mt-auto" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                                    {art.content ? art.content.replace(/<[^>]*>?/gm, '').substring(0, 100) + "..." : "Explore the latest insights and trends."}
                                 </p>
                             </div>
                         </Link>
-                    )
+                    );
                 })}
             </div>
         </section>
@@ -222,7 +208,7 @@ export function RecommendedReads() {
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-6">
                     {[1, 2, 3, 4].map((i) => (
                         <div key={i} className="group cursor-pointer">
-                            <div className="aspect-[4/3] bg-gray-100 rounded-[24px] mb-4 border-2 border-black/10 group-hover:border-black transition-colors"></div>
+                            <div className="aspect-video bg-gray-100 rounded-[24px] mb-4 border-2 border-black/10 group-hover:border-black transition-colors"></div>
                             <h4 className="font-bold text-lg md:text-xl leading-tight group-hover:underline decoration-2" style={{ fontFamily: "var(--font-owners-regular)" }}>Understanding Headless CMS Architecture</h4>
                         </div>
                     ))}
