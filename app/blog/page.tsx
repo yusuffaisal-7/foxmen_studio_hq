@@ -24,8 +24,6 @@ export default function BlogPage() {
             <Navigation />
             <main>
                 <BlogHero />
-                <SearchFilter />
-                <FeaturedArticle />
                 <ArticleGrid />
                 <Pagination />
                 <EmailSubscribe />
