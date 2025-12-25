@@ -106,12 +106,13 @@ export function HeroSection() {
           <div className="relative w-full max-w-lg aspect-square overflow-hidden scale-100 md:scale-110 origin-center md:origin-right z-0">
             <video
               ref={videoRef}
-              src="https://res.cloudinary.com/duh7c5x99/video/upload/v1765859617/At_last_of_202512161032_xotbcd.mov"
+              src="https://res.cloudinary.com/duh7c5x99/video/upload/f_auto,q_auto/v1765859617/At_last_of_202512161032_xotbcd.mp4"
+              poster="https://res.cloudinary.com/duh7c5x99/video/upload/so_0,f_jpg,q_auto/v1765859617/At_last_of_202512161032_xotbcd.jpg"
               autoPlay
               loop
               muted
               playsInline={true}
-              preload="auto"
+              preload="metadata"
               className="w-full h-full object-cover mix-blend-multiply"
             />
           </div>
