@@ -2,11 +2,12 @@
 
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useId } from "react"
 
 function ScrollRevealText({ text }: { text: string }) {
     const chars = text.split("")
-    const id = "reveal-" + Math.random().toString(36).substr(2, 9)
+    const rawId = useId()
+    const id = "reveal-" + rawId.replace(/:/g, "")
 
     // We want the reveal to happen as the element enters the viewport.
     // Total range: entry 0% to cover 50% (visible).

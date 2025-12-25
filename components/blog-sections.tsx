@@ -9,10 +9,10 @@ import { Input } from "@/components/ui/input"
 
 export function BlogHero() {
     return (
-        <section className="py-16 md:py-32 bg-[#FFFBF5] text-center px-4 md:px-8 border-b-4 border-black">
+        <section className="py-16 md:py-32 bg-[#FFFBF5] text-center px-4 md:px-8">
             <div className="max-w-[1600px] mx-auto">
-                <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8">Insights & Ideas</h1>
-                <p className="text-lg md:text-2xl lg:text-3xl text-gray-600 font-medium leading-relaxed max-w-4xl mx-auto">
+                <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8" style={{ fontFamily: "var(--font-inter-light)" }}>Insights & Ideas</h1>
+                <p className="text-lg md:text-2xl lg:text-3xl text-gray-600 font-medium leading-relaxed max-w-4xl mx-auto" style={{ fontFamily: "var(--font-inter-thin)" }}>
                     Thoughts on technology, AI, development, and digital experiences.
                 </p>
             </div>
@@ -21,17 +21,13 @@ export function BlogHero() {
 }
 
 export function SearchFilter() {
-    const filters = ["All", "AI", "Web Development", "Mobile Apps", "UI/UX", "Strategy", "Case Studies"]
+    const filters = ["All", "UI/UX Design", "Product Saas", "Design System", "Mobile & Product Design", "Branding Design"]
     return (
-        <section className="py-8 md:py-12 px-4 md:px-8 bg-white border-b-4 border-black sticky top-0 z-20">
-            <div className="max-w-[1600px] mx-auto flex flex-col xl:flex-row items-center gap-6 xl:gap-8 justify-between">
-                <div className="relative w-full xl:w-[500px]">
-                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 md:w-6 md:h-6" />
-                    <Input placeholder="Search articles..." className="pl-14 h-14 md:h-16 rounded-full border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 text-base md:text-xl" />
-                </div>
-                <div className="flex gap-3 overflow-x-auto w-full xl:w-auto pb-2 xl:pb-0 scrollbar-hide">
+        <section className="py-8 md:py-12 px-4 md:px-8 bg-white sticky top-0 z-20 shadow-sm">
+            <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center gap-6 justify-center">
+                <div className="flex gap-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide justify-start md:justify-center">
                     {filters.map((filter, i) => (
-                        <button key={i} className={`px-6 py-3 md:px-8 md:py-4 rounded-full font-bold text-sm md:text-lg whitespace-nowrap border-2 border-black transition-all ${i === 0 ? 'bg-black text-white' : 'bg-white hover:bg-gray-100'}`}>
+                        <button key={i} className={`px-6 py-3 rounded-full font-medium text-sm md:text-base whitespace-nowrap border border-gray-200 transition-all ${i === 0 ? 'bg-[#003C43] text-white border-[#003C43]' : 'bg-white hover:border-black text-gray-700'}`} style={{ fontFamily: "var(--font-inter-regular)" }}>
                             {filter}
                         </button>
                     ))}
@@ -43,19 +39,19 @@ export function SearchFilter() {
 
 export function FeaturedArticle() {
     return (
-        <section className="py-16 md:py-24 px-4 md:px-8 bg-white border-b-4 border-black">
+        <section className="py-16 md:py-24 px-4 md:px-8 bg-white">
             <div className="max-w-[1600px] mx-auto grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                 <div className="bg-gray-200 aspect-video lg:aspect-auto lg:h-[500px] rounded-[32px] md:rounded-[48px] border-4 border-black relative overflow-hidden group cursor-pointer shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
                     <div className="absolute top-4 left-4 md:top-8 md:left-8 bg-[#FFC224] px-4 py-2 md:px-6 md:py-3 rounded-full border-2 border-black font-bold uppercase text-xs md:text-base">AI Systems</div>
                 </div>
                 <div>
-                    <div className="text-gray-500 font-bold mb-4 md:mb-6 uppercase tracking-wider text-sm md:text-lg">Featured Story</div>
-                    <h2 className="text-3xl md:text-6xl font-bold mb-6 md:mb-8 leading-tight hover:underline decoration-4 decoration-[#FF4A60] cursor-pointer">The Future of Generative AI in Web Design</h2>
-                    <p className="text-lg md:text-xl text-gray-600 mb-8 md:mb-12 leading-relaxed max-w-2xl">
+                    <div className="text-gray-500 font-bold mb-4 md:mb-6 uppercase tracking-wider text-sm md:text-lg" style={{ fontFamily: "var(--font-inter-regular)" }}>Featured Story</div>
+                    <h2 className="text-3xl md:text-6xl font-bold mb-6 md:mb-8 leading-tight hover:underline decoration-4 decoration-[#FF4A60] cursor-pointer" style={{ fontFamily: "var(--font-owners-medium)" }}>The Future of Generative AI in Web Design</h2>
+                    <p className="text-lg md:text-xl text-gray-600 mb-8 md:mb-12 leading-relaxed max-w-2xl" style={{ fontFamily: "var(--font-inter-regular)" }}>
                         How AI algorithms are reshaping the way we conceptualize, build, and deploy digital experiences in 2025.
                     </p>
-                    <Link href="/blog/post-1" className="inline-flex items-center text-lg md:text-2xl font-bold text-black border-b-4 border-[#FF4A60] pb-2 hover:text-[#FF4A60] transition-colors">
+                    <Link href="/blog/post-1" className="inline-flex items-center text-lg md:text-2xl font-bold text-black border-b-4 border-[#FF4A60] pb-2 hover:text-[#FF4A60] transition-colors" style={{ fontFamily: "var(--font-inter-regular)" }}>
                         Read More <ArrowRight className="ml-3 w-6 h-6 md:w-8 md:h-8" />
                     </Link>
                 </div>
@@ -81,39 +77,40 @@ export function ArticleGrid() {
             })
     }, [])
 
-    if (loading) return <div className="py-20 text-center">Loading Articles...</div>
+    if (loading) return <div className="py-20 text-center" style={{ fontFamily: "var(--font-inter-regular)" }}>Loading Articles...</div>
 
     return (
-        <section className="py-16 md:py-24 px-4 md:px-8 bg-[#F3F4F6] border-b-4 border-black">
-            <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+        <section className="py-16 md:py-24 px-4 md:px-8 bg-white">
+            <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                 {articles.map((art, i) => (
-                    <Link href={`/blog/${art.slug}`} key={art._id} className="block h-full">
-                        <div className="bg-white rounded-[40px] border-4 border-black p-5 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all cursor-pointer flex flex-col h-full group">
+                    <Link href={`/blog/${art.slug}`} key={art._id} className="block h-full group">
+                        <div className="flex flex-col h-full">
 
-                            {/* Image & Overlay Tag */}
-                            <div className="aspect-[4/3] bg-gray-100 rounded-[32px] mb-6 border-4 border-black overflow-hidden relative">
-                                {art.coverImage && <Image src={art.coverImage} alt={art.title} fill className="object-cover" />}
-                                <div className="absolute top-4 right-4 bg-black text-white px-5 py-2 rounded-full font-bold text-sm shadow-lg">
-                                    {art.tags?.[0] || "Resources"}
-                                </div>
+                            {/* Image Container */}
+                            <div className="aspect-[4/3] bg-gray-100 rounded-[32px] mb-6 overflow-hidden relative border-2 border-transparent group-hover:border-black transition-all duration-300">
+                                {art.coverImage && <Image src={art.coverImage} alt={art.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />}
+                            </div>
+
+                            {/* Tag */}
+                            <div className="mb-3">
+                                <span className="inline-block px-4 py-1 rounded-full border border-gray-200 text-xs font-bold uppercase tracking-wide text-gray-600 bg-white" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                                    {art.tags?.[0] || "Design"}
+                                </span>
                             </div>
 
                             {/* Title */}
-                            <h3 className="text-2xl md:text-3xl font-black mb-6 leading-tight group-hover:underline decoration-4 decoration-[#FFC224] underline-offset-4">
+                            <h3 className="text-2xl md:text-[28px] font-bold mb-4 leading-tight text-black group-hover:text-[#6E35FF] transition-colors" style={{ fontFamily: "var(--font-inter-regular)" }}>
                                 {art.title}
                             </h3>
 
-                            {/* Metadata Footer */}
-                            <div className="flex items-center gap-4 mt-auto text-gray-500 font-bold text-sm">
-                                <div className="flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-[#FFC224]"></span>
-                                    {new Date(art.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                                </div>
-                                <div className="w-1 h-1 rounded-full bg-gray-300"></div>
-                                <div className="flex items-center gap-2">
-                                    <Clock className="w-4 h-4" />
-                                    {Math.ceil((art.content?.split(" ").length || 500) / 200)} min read
-                                </div>
+                            {/* Description/Excerpt - Mocked or truncated content */}
+                            <p className="text-gray-500 text-base leading-relaxed mb-4 line-clamp-3" style={{ fontFamily: "var(--font-inter-light)" }}>
+                                {art.content ? art.content.replace(/<[^>]*>?/gm, '').substring(0, 120) + "..." : "Explore the latest insights and trends in design and technology."}
+                            </p>
+
+                            {/* Metadata */}
+                            <div className="mt-auto pt-4 flex items-center text-gray-400 text-sm font-medium" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                                <span>{new Date(art.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                             </div>
                         </div>
                     </Link>
@@ -125,7 +122,7 @@ export function ArticleGrid() {
 
 export function Pagination() {
     return (
-        <section className="py-12 md:py-16 px-4 md:px-8 bg-white border-b-4 border-black">
+        <section className="py-12 md:py-16 px-4 md:px-8 bg-white">
             <div className="max-w-[1600px] mx-auto flex items-center justify-between">
                 <button className="flex items-center font-bold text-lg md:text-xl text-gray-400 hover:text-black transition-colors disabled:opacity-50">
                     <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 mr-2" /> Previous
@@ -143,28 +140,11 @@ export function Pagination() {
     )
 }
 
-export function PopularCategories() {
-    const cats = ["AI Systems", "Web App Development", "Mobile App Development", "UX/UI", "Tech Trends", "Startup Growth"]
-    return (
-        <section className="py-16 md:py-24 px-4 md:px-8 bg-[#FFFBF5] border-b-4 border-black">
-            <div className="max-w-[1600px] mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-center">Explore Topics</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-                    {cats.map((cat, i) => (
-                        <div key={i} className="aspect-square bg-white border-4 border-black rounded-[32px] md:rounded-[40px] flex flex-col items-center justify-center p-4 md:p-6 text-center hover:bg-black hover:text-white transition-colors cursor-pointer group shadow-sm hover:shadow-lg">
-                            <span className="text-3xl md:text-5xl mb-4 md:mb-6 group-hover:scale-110 transition-transform">✨</span>
-                            <span className="font-bold text-sm md:text-lg leading-tight">{cat}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    )
-}
+
 
 export function EmailSubscribe() {
     return (
-        <section className="py-24 md:py-32 px-4 md:px-8 bg-black text-white border-b-4 border-black">
+        <section className="py-24 md:py-32 px-4 md:px-8 bg-black text-white">
             <div className="max-w-3xl mx-auto text-center">
                 <div className="w-16 h-16 md:w-24 md:h-24 bg-[#FF4A60] rounded-full flex items-center justify-center mx-auto mb-8 md:mb-10 border-4 border-white">
                     <Mail className="w-8 h-8 md:w-12 md:h-12 text-white" />
@@ -184,7 +164,7 @@ export function EmailSubscribe() {
 
 export function RecommendedReads() {
     return (
-        <section className="py-16 md:py-24 px-4 md:px-8 bg-white border-b-4 border-black">
+        <section className="py-16 md:py-24 px-4 md:px-8 bg-white">
             <div className="max-w-[1600px] mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold mb-10 md:mb-12">You May Also Like</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -202,7 +182,7 @@ export function RecommendedReads() {
 
 export function AuthorSpotlight() {
     return (
-        <section className="py-16 md:py-24 px-4 md:px-8 bg-[#F3F4F6] border-b-4 border-black">
+        <section className="py-16 md:py-24 px-4 md:px-8 bg-[#F3F4F6]">
             <div className="max-w-5xl mx-auto text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 md:mb-16">Meet the Writers</h2>
                 <div className="grid md:grid-cols-3 gap-8 md:gap-12">

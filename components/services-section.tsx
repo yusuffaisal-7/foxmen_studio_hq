@@ -45,10 +45,10 @@ export function ServicesSection() {
       <div className="w-full px-4 md:px-8 lg:px-16">
         <div className="max-w-full mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-4xl md:text-[52px] md:leading-[60px] font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>
+            <h2 className="text-4xl md:text-[52px] md:leading-[60px] font-bold mb-4" style={{ fontFamily: "var(--font-owners-medium)" }}>
               Our broad <span className="bg-[#FF4A60] text-white px-3 py-1 inline-block">set of services</span>
             </h2>
-            <p className="text-[#393939] text-base md:text-lg font-medium leading-relaxed md:leading-[30px] max-w-2xl mx-auto">
+            <p className="text-[#393939] text-base md:text-lg font-medium leading-relaxed md:leading-[30px] max-w-2xl mx-auto" style={{ fontFamily: "var(--font-inter-regular)" }}>
               We craft bespoke web, mobile, and AI solutions that transform ambitious brands.
             </p>
           </div>

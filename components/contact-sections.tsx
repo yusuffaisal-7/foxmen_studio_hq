@@ -24,10 +24,10 @@ export function ContactHero() {
     return (
         <section className="py-20 md:py-32 bg-[#FFFBF5] text-center px-4">
             <div className="max-w-4xl mx-auto pt-10">
-                <h1 className="text-5xl md:text-8xl font-bold mb-8 text-[#0B0B0B]" style={{ fontFamily: "var(--font-sfpro)" }}>
+                <h1 className="text-5xl md:text-8xl font-bold mb-8 text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-medium)" }}>
                     Let's Build Your Digital<br />Existence.
                 </h1>
-                <p className="text-lg md:text-2xl text-[#393939] font-medium leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: "var(--font-sfpro-regular)" }}>
+                <p className="text-lg md:text-2xl text-[#393939] font-medium leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: "var(--font-inter-regular)" }}>
                     Whether it’s a website, web app, mobile app, or an intelligent AI solution — tell us what you want to create.
                 </p>
             </div>
@@ -68,17 +68,17 @@ export function ContactOptions() {
                             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
                                 <opt.icon className="w-8 h-8 text-gray-700" />
                             </div>
-                            <h3 className="text-2xl font-bold mb-2">{opt.label}</h3>
+                            <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: "var(--font-owners-medium)" }}>{opt.label}</h3>
                             <div className="mb-4">
                                 {Array.isArray(opt.value) ? (
                                     opt.value.map((v, idx) => (
-                                        <p key={idx} className="text-lg font-bold text-[#FF4A60]">{v}</p>
+                                        <p key={idx} className="text-lg font-bold text-[#6E35FF]" style={{ fontFamily: "var(--font-inter-regular)" }}>{v}</p>
                                     ))
                                 ) : (
-                                    <p className="text-lg font-bold text-[#FF4A60]">{opt.value}</p>
+                                    <p className="text-lg font-bold text-[#6E35FF]" style={{ fontFamily: "var(--font-inter-regular)" }}>{opt.value}</p>
                                 )}
                             </div>
-                            <p className="text-gray-500 font-medium">{opt.desc}</p>
+                            <p className="text-gray-500 font-medium" style={{ fontFamily: "var(--font-inter-regular)" }}>{opt.desc}</p>
                         </div>
                     );
 
@@ -185,38 +185,38 @@ export function ContactSplitSection() {
                 {/* Left Column: Form (Takes 2 columns) */}
                 <div className="lg:col-span-2 bg-white rounded-[32px] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 md:p-10">
                     <div className="mb-8">
-                        <h2 className="text-3xl md:text-5xl font-bold mb-4">Start a Project</h2>
-                        <p className="text-lg text-gray-500 font-medium">Tell us about your goals and let's craft something unique.</p>
+                        <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ fontFamily: "var(--font-owners-medium)" }}>Start a Project</h2>
+                        <p className="text-lg text-gray-500 font-medium" style={{ fontFamily: "var(--font-inter-regular)" }}>Tell us about your goals and let's craft something unique.</p>
                     </div>
 
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <div className="grid md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Full Name</label>
-                                <Input id="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50" required />
+                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1" style={{ fontFamily: "var(--font-owners-medium)" }}>Full Name</label>
+                                <Input id="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50" required style={{ fontFamily: "var(--font-inter-regular)" }} />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Email Address</label>
-                                <Input id="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50" required />
-                            </div>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Phone (Whatsapp)</label>
-                                <Input id="phone" value={formData.phone} onChange={handleChange} placeholder="+1 (555) 000-0000" className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50" />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Company (Optional)</label>
-                                <Input id="company" value={formData.company} onChange={handleChange} placeholder="Acme Inc." className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50" />
+                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1" style={{ fontFamily: "var(--font-owners-medium)" }}>Email Address</label>
+                                <Input id="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50" required style={{ fontFamily: "var(--font-inter-regular)" }} />
                             </div>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Project Type</label>
+                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1" style={{ fontFamily: "var(--font-owners-medium)" }}>Phone (Whatsapp)</label>
+                                <Input id="phone" value={formData.phone} onChange={handleChange} placeholder="+1 (555) 000-0000" className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50" style={{ fontFamily: "var(--font-inter-regular)" }} />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1" style={{ fontFamily: "var(--font-owners-medium)" }}>Company (Optional)</label>
+                                <Input id="company" value={formData.company} onChange={handleChange} placeholder="Acme Inc." className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50" style={{ fontFamily: "var(--font-inter-regular)" }} />
+                            </div>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1" style={{ fontFamily: "var(--font-owners-medium)" }}>Project Type</label>
                                 <Select onValueChange={(val) => handleSelectChange("projectType", val)}>
-                                    <SelectTrigger className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus:ring-0 focus:border-black focus:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50">
+                                    <SelectTrigger className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus:ring-0 focus:border-black focus:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50" style={{ fontFamily: "var(--font-inter-regular)" }}>
                                         <SelectValue placeholder="Select Type" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -231,18 +231,18 @@ export function ContactSplitSection() {
                                 </Select>
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Country</label>
-                                <Input id="country" value={formData.country} onChange={handleChange} placeholder="Your Country" className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50" required />
+                                <label className="text-sm font-bold uppercase tracking-wider text-black pl-1" style={{ fontFamily: "var(--font-owners-medium)" }}>Country</label>
+                                <Input id="country" value={formData.country} onChange={handleChange} placeholder="Your Country" className="h-12 md:h-14 rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg px-4 bg-gray-50/50" required style={{ fontFamily: "var(--font-inter-regular)" }} />
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-bold uppercase tracking-wider text-black pl-1">Tell us What you Need</label>
-                            <Textarea id="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project goals..." className="min-h-[140px] rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg p-4 bg-gray-50/50 resize-y" required />
+                            <label className="text-sm font-bold uppercase tracking-wider text-black pl-1" style={{ fontFamily: "var(--font-owners-medium)" }}>Tell us What you Need</label>
+                            <Textarea id="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project goals..." className="min-h-[140px] rounded-xl border-2 border-gray-200 focus-visible:ring-0 focus-visible:border-black focus-visible:border-4 transition-all text-base md:text-lg p-4 bg-gray-50/50 resize-y" required style={{ fontFamily: "var(--font-inter-regular)" }} />
                         </div>
 
                         <div className="pt-4">
-                            <Button type="submit" disabled={status === "sending"} className="w-full h-14 md:h-16 text-xl font-bold rounded-full bg-[#FF4A60] hover:bg-black text-white hover:text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all uppercase tracking-wide">
+                            <Button type="submit" disabled={status === "sending"} className="w-full h-14 md:h-16 text-xl font-bold rounded-full bg-[#6E35FF] hover:bg-black text-white hover:text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all uppercase tracking-wide" style={{ fontFamily: "var(--font-owners-medium)" }}>
                                 {status === "sending" ? "Sending..." : "Start Your Project"} <ArrowRight className="ml-3 w-6 h-6" />
                             </Button>
                             {status === "success" && <p className="text-green-600 mt-4 text-center text-lg font-bold">Message sent successfully!</p>}
@@ -260,11 +260,11 @@ export function ContactSplitSection() {
                             target="_blank"
                             className="flex-1 bg-white rounded-[24px] border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all p-6 md:p-8 flex flex-col items-center justify-center text-center group"
                         >
-                            <div className="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#FFC224] transition-colors">
-                                <item.icon className="w-7 h-7 text-black" />
+                            <div className="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#6E35FF] group-hover:text-white transition-colors">
+                                <item.icon className="w-7 h-7 text-black group-hover:text-white" />
                             </div>
-                            <h3 className="text-xl font-bold mb-2">{item.label}</h3>
-                            <p className="text-lg font-medium text-gray-600 break-words w-full" style={{ wordBreak: 'break-word' }}>{item.value}</p>
+                            <h3 className="text-xl font-bold mb-2" style={{ fontFamily: "var(--font-owners-medium)" }}>{item.label}</h3>
+                            <p className="text-lg font-medium text-gray-600 break-words w-full" style={{ wordBreak: 'break-word', fontFamily: "var(--font-inter-regular)" }}>{item.value}</p>
                         </Link>
                     ))}
                 </div>
@@ -285,10 +285,10 @@ export function ContactFAQ() {
         <section className="py-20 md:py-32 px-4 bg-white">
             <div className="max-w-5xl mx-auto">
                 <div className="flex items-center justify-center gap-2 mb-4">
-                    <div className="w-2 h-2 rounded-full bg-[#a855f7]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#6E35FF]"></div>
                     <span className="text-sm font-medium text-gray-400 font-mono">FAQ</span>
                 </div>
-                <h2 className="text-4xl md:text-7xl font-bold mb-16 md:mb-24 text-center text-[#0B0B0B]" style={{ fontFamily: "var(--font-sfpro)" }}>Got Questions?</h2>
+                <h2 className="text-4xl md:text-7xl font-bold mb-16 md:mb-24 text-center text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-medium)" }}>Got Questions?</h2>
 
                 <div className="space-y-6">
                     <Accordion type="single" collapsible className="w-full space-y-4">
@@ -296,18 +296,18 @@ export function ContactFAQ() {
                             <AccordionItem
                                 key={i}
                                 value={`item-${i}`}
-                                className="border border-gray-200 rounded-[24px] px-6 md:px-8 bg-white transition-all data-[state=open]:border-[#2F81F7] data-[state=open]:shadow-sm"
+                                className="border border-gray-200 rounded-[24px] px-6 md:px-8 bg-white transition-all data-[state=open]:border-[#6E35FF] data-[state=open]:shadow-sm"
                             >
                                 <AccordionTrigger className="hover:no-underline py-6 md:py-8 [&>svg]:hidden flex justify-between items-center group">
                                     <div className="flex items-start text-left gap-4 md:gap-6">
                                         <span className="text-lg md:text-xl font-medium text-gray-400 font-mono mt-1">{`0${i + 1}/`}</span>
-                                        <span className="text-xl md:text-2xl font-bold text-[#0B0B0B]" style={{ fontFamily: "var(--font-sfpro)" }}>{faq.q}</span>
+                                        <span className="text-xl md:text-2xl font-bold text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-medium)" }}>{faq.q}</span>
                                     </div>
                                     <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-50 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gray-100 transition-colors">
                                         <Plus className="w-5 h-5 md:w-6 md:h-6 text-gray-600 transition-transform duration-300 group-data-[state=open]:rotate-45" />
                                     </div>
                                 </AccordionTrigger>
-                                <AccordionContent className="text-lg md:text-xl text-[#393939] font-medium leading-relaxed pl-0 md:pl-[3.5rem] pr-4 md:pr-12 pb-8">
+                                <AccordionContent className="text-lg md:text-xl text-[#393939] font-medium leading-relaxed pl-0 md:pl-[3.5rem] pr-4 md:pr-12 pb-8" style={{ fontFamily: "var(--font-inter-regular)" }}>
                                     {faq.a}
                                 </AccordionContent>
                             </AccordionItem>
@@ -323,7 +323,7 @@ export function StartProcess() {
     return (
         <section className="py-12 md:py-24 px-4 bg-[#FFFBF5] border-b-4 border-black">
             <div className="max-w-6xl mx-auto">
-                <h2 className="text-3xl md:text-3xl font-bold mb-10 md:mb-16 text-center">How It Starts</h2>
+                <h2 className="text-3xl md:text-3xl font-bold mb-10 md:mb-16 text-center" style={{ fontFamily: "var(--font-owners-medium)" }}>How It Starts</h2>
                 <div className="grid md:grid-cols-3 gap-8 text-center relative">
                     <div className="hidden md:block absolute top-[28px] left-[16%] right-[16%] h-1 bg-gray-200 z-0"></div>
                     {[
@@ -335,8 +335,8 @@ export function StartProcess() {
                             <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center text-xl font-bold mb-6">
                                 {i + 1}
                             </div>
-                            <h3 className="text-2xl font-bold mb-2">{step.title}</h3>
-                            <p className="text-gray-600 font-medium px-8">{step.desc}</p>
+                            <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: "var(--font-owners-medium)" }}>{step.title}</h3>
+                            <p className="text-gray-600 font-medium px-8" style={{ fontFamily: "var(--font-inter-regular)" }}>{step.desc}</p>
                         </div>
                     ))}
                 </div>
@@ -349,12 +349,12 @@ export function QuickActions() {
     return (
         <section className="py-12 md:py-24 px-4 bg-white border-b-4 border-black">
             <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-12">Need Answers Faster?</h2>
+                <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-12" style={{ fontFamily: "var(--font-owners-medium)" }}>Need Answers Faster?</h2>
                 <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
-                    <button className="flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 rounded-full bg-[#FFC224] text-black border-4 border-black text-lg md:text-xl font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
+                    <button className="flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 rounded-full bg-[#6E35FF] text-white border-4 border-black text-lg md:text-xl font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all" style={{ fontFamily: "var(--font-owners-medium)" }}>
                         <Video className="w-5 h-5 md:w-6 md:h-6" /> Book a Meeting
                     </button>
-                    <a href="https://wa.me/8801753973892" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 rounded-full bg-white text-black border-4 border-black text-lg md:text-xl font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
+                    <a href="https://wa.me/8801753973892" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 rounded-full bg-white text-black border-4 border-black text-lg md:text-xl font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all" style={{ fontFamily: "var(--font-owners-medium)" }}>
                         <MessageCircle className="w-5 h-5 md:w-6 md:h-6" /> Chat on WhatsApp
                     </a>
                 </div>
@@ -374,7 +374,7 @@ export function SocialConnect() {
     return (
         <section className="py-12 md:py-24 px-4 bg-[#F3F4F6] border-b-4 border-black">
             <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl md:text-5xl font-bold mb-10 md:mb-16">Stay Connected</h2>
+                <h2 className="text-3xl md:text-5xl font-bold mb-10 md:mb-16" style={{ fontFamily: "var(--font-owners-medium)" }}>Stay Connected</h2>
                 <div className="flex justify-center gap-4 md:gap-10 flex-wrap">
                     {socials.map((soc, i) => (
                         <div key={i} className={`group cursor-pointer bg-white w-20 h-20 md:w-32 md:h-32 rounded-[20px] md:rounded-[24px] border-4 border-black flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all ${soc.color}`}>
@@ -391,9 +391,9 @@ export function LocationMap() {
     return (
         <section className="py-12 md:py-24 px-4 bg-white border-b-4 border-black">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-3xl font-bold mb-8 md:mb-12 text-center">Visit Us</h2>
+                <h2 className="text-3xl font-bold mb-8 md:mb-12 text-center" style={{ fontFamily: "var(--font-owners-medium)" }}>Visit Us</h2>
                 <div className="w-full h-[300px] md:h-[400px] bg-gray-200 rounded-[24px] md:rounded-[32px] border-4 border-black overflow-hidden flex items-center justify-center">
-                    <p className="text-xl font-bold text-gray-500">Google Map Embed Placeholder</p>
+                    <p className="text-xl font-bold text-gray-500" style={{ fontFamily: "var(--font-inter-regular)" }}>Google Map Embed Placeholder</p>
                 </div>
             </div>
         </section>
@@ -404,8 +404,8 @@ export function ContactCTA() {
     return (
         <section className="py-20 md:py-32 px-4 bg-[#FFFBF5] text-center">
             <div className="max-w-4xl mx-auto">
-                <h2 className="text-4xl md:text-6xl font-bold mb-8">Ready to Build Your Digital Presence?</h2>
-                <Link href="#contact-split" className="inline-flex items-center justify-center bg-[#FF4A60] text-white border-4 border-black rounded-full px-8 md:px-12 py-5 md:py-6 text-xl font-bold hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1">
+                <h2 className="text-4xl md:text-6xl font-bold mb-8" style={{ fontFamily: "var(--font-owners-medium)" }}>Ready to Build Your Digital Presence?</h2>
+                <Link href="#contact-split" className="inline-flex items-center justify-center bg-[#6E35FF] text-white border-4 border-black rounded-full px-8 md:px-12 py-5 md:py-6 text-xl font-bold hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1" style={{ fontFamily: "var(--font-owners-medium)" }}>
                     Start Your Project <ArrowRight className="ml-3 w-6 h-6" />
                 </Link>
             </div>

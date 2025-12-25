@@ -13,7 +13,7 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="w-full relative z-50 bg-white/80 backdrop-blur-md border-b border-black/30">
-      <nav className="flex items-center justify-between px-6 py-10 w-full max-w-[1440px] mx-auto">
+      <nav className="flex items-center justify-between px-6 py-4 md:py-10 w-full max-w-[1440px] mx-auto">
         <Link href="/" className="h-12 w-auto flex items-center justify-center flex-shrink-0 cursor-pointer">
           <img src="https://res.cloudinary.com/duh7c5x99/image/upload/v1766298303/logo_33_eve7gs.svg" alt="Foxmen Studio Logo" className="h-full w-auto object-contain" />
         </Link>
@@ -41,36 +41,34 @@ export function Navigation() {
 
         {/* Mobile Navigation (Menu Icon) */}
         <div className="md:hidden">
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <AnimatedHamburgerButton active={isOpen} onClick={() => setIsOpen(!isOpen)} />
-            <SheetContent side="right" className="w-[300px] border-l border-black/10 p-0">
-              <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
-              <div className="flex flex-col h-full pt-16 px-6 pb-8">
-                <div className="flex flex-col gap-8">
-
-                  <Link href="/about" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }}>
-                    About Us
-                  </Link>
-                  <Link href="/services" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }}>
-                    Services
-                  </Link>
-                  <Link href="/projects" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }}>
-                    Projects
-                  </Link>
-                  <Link href="/blog" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }}>
-                    Blogs
-                  </Link>
-                </div>
-
-                {/* Mobile Contact Option */}
-                <div className="mt-auto pt-8 border-t border-black/10">
-                  <ContactButton className="w-full" />
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+          <AnimatedHamburgerButton active={isOpen} onClick={() => setIsOpen(!isOpen)} />
         </div>
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {isOpen && (
+        <div className="absolute top-full left-0 w-full h-[calc(100vh-100%)] bg-white/80 backdrop-blur-md border-t border-black/10 flex flex-col p-6 z-40 md:hidden animate-in slide-in-from-top-2 duration-300">
+          <div className="flex flex-col gap-8 flex-1">
+            <Link href="/about" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }} onClick={() => setIsOpen(false)}>
+              About Us
+            </Link>
+            <Link href="/services" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }} onClick={() => setIsOpen(false)}>
+              Services
+            </Link>
+            <Link href="/projects" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }} onClick={() => setIsOpen(false)}>
+              Projects
+            </Link>
+            <Link href="/blog" className="text-3xl font-bold hover:underline" style={{ fontFamily: "var(--font-inter-regular)" }} onClick={() => setIsOpen(false)}>
+              Blogs
+            </Link>
+          </div>
+
+          {/* Mobile Contact Option */}
+          <div className="mt-auto pt-8 border-t border-black/10">
+            <ContactButton className="w-full" onClick={() => setIsOpen(false)} />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

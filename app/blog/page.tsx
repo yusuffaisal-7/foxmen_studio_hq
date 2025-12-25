@@ -6,7 +6,6 @@ import {
     FeaturedArticle,
     ArticleGrid,
     Pagination,
-    PopularCategories,
     EmailSubscribe,
     RecommendedReads,
     AuthorSpotlight,
@@ -29,7 +28,6 @@ export default function BlogPage() {
                 <FeaturedArticle />
                 <ArticleGrid />
                 <Pagination />
-                <PopularCategories />
                 <EmailSubscribe />
                 <RecommendedReads />
                 <AuthorSpotlight />

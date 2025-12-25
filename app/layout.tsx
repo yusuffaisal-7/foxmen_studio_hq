@@ -34,6 +34,16 @@ const interRegularFont = localFont({
   variable: "--font-inter-regular",
 })
 
+const interLightFont = localFont({
+  src: "./fonts/Inter-Light-BETA.otf",
+  variable: "--font-inter-light",
+})
+
+const interThinFont = localFont({
+  src: "./fonts/Inter-Thin-BETA.otf",
+  variable: "--font-inter-thin",
+})
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://foxmen.studio"),
@@ -109,7 +119,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={`${ownersMediumFont.variable} ${ownersRegularFont.variable} ${interSemiBoldFont.variable} ${interRegularFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
+      <body className={`${ownersMediumFont.variable} ${ownersRegularFont.variable} ${interSemiBoldFont.variable} ${interRegularFont.variable} ${interLightFont.variable} ${interThinFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
