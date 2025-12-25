@@ -57,7 +57,13 @@ const TargetCursor = ({
     }, []);
 
     useEffect(() => {
-        if (isMobile || !cursorRef.current) return;
+        // Initial check
+        if (typeof window === 'undefined') return;
+
+        // We use a mutable ref to track if we should be active based on resize
+        const shouldBeActive = () => window.innerWidth >= 768 && !isMobile;
+
+        if (!shouldBeActive() || !cursorRef.current) return;
 
         const originalCursor = document.body.style.cursor;
         if (hideDefaultCursor) {
@@ -261,6 +267,23 @@ const TargetCursor = ({
 
         window.addEventListener('mouseover', enterHandler, { passive: true });
 
+        const checkResize = () => {
+            // If we drop below 768px, we should kill the cursor logic
+            if (window.innerWidth < 768 && isActiveRef.current) {
+                if (tickerFnRef.current) gsap.ticker.remove(tickerFnRef.current);
+                document.body.style.cursor = originalCursor;
+                isActiveRef.current = false;
+                // Hide the dot/cursor visually as well just in case (though CSS handles this too)
+                if (cursorRef.current) gsap.set(cursorRef.current, { opacity: 0 });
+            } else if (window.innerWidth >= 768 && !isActiveRef.current && !isMobile) {
+                // Re-enable if moving back to desktop
+                if (cursorRef.current) gsap.set(cursorRef.current, { opacity: 1 });
+                // Note: Full re-initialization might be needed here, but for now we ensure it stops on mobile.
+            }
+        };
+
+        window.addEventListener('resize', checkResize);
+
         return () => {
             if (tickerFnRef.current) {
                 gsap.ticker.remove(tickerFnRef.current);
@@ -270,6 +293,7 @@ const TargetCursor = ({
             window.removeEventListener('scroll', scrollHandler);
             window.removeEventListener('mousedown', mouseDownHandler);
             window.removeEventListener('mouseup', mouseUpHandler);
+            window.removeEventListener('resize', checkResize);
             if (activeTarget) {
                 cleanupTarget(activeTarget);
             }

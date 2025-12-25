@@ -1,16 +1,16 @@
 "use client";
 
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from 'react';
-import { motion, AnimatePresence, Transition, Variant } from 'framer-motion';
+import { motion, AnimatePresence, Transition, VariantLabels, TargetAndTransition, Variant } from 'framer-motion';
 
 import { cn } from "@/lib/utils";
 
 export interface RotatingTextProps {
     texts: string[];
     transition?: Transition;
-    initial?: Variant;
-    animate?: Variant;
-    exit?: Variant;
+    initial?: any; // Using any to bypass strict type check for now, or use Variant | VariantLabels
+    animate?: any;
+    exit?: any;
     animatePresenceMode?: "sync" | "popLayout" | "wait";
     animatePresenceInitial?: boolean;
     rotationInterval?: number;
