@@ -38,6 +38,7 @@ export function ServicesListSection() {
             tags: ["Chatbots", "Process Automation", "LLM Integration", "Data Analysis", "Python"],
             price: "Starting from $2000",
             image: "https://res.cloudinary.com/duh7c5x99/image/upload/v1766073345/Gemini_Generated_Image_3460b53460b53460_pjugzt.png",
+            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766683068/1225_1_yk338c.mov"
         },
         {
             title: "Branding & Identity",

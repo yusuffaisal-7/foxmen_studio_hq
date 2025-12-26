@@ -23,7 +23,7 @@ export function PostHeader({ post }: { post: any }) {
                     {post.title}
                 </h1>
 
-                <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-3xl" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-3xl" style={{ fontFamily: "var(--font-neue-montreal)" }}>
                     {post.excerpt}
                 </p>
 
@@ -69,12 +69,12 @@ export function PostBody({ content }: { content: string }) {
                     h1: ({ node, ...props }) => <h1 className="text-3xl md:text-4xl font-bold mb-6 mt-12 capitalize leading-tight" style={{ fontFamily: "var(--font-owners-regular)" }} {...props} />,
                     h2: ({ node, ...props }) => <h2 className="text-2xl md:text-3xl font-bold mb-4 mt-10 leading-snug" style={{ fontFamily: "var(--font-owners-regular)" }} {...props} />,
                     h3: ({ node, ...props }) => <h3 className="text-xl md:text-2xl font-bold mb-4 mt-8" style={{ fontFamily: "var(--font-owners-regular)" }} {...props} />,
-                    p: ({ node, ...props }) => <p className="mb-6 text-lg leading-relaxed text-gray-700" style={{ fontFamily: "var(--font-inter-regular)" }} {...props} />,
+                    p: ({ node, ...props }) => <p className="mb-6 text-lg leading-relaxed text-gray-700" style={{ fontFamily: "var(--font-neue-montreal)" }} {...props} />,
                     blockquote: ({ node, ...props }) => (
                         <blockquote className="border-l-4 border-[#6E35FF] pl-6 py-1 my-8 italic text-xl text-gray-800 bg-gray-50/50 rounded-r-lg" {...props} />
                     ),
-                    ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-700" style={{ fontFamily: "var(--font-inter-regular)" }} {...props} />,
-                    ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-6 space-y-2 text-gray-700" style={{ fontFamily: "var(--font-inter-regular)" }} {...props} />,
+                    ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-700" style={{ fontFamily: "var(--font-neue-montreal)" }} {...props} />,
+                    ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-6 space-y-2 text-gray-700" style={{ fontFamily: "var(--font-neue-montreal)" }} {...props} />,
                     li: ({ node, ...props }) => <li className="pl-2" {...props} />,
                     a: ({ node, ...props }) => <a className="text-[#6E35FF] hover:text-[#5a2bd9] font-medium transition-colors underline decoration-1 underline-offset-4" {...props} />,
                     code({ node, inline, className, children, ...props }: any) {
@@ -122,7 +122,7 @@ export function SidebarAuthorBio({ post }: { post: any }) {
                 </div>
             </div>
 
-            <p className="text-gray-600 text-sm leading-relaxed mb-6 text-left" style={{ fontFamily: "var(--font-inter-regular)" }}>
+            <p className="text-gray-600 text-sm leading-relaxed mb-6 text-left" style={{ fontFamily: "var(--font-neue-montreal)" }}>
                 {post.authorBio || "Passionate about technology and design."}
             </p>
 
@@ -149,7 +149,7 @@ export function SidebarTags({ tags }: { tags: string[] }) {
             <h4 className="font-bold text-lg mb-4" style={{ fontFamily: "var(--font-owners-regular)" }}>Tags</h4>
             <div className="flex flex-wrap gap-2">
                 {tags.map((tag, i) => (
-                    <span key={i} className="px-3 py-1.5 rounded-full bg-gray-100 text-gray-600 font-medium hover:bg-[#6E35FF] hover:text-white transition-all cursor-pointer text-xs" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                    <span key={i} className="px-3 py-1.5 rounded-full bg-gray-100 text-gray-600 font-medium hover:bg-[#6E35FF] hover:text-white transition-all cursor-pointer text-xs" style={{ fontFamily: "var(--font-neue-montreal)" }}>
                         #{tag}
                     </span>
                 ))}
@@ -199,7 +199,7 @@ export function SidebarRelated({ posts }: { posts?: any[] }) {
                                 <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-400 font-bold uppercase">No Image</div>
                             )}
                         </div>
-                        <h4 className="font-semibold text-base leading-snug group-hover:text-[#6E35FF] transition-colors line-clamp-2" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                        <h4 className="font-semibold text-base leading-snug group-hover:text-[#6E35FF] transition-colors line-clamp-2" style={{ fontFamily: "var(--font-neue-montreal)" }}>
                             {post.title}
                         </h4>
                     </Link>
@@ -343,7 +343,7 @@ export function PostCTA() {
         <section className="py-24 px-6 md:px-12 bg-[#F8F8F8] text-center border-t border-gray-200">
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: "var(--font-owners-regular)" }}>Have an Idea?</h2>
-                <p className="text-xl md:text-2xl text-gray-500 mb-10" style={{ fontFamily: "var(--font-inter-regular)" }}>Let's create something extraordinary.</p>
+                <p className="text-xl md:text-2xl text-gray-500 mb-10" style={{ fontFamily: "var(--font-neue-montreal)" }}>Let's create something extraordinary.</p>
                 <Link href="/contact" className="inline-flex items-center justify-center bg-[#6E35FF] text-white rounded-full px-10 py-5 text-lg font-bold hover:bg-[#5a2bd9] transition-all hover:-translate-y-1 shadow-lg shadow-[#6E35FF]/30">
                     Start Your Project <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>

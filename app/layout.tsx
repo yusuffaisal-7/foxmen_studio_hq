@@ -44,6 +44,11 @@ const interThinFont = localFont({
   variable: "--font-inter-thin",
 })
 
+const neueMontrealFont = localFont({
+  src: "./fonts/neue-montreal-regular.otf",
+  variable: "--font-neue-montreal",
+})
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://foxmen.studio"),
@@ -119,7 +124,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={`${ownersMediumFont.variable} ${ownersRegularFont.variable} ${interSemiBoldFont.variable} ${interRegularFont.variable} ${interLightFont.variable} ${interThinFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
+      <body className={`${ownersMediumFont.variable} ${ownersRegularFont.variable} ${interSemiBoldFont.variable} ${interRegularFont.variable} ${interLightFont.variable} ${interThinFont.variable} ${neueMontrealFont.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

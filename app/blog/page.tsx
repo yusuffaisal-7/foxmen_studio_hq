@@ -7,7 +7,6 @@ import {
     ArticleGrid,
     Pagination,
     EmailSubscribe,
-    RecommendedReads,
     AuthorSpotlight,
     BlogCTA
 } from "@/components/blog-sections"
@@ -30,7 +29,6 @@ export default function BlogPage() {
                 <ArticleGrid />
                 <Pagination />
                 <EmailSubscribe />
-                <RecommendedReads />
                 <AuthorSpotlight />
                 <BlogCTA />
             </main>

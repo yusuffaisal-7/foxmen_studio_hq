@@ -1,70 +1,71 @@
 "use client"
 
-import { ArrowRight, Check, Code, Cpu, Globe, Layout, Smartphone, Users, Zap } from "lucide-react"
+import { ArrowRight, Check, Code, Cpu, Globe, Layout, Smartphone, Users, Zap, Award, Star, ShieldCheck } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
 export function AboutHero() {
     return (
-        <section className="py-24 md:py-32 bg-[#FFFBF5] text-center px-4">
-            <div className="max-w-4xl mx-auto">
-                <h1 className="text-5xl md:text-7xl font-bold mb-6" style={{ fontFamily: "var(--font-sfpro)" }}>Who We Are</h1>
-                <p className="text-xl md:text-3xl text-gray-600 font-medium leading-relaxed">
-                    A studio built to design, engineer, and elevate digital experiences.
+        <section className="py-24 md:py-32 bg-white px-4 md:px-8">
+            <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start gap-12 md:gap-24">
+                <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 rounded-full bg-[#6E35FF]"></div>
+                    <span className="text-gray-500 font-medium text-lg md:text-xl" style={{ fontFamily: "var(--font-inter-regular)" }}>&#123;01&#125; — About us</span>
+                </div>
+
+                <p className="text-2xl md:text-4xl lg:text-5xl text-[#0B0B0B] font-medium leading-tight max-w-4xl" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                    We are a full-service digital agency specializing in website development, branding, 3D product animation, SEO, and digital marketing with affordable prices.
                 </p>
             </div>
         </section>
     )
 }
 
-export function AboutStory() {
+export function AboutHighlights() {
     return (
-        <section className="py-20 px-4 bg-white">
-            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8" style={{ fontFamily: "var(--font-sfpro)" }}>Our Story</h2>
-                    <div className="space-y-6 text-lg md:text-xl text-gray-700 font-medium leading-relaxed">
-                        <p>
-                            Foxmen Studio started with a simple belief: that digital products should not only function perfectly but feel alive. We noticed a gap between rigid engineering and fluid design, so we set out to bridge it.
-                        </p>
-                        <p>
-                            Our mission is to craft digital experiences that resonate on an emotional level while being built on rock-solid engineering. We are guided by curiosity, precision, and an unyielding commitment to quality.
-                        </p>
+        <section className="pb-24 px-4 md:px-8 bg-white">
+            <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Left Large Card - Top Rated */}
+                <div className="bg-[#F8F8F8] p-8 md:p-12 rounded-[32px] md:rounded-[40px] flex flex-col justify-between min-h-[400px] relative overflow-hidden group">
+                    <div className="absolute top-8 right-8 w-16 h-16 bg-[#00C48C] rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                        fi
                     </div>
+
+                    <div className="mt-auto z-10">
+                        <p className="text-gray-500 font-medium mb-4 text-sm md:text-base tracking-wide uppercase">2023 - Present</p>
+                        <h3 className="text-3xl md:text-5xl font-bold mb-8 text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-medium)" }}>Top Rated Seller on Fiverr</h3>
+
+                        <div className="flex flex-wrap gap-3">
+                            <span className="px-6 py-3 bg-white border border-gray-100 rounded-full text-sm font-bold text-gray-700">UI/UX Design</span>
+                            <span className="px-6 py-3 bg-white border border-gray-100 rounded-full text-sm font-bold text-gray-700">Branding</span>
+                        </div>
+                    </div>
+                    <div className="absolute bottom-8 right-8 text-[#6E35FF]/20 font-bold text-lg">01</div>
                 </div>
-                <div className="relative h-[400px] w-full bg-[#E0E7FF] rounded-[32px] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden flex items-center justify-center">
-                    {/* Placeholder for story image/illustration */}
-                    <div className="text-center p-8">
-                        <span className="text-6xl mb-4 block">📖</span>
-                        <p className="font-bold text-xl">The Foxmen Journey</p>
+
+                {/* Right Column - 2 Smaller Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+                    {/* Card 02 */}
+                    <div className="bg-[#F8F8F8] p-8 rounded-[32px] md:rounded-[40px] flex flex-col justify-between min-h-[300px] relative">
+                        <div>
+                            <p className="text-gray-500 font-medium mb-4 text-sm tracking-wide uppercase">05 April, 2025</p>
+                            <h3 className="text-2xl md:text-4xl font-bold text-[#0B0B0B] leading-tight" style={{ fontFamily: "var(--font-owners-medium)" }}>Sites of the Day Winner</h3>
+                        </div>
+                        <div className="absolute bottom-8 right-8 text-gray-300 font-bold text-lg">02</div>
+                    </div>
+
+                    {/* Card 03 */}
+                    <div className="bg-[#F8F8F8] p-8 rounded-[32px] md:rounded-[40px] flex flex-col justify-between min-h-[300px] relative">
+                        <div>
+                            <p className="text-gray-500 font-medium mb-4 text-sm tracking-wide uppercase">2023 - 2025</p>
+                            <h3 className="text-2xl md:text-4xl font-bold text-[#0B0B0B] leading-tight" style={{ fontFamily: "var(--font-owners-medium)" }}>Google Premier Partner</h3>
+                        </div>
+                        <div className="absolute bottom-8 right-8 text-gray-300 font-bold text-lg">03</div>
                     </div>
                 </div>
             </div>
-        </section>
-    )
-}
-
-export function AboutMission() {
-    return (
-        <section className="py-20 px-4 bg-[#FFFBF5]">
-            <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold" style={{ fontFamily: "var(--font-sfpro)" }}>What We Believe</h2>
-                </div>
-                <div className="grid md:grid-cols-2 gap-8">
-                    <div className="bg-[#FFC224] p-10 rounded-[32px] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                        <h3 className="text-3xl font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>Our Mission</h3>
-                        <p className="text-xl font-bold leading-relaxed">
-                            To empower businesses by creating digital tools that are intuitive, powerful, and delightfully simple to use.
-                        </p>
-                    </div>
-                    <div className="bg-[#FF90E8] p-10 rounded-[32px] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                        <h3 className="text-3xl font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>Our Vision</h3>
-                        <p className="text-xl font-bold leading-relaxed">
-                            A future where technology serves humanity with elegance, removing friction and sparking joy in everyday interactions.
-                        </p>
-                    </div>
-                </div>
+            <div className="w-full h-1.5 bg-gray-100 mt-2 rounded-full overflow-hidden max-w-[1600px] mx-auto">
+                <div className="h-full bg-[#6E35FF] w-1/2 rounded-full"></div>
             </div>
         </section>
     )
@@ -80,19 +81,20 @@ export function AboutServices() {
         { title: "Digital Marketing", icon: Users, desc: "Strategic growth and brand positioning." },
     ]
     return (
-        <section className="py-20 px-4 bg-white">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: "var(--font-sfpro)" }}>What We Do</h2>
+        <section className="py-20 md:py-32 px-4 md:px-8 bg-white">
+            <div className="max-w-[1600px] mx-auto">
+                <div className="mb-16 md:mb-24 max-w-2xl">
+                    <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-medium)" }}>What We Do</h2>
+                    <p className="text-lg text-gray-500" style={{ fontFamily: "var(--font-inter-regular)" }}>Comprehensive digital solutions tailored to your growth.</p>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((service, index) => (
-                        <div key={index} className="bg-white p-8 rounded-[24px] border-4 border-black hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow">
-                            <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-6">
-                                <service.icon className="w-6 h-6 text-white" />
+                        <div key={index} className="bg-white p-8 md:p-10 rounded-[32px] border border-gray-100 hover:shadow-lg hover:shadow-[#6E35FF]/5 hover:border-[#6E35FF]/20 transition-all duration-300 group">
+                            <div className="w-14 h-14 bg-[#F8F8F8] group-hover:bg-[#6E35FF] text-[#6E35FF] group-hover:text-white rounded-2xl flex items-center justify-center mb-8 transition-colors">
+                                <service.icon className="w-7 h-7" />
                             </div>
-                            <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: "var(--font-sfpro)" }}>{service.title}</h3>
-                            <p className="text-gray-600 font-medium">{service.desc}</p>
+                            <h3 className="text-2xl font-bold mb-4 text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-medium)" }}>{service.title}</h3>
+                            <p className="text-gray-500 font-medium leading-relaxed" style={{ fontFamily: "var(--font-inter-regular)" }}>{service.desc}</p>
                         </div>
                     ))}
                 </div>
@@ -103,26 +105,26 @@ export function AboutServices() {
 
 export function AboutApproach() {
     return (
-        <section className="py-20 px-4 bg-[#F3F4F6]">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold" style={{ fontFamily: "var(--font-sfpro)" }}>How We Work</h2>
+        <section className="py-20 md:py-32 px-4 md:px-8 bg-[#F8F8F8]">
+            <div className="max-w-[1600px] mx-auto">
+                <div className="mb-16 md:mb-24 text-center">
+                    <h2 className="text-4xl md:text-6xl font-bold mb-4 text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-medium)" }}>How We Work</h2>
                 </div>
                 <div className="grid md:grid-cols-3 gap-8 text-center relative">
                     {/* Connector Line (Desktop) */}
-                    <div className="hidden md:block absolute top-[28px] left-[16%] right-[16%] h-1 bg-black z-0"></div>
+                    <div className="hidden md:block absolute top-[40px] left-[16%] right-[16%] h-[2px] bg-gray-200 z-0"></div>
 
                     {[
                         { step: "01", title: "Think", desc: "Deeply understand problems" },
                         { step: "02", title: "Design", desc: "Craft intuitive experiences" },
                         { step: "03", title: "Build", desc: "Engineer scalable products" }
                     ].map((item, i) => (
-                        <div key={i} className="relative z-10 flex flex-col items-center">
-                            <div className="w-16 h-16 bg-white border-4 border-black rounded-full flex items-center justify-center text-xl font-bold mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                        <div key={i} className="relative z-10 flex flex-col items-center group">
+                            <div className="w-20 h-20 bg-white border border-gray-100 rounded-full flex items-center justify-center text-xl font-bold mb-8 shadow-sm group-hover:scale-110 group-hover:border-[#6E35FF] group-hover:text-[#6E35FF] transition-all duration-300">
                                 {item.step}
                             </div>
-                            <h3 className="text-3xl font-bold mb-2" style={{ fontFamily: "var(--font-sfpro)" }}>{item.title}</h3>
-                            <p className="text-xl text-gray-600 font-medium">{item.desc}</p>
+                            <h3 className="text-3xl font-bold mb-4 text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-medium)" }}>{item.title}</h3>
+                            <p className="text-xl text-gray-500 font-medium" style={{ fontFamily: "var(--font-inter-regular)" }}>{item.desc}</p>
                         </div>
                     ))}
                 </div>
@@ -134,12 +136,12 @@ export function AboutApproach() {
 export function AboutTech() {
     const techs = ["Django", "MERN", "Next.js", "Nest.js", "Python", "React", "Figma", "Framer", "AI Tools"]
     return (
-        <section className="py-20 px-4 bg-white">
-            <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-4xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-sfpro)" }}>Built on Modern Engineering</h2>
-                <div className="flex flex-wrapjustify-center gap-6 md:gap-10 justify-center">
+        <section className="py-20 md:py-32 px-4 md:px-8 bg-white">
+            <div className="max-w-[1600px] mx-auto text-center">
+                <h2 className="text-4xl md:text-5xl font-bold mb-12 text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-medium)" }}>Built on Modern Engineering</h2>
+                <div className="flex flex-wrap justify-center gap-4 md:gap-6">
                     {techs.map((tech, i) => (
-                        <div key={i} className="bg-gray-100 px-6 py-3 rounded-xl border-2 border-transparent hover:border-black transition-colors font-bold text-lg md:text-xl text-gray-700">
+                        <div key={i} className="bg-white px-8 py-4 rounded-full border border-gray-200 hover:border-[#6E35FF] hover:text-[#6E35FF] transition-all font-bold text-lg text-gray-600 shadow-sm hover:shadow-md cursor-default">
                             {tech}
                         </div>
                     ))}
@@ -149,84 +151,53 @@ export function AboutTech() {
     )
 }
 
-export function AboutTeam() {
-    return (
-        <section className="py-20 px-4 bg-[#FFFBF5]">
-            <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-4xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-sfpro)" }}>The Team Behind the Work</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-                    {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="flex flex-col items-center">
-                            <div className="w-32 h-32 md:w-40 md:h-40 bg-gray-300 rounded-full mb-4 border-4 border-black overflow-hidden relative">
-                                <div className="absolute inset-0 flex items-center justify-center bg-[#FF4A60] text-white font-bold text-4xl">
-                                    {/* Placeholder Avatar */}
-                                    {String.fromCharCode(64 + i)}
-                                </div>
-                            </div>
-                            <h3 className="text-xl font-bold" style={{ fontFamily: "var(--font-sfpro)" }}>Team Member {i}</h3>
-                            <p className="text-gray-500 font-medium">Role Title</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    )
-}
-
-export function AboutValues() {
-    const values = ["Integrity", "Innovation", "Precision", "Creativity", "Collaboration", "Quality Engineering"]
-    return (
-        <section className="py-20 px-4 bg-white">
-            <div className="max-w-5xl mx-auto">
-                <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold" style={{ fontFamily: "var(--font-sfpro)" }}>What Drives Us</h2>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                    {values.map((value, i) => (
-                        <div key={i} className="bg-white border-2 border-black rounded-[20px] p-6 text-center hover:bg-black hover:text-white transition-colors cursor-default">
-                            <span className="text-lg md:text-xl font-bold">{value}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    )
-}
-
-export function AboutStats() {
+export function AboutStatsMarquee() {
     const stats = [
-        { label: "Projects", value: "120+" },
-        { label: "Clients", value: "50+" },
-        { label: "Years Exp.", value: "5+" },
-        { label: "Client Satisfaction", value: "99%" },
+        { label: "satisfied clients", value: "+" },
+        { label: "projects finished", value: "3500+" },
+        { label: "orders in queue", value: "10+" },
+        { label: "years experience", value: "5+" },
+        { label: "team members", value: "20+" },
     ]
+
     return (
-        <section className="py-20 px-4 bg-[#111] text-white">
-            <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-2" style={{ fontFamily: "var(--font-sfpro)" }}>By the Numbers</h2>
-                    <p className="text-gray-400">Our impact in digits</p>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    {stats.map((stat, i) => (
-                        <div key={i} className="flex flex-col">
-                            <span className="text-5xl md:text-6xl font-black mb-2">{stat.value}</span>
-                            <span className="text-gray-400 font-bold tracking-wide uppercase text-sm">{stat.label}</span>
+        <section className="py-12 bg-[#111] overflow-hidden whitespace-nowrap relative flex items-center">
+            <div className="animate-marquee inline-flex items-center gap-12 md:gap-24 px-6">
+                {[...stats, ...stats, ...stats].map((stat, i) => (
+                    <div key={i} className="flex items-center gap-8 md:gap-12 shrink-0 opacity-80 hover:opacity-100 transition-opacity">
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-[#6E35FF] text-white rounded-xl flex items-center justify-center rotate-45 shrink-0">
+                            <Star className="w-5 h-5 md:w-6 md:h-6 -rotate-45 fill-white" />
                         </div>
-                    ))}
-                </div>
+                        <div className="flex items-baseline gap-2">
+                            <span className="text-4xl md:text-5xl font-bold text-[#6E35FF]">{stat.value}</span>
+                            <span className="text-3xl md:text-4xl font-medium text-white/90">/ {stat.label}</span>
+                        </div>
+                    </div>
+                ))}
             </div>
+            <style jsx>{`
+                @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                .animate-marquee {
+                    animation: marquee 30s linear infinite;
+                }
+            `}</style>
         </section>
     )
 }
 
 export function AboutCTA() {
     return (
-        <section className="py-24 px-4 bg-[#FFFBF5]">
+        <section className="py-24 md:py-40 px-4 md:px-8 bg-white border-t border-gray-100">
             <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl md:text-6xl font-bold mb-8" style={{ fontFamily: "var(--font-sfpro)" }}>Ready to Build Something Meaningful?</h2>
-                <Link href="/contact" className="inline-flex items-center justify-center bg-[#FF4A60] text-white border-4 border-black rounded-full px-12 py-6 text-xl font-bold hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1">
-                    Start Your Project <ArrowRight className="ml-3 w-6 h-6" />
+                <h2 className="text-4xl md:text-7xl font-bold mb-8 md:mb-10 leading-tight text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-medium)" }}>Ready to Build Something Meaningful?</h2>
+                <p className="text-xl md:text-2xl text-gray-500 font-medium mb-12 md:mb-16 max-w-2xl mx-auto" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                    Let's collaborate to bring your vision to life with precision and passion.
+                </p>
+                <Link href="/contact" className="inline-flex items-center justify-center bg-[#6E35FF] text-white rounded-full px-12 py-6 text-xl md:text-2xl font-bold hover:shadow-[0px_10px_25px_-5px_rgba(110,53,255,0.4)] transition-all hover:-translate-y-1" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                    Start Your Project <ArrowRight className="ml-3 w-6 h-6 md:w-7 md:h-7" />
                 </Link>
             </div>
         </section>

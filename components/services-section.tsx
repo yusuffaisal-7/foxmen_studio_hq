@@ -29,6 +29,7 @@ export function ServicesSection() {
       title: "AI Agent & Automation",
       description: "Custom AI solutions and intelligent automation to streamline operations, optimize workflows, and scale your business efficiency.",
       image: "https://res.cloudinary.com/duh7c5x99/image/upload/v1766073345/Gemini_Generated_Image_3460b53460b53460_pjugzt.png",
+      video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766683068/1225_1_yk338c.mov"
     },
     {
       title: "Branding",

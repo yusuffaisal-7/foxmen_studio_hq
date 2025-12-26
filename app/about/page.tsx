@@ -2,31 +2,25 @@ import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import {
     AboutHero,
-    AboutStory,
-    AboutMission,
+    AboutHighlights,
     AboutServices,
     AboutApproach,
     AboutTech,
-    AboutTeam,
-    AboutValues,
-    AboutStats,
+    AboutStatsMarquee,
     AboutCTA
 } from "@/components/about-sections"
 
 export default function AboutPage() {
     return (
-        <div className="min-h-screen bg-white font-sans selection:bg-[#FFC224] selection:text-black">
+        <div className="min-h-screen bg-white font-sans selection:bg-[#6E35FF] selection:text-white">
             <Navigation />
             <main>
                 <AboutHero />
-                <AboutStory />
-                <AboutMission />
+                <AboutHighlights />
                 <AboutServices />
                 <AboutApproach />
                 <AboutTech />
-                <AboutTeam />
-                <AboutValues />
-                <AboutStats />
+                <AboutStatsMarquee />
                 <AboutCTA />
             </main>
             <Footer />
