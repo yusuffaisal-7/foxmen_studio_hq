@@ -2,151 +2,139 @@
 
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
-import { useEffect, useRef, useId } from "react"
-
-function ScrollRevealText({ text }: { text: string }) {
-    const chars = text.split("")
-    const rawId = useId()
-    const id = "reveal-" + rawId.replace(/:/g, "")
-
-    // We want the reveal to happen as the element enters the viewport.
-    // Total range: entry 0% to cover 50% (visible).
-    // Stagger each char across this range.
-
-    return (
-        <span style={{ viewTimelineName: `--${id}`, viewTimelineAxis: 'block' } as any} className="inline-block w-full">
-            {chars.map((char, i) => {
-                const step = 40 / chars.length // spread over 40% of viewport height
-                const start = 10 + (i * step) // start at 10% entry
-                const end = start + 20 // each char takes 20% of viewport to fully fade in (smooth)
-
-                return (
-                    <span
-                        key={i}
-                        className="inline-block transition-colors duration-0"
-                        style={{
-                            color: '#cecece', // start color
-                            animationName: 'reveal-char',
-                            animationTimeline: `--${id}`,
-                            animationRangeStart: `entry ${start}%`,
-                            animationRangeEnd: `entry ${end}%`,
-                            animationFillMode: 'both',
-                            // Ensure animation logic matches the keyframes
-                        } as any}
-                    >
-                        {char === " " ? "\u00A0" : char}
-                    </span>
-                )
-            })}
-        </span>
-    )
-}
+import { useEffect, useRef } from "react"
+import { motion } from "framer-motion"
 
 export function FeaturedProjectsSection() {
     const projects = [
         {
             title: "Business Management Website",
-            description:
-                "A comprehensive management platform for an aerospace company, designed to streamline complex operations in the astro and space industry.",
+            description: "A comprehensive management platform for an aerospace company.",
             tag: "Commercial",
             logo: "/logos/company.svg",
             bgColor: "bg-[#FFC224]",
-            illustration: "/images/studio-workspace.svg", // Using existing placeholder
-            video: "https://res.cloudinary.com/duh7c5x99/video/upload/f_auto,q_auto/v1765916680/Screen_Recording_2025-12-16_at_4.13.24_PM_1_1_vtucjo.mp4",
-            poster: "https://res.cloudinary.com/duh7c5x99/video/upload/so_0,f_jpg,q_auto/v1765916680/Screen_Recording_2025-12-16_at_4.13.24_PM_1_1_vtucjo.jpg",
-            displayUrl: "https://www.vastspace.com/?ref=siteinspire"
-        },
-        {
-            title: "LMS & Online Learning Platform",
-            description:
-                "A comprehensive learning management system inspired by Pluralsight, featuring online courses and interactive learning paths.",
-            tag: "EdTech",
-            logo: "/logos/startup.svg",
-            bgColor: "bg-[#FF90E8]",
-            illustration: "/images/venture-workspace.svg", // Using existing placeholder
-            video: "https://res.cloudinary.com/duh7c5x99/video/upload/f_auto,q_auto/v1766047326/Screen_Recording_2025-12-18_at_2.32.23_PM_nmuegb.mp4",
-            poster: "https://res.cloudinary.com/duh7c5x99/video/upload/so_0,f_jpg,q_auto/v1766047326/Screen_Recording_2025-12-18_at_2.32.23_PM_nmuegb.jpg",
-            displayUrl: "https://www.pluralsight.com/"
-        },
-        {
-            title: "Fintech, Investment, Wefunder",
-            description:
-                "A secure investment platform for funders and investors, built to handle complex financial situations with top-tier security.",
-            tag: "Fintech",
-            logo: "/logos/healthcare.svg",
-            bgColor: "bg-[#27C93F]",
             illustration: "/images/studio-workspace.svg",
-            video: "https://res.cloudinary.com/duh7c5x99/video/upload/f_auto,q_auto/v1766050597/Screen_Recording_2025-12-18_at_3.23.38_PM_1_b0becr.mp4",
-            poster: "https://res.cloudinary.com/duh7c5x99/video/upload/so_0,f_jpg,q_auto/v1766050597/Screen_Recording_2025-12-18_at_3.23.38_PM_1_b0becr.jpg",
-            displayUrl: "https://wefunder.com/home"
+            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1765916680/Screen_Recording_2025-12-16_at_4.13.24_PM_1_1_vtucjo.mp4",
+            poster: "https://res.cloudinary.com/duh7c5x99/video/upload/so_0,f_jpg,q_auto/v1765916680/Screen_Recording_2025-12-16_at_4.13.24_PM_1_1_vtucjo.jpg",
+            displayUrl: "vastspace.com",
         },
         {
-            title: "Coinbase — Futuristic Brand Identity",
-            description:
-                "Emotion-led and futuristic branding for marketing, designed for Coinbase Ltd to redefine their visual identity.",
-            tag: "Branding",
-            logo: "/logos/agency.svg",
-            bgColor: "bg-[#FF5F56]",
-            illustration: "/images/venture-workspace.svg",
-            video: "https://res.cloudinary.com/duh7c5x99/video/upload/f_auto,q_auto/v1766061712/coinbase_brand_film_1080p_ym70u6.mp4",
-            poster: "https://res.cloudinary.com/duh7c5x99/video/upload/so_0,f_jpg,q_auto/v1766061712/coinbase_brand_film_1080p_ym70u6.jpg",
-            displayUrl: "https://www.coinbase.com"
-        },
-        {
-            title: "Mobile App: Wallet",
-            description:
-                "A comprehensive banking and financial mobile app designed for seamless money transfers and digital payment services.",
+            title: "Digital Wallet",
+            description: "Seamless money transfers and payments.",
             tag: "Fintech",
             logo: "/logos/startup.svg",
             bgColor: "bg-[#4F46E5]",
             illustration: "/images/studio-workspace.svg",
-            video: "https://res.cloudinary.com/duh7c5x99/video/upload/f_auto,q_auto/v1766068763/From_KlickPin_CF_UI_Design_for_money_transfer_and_digital_payment_services_Payoneer_Interactive_web_design_Mobile_app_design_inspiration_Banking_app_b58lz8.mp4",
+            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766068763/From_KlickPin_CF_UI_Design_for_money_transfer_and_digital_payment_services_Payoneer_Interactive_web_design_Mobile_app_design_inspiration_Banking_app_b58lz8.mp4",
             poster: "https://res.cloudinary.com/duh7c5x99/video/upload/so_0,f_jpg,q_auto/v1766068763/From_KlickPin_CF_UI_Design_for_money_transfer_and_digital_payment_services_Payoneer_Interactive_web_design_Mobile_app_design_inspiration_Banking_app_b58lz8.jpg",
-            displayUrl: "# Mobile App: Wallet"
+            displayUrl: "app store",
+        },
+        {
+            title: "Coinbase Visuals",
+            description: "Futuristic 3D brand identity for Coinbase.",
+            tag: "Branding",
+            logo: "/logos/agency.svg",
+            bgColor: "bg-[#FF5F56]",
+            illustration: "/images/venture-workspace.svg",
+            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766061712/coinbase_brand_film_1080p_ym70u6.mp4",
+            poster: "https://res.cloudinary.com/duh7c5x99/video/upload/so_0,f_jpg,q_auto/v1766061712/coinbase_brand_film_1080p_ym70u6.jpg",
+            displayUrl: "coinbase.com",
+        },
+        {
+            title: "Wefunder App",
+            description: "Secure investment platform for funders.",
+            tag: "Fintech",
+            logo: "/logos/healthcare.svg",
+            bgColor: "bg-[#27C93F]",
+            illustration: "/images/studio-workspace.svg",
+            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766050597/Screen_Recording_2025-12-18_at_3.23.38_PM_1_b0becr.mp4",
+            poster: "https://res.cloudinary.com/duh7c5x99/video/upload/so_0,f_jpg,q_auto/v1766050597/Screen_Recording_2025-12-18_at_3.23.38_PM_1_b0becr.jpg",
+            displayUrl: "wefunder.com",
+        },
+        {
+            title: "LMS Platform",
+            description: "Interactive learning management system.",
+            tag: "EdTech",
+            logo: "/logos/startup.svg",
+            bgColor: "bg-[#FF90E8]",
+            illustration: "/images/venture-workspace.svg",
+            video: "https://res.cloudinary.com/duh7c5x99/video/upload/v1766047326/Screen_Recording_2025-12-18_at_2.32.23_PM_nmuegb.mp4",
+            poster: "https://res.cloudinary.com/duh7c5x99/video/upload/so_0,f_jpg,q_auto/v1766047326/Screen_Recording_2025-12-18_at_2.32.23_PM_nmuegb.jpg",
+            displayUrl: "pluralsight.com",
         },
     ]
 
-    return (
-        <section className="container mx-auto px-4 py-16 md:py-24">
-            <div className="max-w-7xl mx-auto">
-                <div className="mb-20 text-center max-w-4xl mx-auto">
-                    {/* Header */}
-                    <h2 className="text-[clamp(2rem,6vw,4rem)] font-bold leading-tight mb-6" style={{ fontFamily: "var(--font-sfpro)" }}>
-                        Featured <span className="bg-[#6e35ff] text-white px-3 py-1 rounded-lg inline-block transform -rotate-2">projects</span>
-                    </h2>
+    const getSpanClass = (index: number) => {
+        switch (index) {
+            case 0: return "md:col-span-2 aspect-square md:aspect-[16/10]"
+            case 1: return "md:col-span-1 aspect-square md:aspect-auto"
+            case 2: return "md:col-span-1 aspect-square md:aspect-auto"
+            case 3: return "md:col-span-2 aspect-square md:aspect-[16/10]"
+            case 4: return "md:col-span-3 aspect-square md:aspect-video"
+            default: return "md:col-span-1 aspect-square"
+        }
+    }
 
-                    {/* Body - Staggered Reveal */}
-                    <div className="text-xl md:text-2xl text-[#393939] font-medium leading-relaxed mb-8 flex flex-wrap justify-center gap-[0.25em]" style={{ fontFamily: 'var(--font-inter-regular)' }}>
-                        <ScrollRevealText text="Highlights from our recent work in digital product design and branding." />
+    return (
+        <section className="container mx-auto px-4 py-8 md:py-16">
+            <div className="w-full max-w-[95%] mx-auto">
+                {/* Header */}
+                <div className="mb-12 md:mb-16 flex flex-col md:flex-row gap-8 items-start md:items-end justify-between">
+                    <div>
+                        <motion.h2
+                            className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[0.9] mb-6"
+                            style={{ fontFamily: "var(--font-sfpro)" }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            Selected <br />
+                            <span className="text-[#6E35FF]">Projects</span>
+                        </motion.h2>
+                        <motion.p
+                            className="text-xl text-[#393939] font-medium leading-relaxed max-w-lg"
+                            style={{ fontFamily: 'var(--font-inter-regular)' }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                        >
+                            Highlights from our recent work in digital product design, branding, and engineering.
+                        </motion.p>
                     </div>
 
-                    <a
+                    <motion.a
                         href="#"
-                        className="inline-flex items-center gap-2 font-bold hover:gap-3 transition-all text-xl mt-4"
+                        className="inline-flex items-center gap-2 font-bold hover:gap-4 transition-all text-xl group whitespace-nowrap"
                         style={{ fontFamily: 'var(--font-sfpro-regular)' }}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        View all projects <ArrowRight className="w-6 h-6" />
-                    </a>
+                        <span className="border-b-2 border-black pb-0.5">View all case studies</span>
+                        <ArrowRight className="w-6 h-6 transform group-hover:-rotate-45 transition-transform duration-300" />
+                    </motion.a>
                 </div>
 
-                <div className="space-y-8 mb-12">
+                {/* Bento Grid with MacOS Windows */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                     {projects.map((project, index) => (
-                        <FeaturedProjectCard key={index} project={project} />
+                        <FeaturedProjectCard
+                            key={index}
+                            project={project}
+                            index={index}
+                            className={getSpanClass(index)}
+                        />
                     ))}
-                </div>
-
-                <div className="flex justify-center md:hidden">
-                    <button className="bg-black text-white px-6 py-4 rounded-[12px] font-semibold hover:bg-gray-900 transition-colors flex items-center justify-center gap-2 w-full">
-                        View all projects
-                        <ArrowRight className="w-4 h-4" />
-                    </button>
                 </div>
             </div>
         </section>
     )
 }
 
-function FeaturedProjectCard({ project }: { project: any }) {
+function FeaturedProjectCard({ project, index, className = "" }: { project: any, index: number, className?: string }) {
     const videoRef = useRef<HTMLVideoElement>(null)
 
     useEffect(() => {
@@ -157,65 +145,79 @@ function FeaturedProjectCard({ project }: { project: any }) {
     }, [])
 
     return (
-        <div className="sticky top-28 group bg-white border-[3px] border-black rounded-[24px] md:rounded-[32px] overflow-hidden hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all flex flex-col aspect-[4/3] md:aspect-[16/10]">
-            {/* Browser Window Header */}
-            <div className="border-b-[3px] border-black p-3 md:p-4 flex items-center gap-3 bg-white z-10 relative shrink-0">
-                <div className="flex gap-1.5 md:gap-2">
-                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#FF5F56] border-[1.5px] border-black" />
-                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#FFBD2E] border-[1.5px] border-black" />
-                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#27C93F] border-[1.5px] border-black" />
+        <motion.div
+            // Mobile: Sticky with fixed top to create overlapping stack effect.
+            // md+: Relative with top-0.
+            style={{
+                // Fixed top offset for mobile overlapping
+                // @ts-ignore
+                "--mobile-top": "6rem"
+            }}
+            className={`
+                group flex flex-col rounded-xl overflow-hidden ${className} bg-white shadow-2xl ring-1 ring-black/5 
+                hover:ring-black/10 transition-all duration-300 hover:shadow-3xl hover:-translate-y-2
+                sticky md:relative top-[var(--mobile-top)] md:top-0 z-[${index + 1}]
+            `}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+        >
+            {/* MacOS Window Header */}
+            <div className="bg-[#f3f4f6] px-4 py-3 border-b border-[#e5e7eb] flex items-center gap-4 shrink-0">
+                <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-[#ff5f57] border border-[#e0443e]" />
+                    <div className="w-3 h-3 rounded-full bg-[#febc2e] border border-[#d89e24]" />
+                    <div className="w-3 h-3 rounded-full bg-[#28c840] border border-[#1aab29]" />
                 </div>
-                <div className="flex-1 bg-[#F3F4F6] border-[1.5px] border-black rounded-full h-7 md:h-8 flex items-center px-3 md:px-4 min-w-0">
-                    <span className="text-[10px] md:text-xs font-mono text-gray-500 truncate w-full" style={{ fontFamily: "var(--font-inter-regular)" }}>
-                        {project.displayUrl || `https://${project.title.toLowerCase().replace(/ /g, '-')}.com`}
-                    </span>
+                {/* Address Bar */}
+                <div className="flex-1 max-w-[200px] md:max-w-xs mx-auto bg-white rounded flex items-center justify-center px-3 py-1 shadow-sm border border-[#e5e7eb]">
+                    <div className="flex items-center gap-2 text-[10px] md:text-xs text-gray-500 font-medium">
+                        <span className="w-2 h-2 md:w-3 md:h-3 rounded-full border border-gray-400 opacity-50" />
+                        {project.displayUrl}
+                    </div>
                 </div>
+                <div className="w-[52px]" /> {/* Spacer to center the address bar */}
             </div>
 
-            {/* Card Body - Laptop Screen Content */}
-            <div className={`flex-1 relative overflow-hidden ${project.bgColor}`}>
-                {/* Full Screen Image/Background */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                    {/* Placeholder for project image - using the illustration as background */}
-                    {project.video ? (
-                        <video
-                            ref={videoRef}
-                            src={project.video}
-                            poster={project.poster}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline={true}
-                            preload="metadata"
-                            className="w-full h-full object-cover"
-                        />
-                    ) : (
-                        <Image
-                            src={project.illustration || "/placeholder.svg"}
-                            alt={project.title}
-                            fill
-                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                        />
-                    )}
-                </div>
+            {/* Window Content */}
+            <div className="relative flex-1 bg-white overflow-hidden">
+                {project.video ? (
+                    <video
+                        ref={videoRef}
+                        src={project.video}
+                        poster={project.poster}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline={true}
+                        preload="metadata"
+                        className="w-full h-full object-cover"
+                    />
+                ) : (
+                    <Image
+                        src={project.illustration || "/placeholder.svg"}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                    />
+                )}
 
-                {/* Floating Content Card */}
-                <div className="absolute bottom-3 right-3 w-[60%] md:w-[480px] md:left-6 md:right-auto md:bottom-6 bg-white/60 backdrop-blur-md border-[3px] border-black rounded-xl md:rounded-2xl p-3 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all">
-                    <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-2 md:mb-4">
-                        <span className="inline-block bg-[#F3F4F6] border border-black text-black text-[9px] md:text-[10px] font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-wider" style={{ fontFamily: "var(--font-inter-regular)" }}>
+                {/* Hover Content Overlay */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                    <div className="transform scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 ease-[0.16,1,0.3,1] text-center p-6 text-white">
+                        <span className="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-xs font-bold uppercase tracking-wider mb-3">
                             {project.tag}
                         </span>
-                        <div className="w-1 h-1 rounded-full bg-black"></div>
-                        <h3 className="text-sm md:text-xl font-bold leading-tight text-[#0B0B0B]" style={{ fontFamily: "var(--font-owners-regular)" }}>
+                        <h3 className="text-2xl md:text-3xl font-bold mb-2">
                             {project.title}
                         </h3>
+                        <p className="text-white/80 max-w-sm mx-auto text-sm md:text-base">
+                            {project.description}
+                        </p>
                     </div>
-
-                    <p className="text-[10px] md:text-base text-[#393939] mb-0 md:mb-6 leading-relaxed font-medium line-clamp-2" style={{ fontFamily: "var(--font-inter-regular)" }}>
-                        {project.description}
-                    </p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }

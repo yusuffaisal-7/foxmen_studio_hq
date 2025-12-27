@@ -2,7 +2,7 @@
 
 import { Mail, FolderOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 import { HeroBookingButton } from "./hero-booking-button"
 import { ViewProjectsButton } from "@/components/view-projects-button"
 
@@ -10,14 +10,8 @@ import { ViewProjectsButton } from "@/components/view-projects-button"
 import { MorphingText } from "@/components/ui/liquid-text";
 
 export function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true
-      videoRef.current.play().catch((e) => console.log("Autoplay blocked:", e))
-    }
-
     // Cal.com embed initialization
     ; (function (C: any, A: string, L: string) {
       let p = function (a: any, ar: any) {
@@ -103,19 +97,7 @@ export function HeroSection() {
         </div>
 
         <div className="flex justify-center md:justify-end">
-          <div className="relative w-full max-w-lg aspect-square overflow-hidden scale-100 md:scale-110 origin-center md:origin-right z-0">
-            <video
-              ref={videoRef}
-              src="https://res.cloudinary.com/duh7c5x99/video/upload/f_auto,q_auto/v1765859617/At_last_of_202512161032_xotbcd.mp4"
-              poster="https://res.cloudinary.com/duh7c5x99/video/upload/so_0,f_jpg,q_auto/v1765859617/At_last_of_202512161032_xotbcd.jpg"
-              autoPlay
-              loop
-              muted
-              playsInline={true}
-              preload="metadata"
-              className="w-full h-full object-cover mix-blend-multiply"
-            />
-          </div>
+          {/* Video removed as per request */}
         </div>
       </div>
     </section>
